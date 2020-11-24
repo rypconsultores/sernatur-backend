@@ -4,7 +4,7 @@ def getEnv(branch) {
 }
 
 def getPort(env) {
-    return (APP_ENV == 'dev') ? '7080' : (APP_ENV == 'prod') ? '8080' : '6080'
+    return (APP_ENV == 'dev') ? '3080' : (APP_ENV == 'prod') ? '4080' : '2080'
 }
 
 def getDatabaseURL(branch) {
