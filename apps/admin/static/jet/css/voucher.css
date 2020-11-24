@@ -1,0 +1,17 @@
+.field-send_notification
+, .field-rut
+, .field-send_state_description
+, .field-state
+, .field-first_name
+, .field-last_name {
+    white-space: nowrap
+}
+
+.field-address {
+    white-space: nowrap;
+    /*
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 20em;
+     */
+}

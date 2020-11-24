@@ -1,0 +1,35 @@
+#!/bin/sh
+
+MYDIR="$(dirname $0)"
+
+SPHINXOPTS=
+SPHINXBUILD=sphinx-build
+SPHINXPROJ=retargeting-manager
+SOURCEDIR="${MYDIR}/rst"
+CONFIGDIR="${MYDIR}"
+BUILDDIR="${MYDIR}"
+WORKERS=auto
+
+while [ $# -gt 0 ]; do
+    if [ $1 = "-j" ]; then
+        shift
+        WORKERS=$1
+    elif [ "$(echo $1 | head -c 1)" = "-" -o ! -z "${prev_is_arg}" ]; then
+        args="$args $1";
+
+        echo $1 | grep -sE '\-[bdcDAtwj]' && prev_is_arg=t
+    else
+        formats="$formats $1";
+        prev_is_arg=
+    fi
+
+    shift
+done
+
+if (echo $formats | grep -qE '(^|[ ]+)help([ ]+|$)' ); then
+	${SPHINXBUILD} -M help "${SOURCEDIR}" "${BUILDDIR}" ${SPHINXOPTS}
+else
+    for format in $formats; do
+	    ${SPHINXBUILD} -M ${format} "${SOURCEDIR}" "${BUILDDIR}" ${SPHINXOPTS} -c "${CONFIGDIR}" -d ${BUILDDIR}/.doctrees -j ${WORKERS} ${args}
+    done
+fi

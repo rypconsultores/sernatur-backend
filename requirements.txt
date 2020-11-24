@@ -1,0 +1,10 @@
+Django<3.2
+djangorestframework<3.12
+dj-database-url
+python-dotenv<1 # Latest 0.x release
+drf-yasg<1.18
+pytz
+mysqlclient
+django-3-jet
+unidecode
+boto3

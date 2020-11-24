@@ -1,0 +1,338 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-24 18:03-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps/c19trace/app.py:18
+msgid "Traceability COVID19"
+msgstr "Trazabilidad COVID19"
+
+#: apps/c19trace/models/common.py:4
+msgid "Grandparent"
+msgstr "Abuela/o"
+
+#: apps/c19trace/models/common.py:5 apps/c19trace/models/common.py:19
+msgid "Friend"
+msgstr "Amiga/o"
+
+#: apps/c19trace/models/common.py:6 apps/c19trace/models/common.py:20
+msgid "Colegue"
+msgstr "Colega"
+
+#: apps/c19trace/models/common.py:7 apps/c19trace/models/common.py:21
+msgid "Sibling in law"
+msgstr "Cuñada/o"
+
+#: apps/c19trace/models/common.py:8 apps/c19trace/models/common.py:22
+msgid "sibling"
+msgstr "hermanoa/o"
+
+#: apps/c19trace/models/common.py:9 apps/c19trace/models/common.py:23
+msgid "Child"
+msgstr "Hija/o"
+
+#: apps/c19trace/models/common.py:10 apps/c19trace/models/common.py:24
+msgid "Grandchild"
+msgstr "Nieta/o"
+
+#: apps/c19trace/models/common.py:11
+msgid "Parent"
+msgstr "Madre/Padre"
+
+#: apps/c19trace/models/common.py:12 apps/c19trace/models/common.py:25
+msgid "Cousin"
+msgstr "Prima/o"
+
+#: apps/c19trace/models/common.py:13 apps/c19trace/models/common.py:26
+msgid "Nephew"
+msgstr "Sobrina/o"
+
+#: apps/c19trace/models/common.py:14
+msgid "Parent in law"
+msgstr "Suegra/o"
+
+#: apps/c19trace/models/common.py:15
+msgid "Uncle/aunt"
+msgstr "Tía/Tío"
+
+#: apps/c19trace/models/common.py:30
+msgid "water"
+msgstr "agua"
+
+#: apps/c19trace/models/common.py:31
+msgid "air"
+msgstr "aire"
+
+#: apps/c19trace/models/common.py:32
+msgid "Land"
+msgstr "tierra"
+
+#: apps/c19trace/models/common.py:36
+msgid "Male"
+msgstr "Masculino"
+
+#: apps/c19trace/models/common.py:37
+msgid "Female"
+msgstr ""
+
+#: apps/c19trace/models/common.py:38 apps/c19trace/models/person.py:35
+msgid "Other"
+msgstr ""
+
+#: apps/c19trace/models/entry_point.py:9
+#: apps/c19trace/models/service_class.py:8
+#: apps/c19trace/models/service_type.py:7
+#: apps/c19trace/models/place_entity.py:14
+#: apps/c19trace/models/underage_persons.py:13
+msgid "Name"
+msgstr ""
+
+#: apps/c19trace/models/entry_point.py:13 apps/c19trace/models/person.py:80
+msgid "Transportation mode"
+msgstr "Modo de transporte"
+
+#: apps/c19trace/models/entry_point.py:20 apps/c19trace/models/person.py:88
+msgid "Entry point"
+msgstr "Punto de ingreso"
+
+#: apps/c19trace/models/entry_point.py:21
+msgid "Entry points"
+msgstr "Puntos de ingreso"
+
+#: apps/c19trace/models/person.py:10
+msgid "Date/Time"
+msgstr "Fecha/Hora"
+
+#: apps/c19trace/models/person.py:13
+msgid "First surname"
+msgstr "Primer apellido"
+
+#: apps/c19trace/models/person.py:16
+msgid "Last surname"
+msgstr "Segundo apellido"
+
+#: apps/c19trace/models/person.py:19
+msgid "Names"
+msgstr "Nombres"
+
+#: apps/c19trace/models/person.py:22
+msgid "Gender"
+msgstr "Género"
+
+#: apps/c19trace/models/person.py:27
+#: apps/c19trace/models/underage_persons.py:16
+msgid "Birth date"
+msgstr "Fecha de nacimiento"
+
+#: apps/c19trace/models/person.py:30
+msgid "Nationality"
+msgstr "Nacionalidad"
+
+#: apps/c19trace/models/person.py:33
+msgid "RUN"
+msgstr ""
+
+#: apps/c19trace/models/person.py:34
+msgid "Passport"
+msgstr "Pasaporte"
+
+#: apps/c19trace/models/person.py:38
+msgid "Travel document"
+msgstr "Documento de viaje"
+
+#: apps/c19trace/models/person.py:43
+msgid "Document Number"
+msgstr "Número de documento"
+
+#: apps/c19trace/models/person.py:46
+msgid "Chile"
+msgstr ""
+
+#: apps/c19trace/models/person.py:47
+msgid "Not Chile"
+msgstr "Extranjero"
+
+#: apps/c19trace/models/person.py:50
+msgid "Residence place"
+msgstr "Lugar de residencia"
+
+#: apps/c19trace/models/person.py:55
+msgid "Residence in Chile: Region"
+msgstr "Residencia en ChileÑ Región"
+
+#: apps/c19trace/models/person.py:58
+msgid "Residence in Chile: Comuna"
+msgstr "Residencia en Chile: Comuna"
+
+#: apps/c19trace/models/person.py:61
+msgid "Residence outside Chile: Country"
+msgstr "Residencia en el extranjero: País"
+
+#: apps/c19trace/models/person.py:64
+msgid "Residence outside Chile: Place"
+msgstr "Residencia en el extranjero: Lugar"
+
+#: apps/c19trace/models/person.py:67
+msgid "Email"
+msgstr ""
+
+#: apps/c19trace/models/person.py:70
+msgid "Mobile Phone"
+msgstr "Teléfono móvil"
+
+#: apps/c19trace/models/person.py:73
+msgid "Visit subject"
+msgstr "Asunto de la visita"
+
+#: apps/c19trace/models/person.py:76
+msgid "Visit number"
+msgstr "Numero de visita"
+
+#: apps/c19trace/models/person.py:85
+msgid "Destination"
+msgstr "Destino"
+
+#: apps/c19trace/models/person.py:91
+msgid "Motorcycle"
+msgstr "Moto"
+
+#: apps/c19trace/models/person.py:92
+msgid "Bycicle"
+msgstr "Bicicleta"
+
+#: apps/c19trace/models/person.py:93
+msgid "Car/Jeep/Pickup truck"
+msgstr "Automóvil/Jeep/Camioneta"
+
+#: apps/c19trace/models/person.py:94
+msgid "Motorhome"
+msgstr "Casa rodante/Motorhome"
+
+#: apps/c19trace/models/person.py:95
+msgid "Bus"
+msgstr ""
+
+#: apps/c19trace/models/person.py:96
+msgid "Truck"
+msgstr "Camion"
+
+#: apps/c19trace/models/person.py:99
+msgid "Main transportation mean"
+msgstr "Principal medio de transporte"
+
+#: apps/c19trace/models/person.py:101 apps/c19trace/models/person.py:112
+#: apps/c19trace/models/underage_persons.py:21
+#, python-format
+msgid ""
+"%s\n"
+"* Also can be filled with custom entry"
+msgstr "%s\n* Tambien puede ser llenado con una entrada personalizada"
+
+#: apps/c19trace/models/person.py:107
+msgid "Contact Name"
+msgstr "Nombre de contacto"
+
+#: apps/c19trace/models/person.py:110
+#: apps/c19trace/models/underage_persons.py:19
+msgid "Contact replationship"
+msgstr "Relacion con el contacto"
+
+#: apps/c19trace/models/person.py:118
+msgid "Contact phone or email"
+msgstr "Teléfono o email del contacto"
+
+#: apps/c19trace/models/person.py:121
+msgid "Contact comuna"
+msgstr "Comuna del contacto"
+
+#: apps/c19trace/models/person.py:124
+msgid "Contact localidad"
+msgstr "Localidad del contacto"
+
+#: apps/c19trace/models/person.py:128 apps/c19trace/models/person.py:129
+msgid "Person"
+msgstr "Persona"
+
+#: apps/c19trace/models/service_class.py:15
+#: apps/c19trace/models/service_type.py:10
+msgid "Enabled"
+msgstr "Habilitado"
+
+#: apps/c19trace/models/service_class.py:19
+msgid "Service class"
+msgstr "Clase de servicio"
+
+#: apps/c19trace/models/service_class.py:20
+msgid "Service classes"
+msgstr "Clases de servicio"
+
+#: apps/c19trace/models/service_type.py:14
+msgid "Service type"
+msgstr "Tipo de Servicio"
+
+#: apps/c19trace/models/service_type.py:15
+msgid "Service types"
+msgstr "Tipos de servicio"
+
+#: apps/c19trace/models/place_entity.py:8
+msgid "RUT Entity"
+msgstr "RUT Entidad"
+
+#: apps/c19trace/models/place_entity.py:17
+msgid "Comuna"
+msgstr ""
+
+#: apps/c19trace/models/place_entity.py:20
+msgid "Localidad"
+msgstr ""
+
+#: apps/c19trace/models/place_entity.py:23
+msgid "Zone"
+msgstr "Area"
+
+#: apps/c19trace/models/place_entity.py:26
+msgid "Address"
+msgstr "Dirección"
+
+#: apps/c19trace/models/place_entity.py:29
+msgid "Representative: Name"
+msgstr "Representante: Nombre"
+
+#: apps/c19trace/models/place_entity.py:32
+msgid "Representative: Phone"
+msgstr "Representante: Teléfono"
+
+#: apps/c19trace/models/place_entity.py:35
+msgid "Representative: Mail"
+msgstr "Representante: Mail"
+
+#: apps/c19trace/models/place_entity.py:39
+msgid "Place entity"
+msgstr "Entidad de lugar"
+
+#: apps/c19trace/models/place_entity.py:40
+msgid "Place entities"
+msgstr "Entidades de lugar"
+
+#: apps/c19trace/models/underage_persons.py:32
+msgid "Underage person"
+msgstr "Menor de edad"
+
+#: apps/c19trace/models/underage_persons.py:33
+msgid "Underage persons"
+msgstr "Menores de edad"

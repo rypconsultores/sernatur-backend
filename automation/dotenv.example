@@ -1,0 +1,4 @@
+# An example file to be the `.env` file in the root of the project
+
+# Databases, see https://github.com/jacobian/dj-database-url
+#DATABASE_DEFAULT_URL="sqlite:///${PWD}/db.sqlite3"

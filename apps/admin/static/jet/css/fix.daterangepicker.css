@@ -1,0 +1,20 @@
+/* daterangepicker fixes */
+.daterangepicker ul li {
+    list-style-type: none;
+}
+
+.daterangepicker thead th {
+    background: transparent;
+    color: inherit;
+    text-transform: none;
+    transition: none;
+    font-weight: bold;
+}
+
+.daterangepicker thead th, .daterangepicker tbody td {
+    padding: 0px;
+}
+
+.daterangepicker td.in-range {
+    background-color: #d4e0e6;
+}

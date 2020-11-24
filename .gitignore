@@ -1,0 +1,41 @@
+# Portable databasess
+*.sqlite3
+
+# Python
+*.pyc
+__pycache__
+
+# Default config, must be linked by project
+/settings/env/default.py
+
+# Main static files
+/static/*
+
+# Code editors
+/.vscode/*
+/.idea/*
+
+# Sphinx doc build dirs and doctrees
+/docs/.doctrees
+/docs/html
+/docs/dirhtml
+/docs/singlehtml
+/docs/htmlhelp
+/docs/qthelp
+/docs/devhelp
+/docs/epub
+/docs/applehelp
+/docs/latex
+/docs/man
+/docs/texinfo
+/docs/text
+/docs/gettext
+/docs/doctest
+/docs/linkcheck
+/docs/xml
+/docs/pseudoxml
+
+
+# dotenv
+/.env*
+.scannerwork
