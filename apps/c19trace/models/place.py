@@ -25,7 +25,7 @@ class Place(models.Model):
         (PLACE_TYPE_BORDER_CROSSING, gettext('Border crossing')),
     )
     place_type = models.IntegerField(
-        max_length=128, verbose_name=gettext('Entity type'),
+        verbose_name=gettext('Entity type'),
         choices=_entity_type_choices,
         help_text=choices_to_helptext(_entity_type_choices)
     )

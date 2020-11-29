@@ -1,4 +1,7 @@
+
+
 from django.urls import re_path, path, include
+from django.utils.translation import gettext_lazy as gettext
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
@@ -6,12 +9,12 @@ from rest_framework import permissions
 from . import views
 from .rest import routers
 
-"""
+
 schema_view = get_schema_view(
    openapi.Info(
-      title="PRISMA Campaigns API",
+      title=gettext("Sernatur COVID19 traceability API"),
       default_version='1.0.0',
-      description="For marketing campaigns.",
+      description=gettext("For mobile and web app."),
       #terms_of_service="https://www.google.com/policies/terms/",
       #contact=openapi.Contact(email="contact@snippets.local"),
       license=openapi.License(name="Commercial"),
@@ -25,64 +28,10 @@ api_path = path(
     'api/', include(
         routers.DefaultRouter([
             (
-                r'entities', views.api.common.EntityViewSet,
-                "api.client.imei"
-            ), (
-                'product-segment', views.api.common.ProductSegmentViewSet,
-                'api.product-segment'
-            ), (
-                'affinity-group', views.api.common.AffinityGroupViewSet,
-                'api.affinity-group'
-            ), (
-                'liquidation-model', views.api.common.LiquidationModelViewSet,
-                'api.liquidation-model'
-            ), (
-                'emitter-c19trace', views.api.emitter_campaign.EmitterCampaignViewSet,
-                'api.emitter-c19trace'
-            ), (
-                'acquirer-c19trace', views.api.acquirer_campaign.AcquirerCampaignViewSet,
-                'api.acquirer-c19trace'
-            ), (
-                'market', views.api.common.MarketViewSet,
-                'api.c19trace-market'
-            ), (
-                'establishment', views.api.establishment.EstablishmentViewSet,
-                'api.establishment'
-            ), (
-                'terminal', views.api.establishment.EstablishmentTerminalViewSet,
-                'api.establishment.terminal'
-            )
-        ]).urls + [
-            path('campaigns/', include(
-                routers.DefaultRouter([
-                    (
-                        'request-type', views.api.common.CampaignRequestTypeViewSet,
-                        'api.request-type'
-                    ), (
-                        'promotion-type', views.api.common.CampaignPromotionTypeViewSet,
-                        'api.c19trace-promotion-type'
-                    ), (
-                        'payment-types', views.api.common.CampaignPaymentTypesViewSet,
-                        'api.c19trace-payment-types'
-                    ), (
-                        'financial-cost-charge', views.api.common.CampaignFinancialCostChargeViewSet,
-                        'api.c19trace-financial-cost-charge'
-                    ), (
-                        'transaction-limit', views.api.common.CampaignTransactionLimitViewSet,
-                        'api.c19trace-transaction-limit'
-                    ), (
-                        'payment-data_set', views.api.common.CampaignPaymentMethodViewSet,
-                        'api.c19trace-payment-data_set'
-                    ),
-                ]).urls
-            )),
-            re_path(r"^emitter-c19trace/(?P<id>\d+?)/cobol-data/(?P<data_set>.*?).txt", views.api.cobol_data,
-                name="api.emitter-c19trace.cobol-data", kwargs={"object_type": "emitter-c19trace"}
+                r'person', views.api.person.PersonViewSet,
+                "api.person"
             ),
-            re_path(r"^acquirer-c19trace/(?P<id>\d+?)/cobol-data/(?P<data_set>.*?).txt", views.api.cobol_data,
-                name="api.acquirer_campaign.cobol-data", kwargs={"object_type": "acquirer-c19trace"}
-            )
-        ]
+        ]).urls
     )
 )
 
@@ -102,5 +51,3 @@ urlpatterns = [
     #path('logout', views.app.logout_view, name="app.logout"),
     api_path
 ]
-"""
-urlpatterns = []
