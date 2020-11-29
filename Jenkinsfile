@@ -10,11 +10,11 @@ def getPort(env) {
 def getDatabaseURL(branch) {
     return (
         (APP_ENV == 'dev')
-             ? 'mysql://sernatur_c19trace_dev:rFJMLKMAXa3Qj8zbcaTdGmaNMgTsMTunTTgwBCRTat8LcKSZub3ERxdBHvndDryD@172.17.0.1/sernatur_c19trace_dev'
+             ? 'mysqlgis://sernatur_c19trace_dev:rFJMLKMAXa3Qj8zbcaTdGmaNMgTsMTunTTgwBCRTat8LcKSZub3ERxdBHvndDryD@172.17.0.1/sernatur_c19trace_dev'
              : (
                  (APP_ENV == 'prod')
-                     ? 'mysql://sernatur_c19trace_prod:rFJMLKMAXa3Qj8zbcaTdGmaNMgTsMTunTTgwBCRTat8LcKSZub3ERxdBHvndDryD@172.17.0.1/sernatur_c19trace_prod'
-                     : 'mysql://sernatur_c19trace_local:Ev4f5cQwYPYfXLu4FxwrQehsrvx3Mt76dbQ8y5RWGDuG7pJzqWsGSjf6rUvQnu64@172.17.0.1/sernatur_c19trace_local'
+                     ? 'mysqlgis://sernatur_c19trace_prod:rFJMLKMAXa3Qj8zbcaTdGmaNMgTsMTunTTgwBCRTat8LcKSZub3ERxdBHvndDryD@172.17.0.1/sernatur_c19trace_prod'
+                     : 'mysqlgis://sernatur_c19trace_local:Ev4f5cQwYPYfXLu4FxwrQehsrvx3Mt76dbQ8y5RWGDuG7pJzqWsGSjf6rUvQnu64@172.17.0.1/sernatur_c19trace_local'
             )
     )
 }

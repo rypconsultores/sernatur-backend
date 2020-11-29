@@ -18,7 +18,7 @@ class UserPlace(models.Model):
 
     class Meta:
         verbose_name = gettext("User place")
-        verbose_name_plural = gettext("Uer places")
+        verbose_name_plural = gettext("User places")
 
         db_table = 'c19t_user_place'
         ordering = ('place__name',)

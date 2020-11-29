@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-24 18:03-0300\n"
+"POT-Creation-Date: 2020-11-29 15:21-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: apps/admin/__init__.py:11 apps/admin/__init__.py:14
 msgid "SERNATUR Aysen: Traceability COVID19 Admin"
-msgstr ""
+msgstr "SERNATUR Aysen: Administrador trazabilidad COVID19"
 
 #: apps/admin/__init__.py:17
 msgid "Administration"
@@ -28,17 +28,17 @@ msgstr "Administracion"
 
 #: apps/admin/templates/admin/base.html:61
 msgid "Welcome,"
-msgstr ""
+msgstr "Bienvenido,"
 
 #: apps/admin/templates/admin/base.html:66
 #: apps/admin/templates/admin/base.html:184
 msgid "View site"
-msgstr ""
+msgstr "Ver sitio"
 
 #: apps/admin/templates/admin/base.html:71
 #: apps/admin/templates/admin/base.html:194
 msgid "Documentation"
-msgstr ""
+msgstr "Documentación"
 
 #: apps/admin/templates/admin/base.html:75
 msgid "Change password"

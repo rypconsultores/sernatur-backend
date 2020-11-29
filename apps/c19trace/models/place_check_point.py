@@ -1,24 +1,20 @@
+from django.contrib.gis.db import models as models_geo
 from django.db import models
 from django.utils.translation import gettext_lazy as gettext
 
 from .place import Place
 
 
-class PlaceCheckPoint():
+class PlaceCheckPoint(models_geo.Model):
     name = models.CharField(
         verbose_name=gettext('Nombre'), max_length=96,
     )
-    lon = models.DecimalField(
-        verbose_name=gettext('Longitude'), max_digits=30,
-        decimal_places=15
-    )
-    lat = models.DecimalField(
-        verbose_name=gettext('Latitude'), max_digits=30,
-        decimal_places=15
+    location = models_geo.PointField(
+        verbose_name=gettext('Location')
     )
     place = models.ForeignKey(
         Place, verbose_name=Place._meta.verbose_name,
-        related_name='checkpoints'
+        related_name='checkpoints', on_delete=models.CASCADE
     )
 
     class Meta:
