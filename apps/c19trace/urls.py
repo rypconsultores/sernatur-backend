@@ -31,7 +31,17 @@ api_path = path(
                 r'person', views.api.person.PersonViewSet,
                 "api.person"
             ),
-        ]).urls
+        ]).urls + [
+            path('choices/', include([
+                path('relationships', views.api.choices.relationships, name="api.choices.relationships"),
+                path('underage_relationships', views.api.choices.underage_relationships, name="api.choices.underage_relationships"),
+                path('transportation_modes', views.api.choices.transportation_modes, name="api.choices.transportation_modes"),
+                path('genders', views.api.choices.genders, name="api.choices.genders"),
+                path('travel_documents', views.api.choices.travel_documents, name="api.choices.travel_documents"),
+                path('residence_choices', views.api.choices.residence_choices, name="api.choices.residence_choices"),
+                path('transportation_means', views.api.choices.transportation_means, name="api.choices.transportation_means"),
+            ]))
+        ]
     )
 )
 

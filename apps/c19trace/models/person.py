@@ -4,7 +4,10 @@ from django.db import models
 from django.dispatch import receiver
 from django.utils.translation import gettext_lazy as gettext
 
-from .common import relationships, transportation_modes, genders
+from .choices import (
+    relationships, transportation_modes, genders, travel_documents,
+    residence_choices, transportation_means
+)
 from .entry_point import EntryPoint
 from .util import choices_to_helptext, thenow
 
@@ -37,27 +40,18 @@ class Person(models.Model):
     nationality = models.CharField(
         max_length=3, verbose_name=gettext("Nationality"),
     )
-    _travel_document_choices = (
-        ("RUN", gettext("RUN")),
-        ("pasaporte", gettext("Passport")),
-        ("otro", gettext("Other"))
-    )
     travel_document = models.CharField(
         max_length=16, verbose_name=gettext("Travel document"),
-        choices=_travel_document_choices,
-        help_text=choices_to_helptext(_travel_document_choices)
+        choices=travel_documents,
+        help_text=choices_to_helptext(travel_documents)
     )
     document_no = models.CharField(
         max_length=128, verbose_name=gettext("Document Number")
     )
-    _residence_choices = (
-        ('Chile', gettext("Chile")),
-        ('extranjero', gettext("Not Chile"))
-    )
     residence = models.CharField(
         max_length=24, verbose_name=gettext("Residence place"),
-        choices=_residence_choices,
-        help_text=choices_to_helptext(_residence_choices)
+        choices=residence_choices,
+        help_text=choices_to_helptext(residence_choices)
     )
     residence_chile_region = models.CharField(
         max_length=2, verbose_name=gettext("Residence in Chile: Region"), null=True
@@ -98,19 +92,11 @@ class Person(models.Model):
     entry_point = models.ForeignKey(
         EntryPoint, verbose_name=gettext("Entry point"), on_delete=models.CASCADE
     )
-    _main_transportation_mean = (
-        ("Motocicleta", gettext("Motorcycle")),
-        ("Bicicleta", gettext("Bycicle")),
-        ("Auto/Jeep/Camioneta", gettext("Car/Jeep/Pickup truck")),
-        ("Motorhome/Casa Rodante", gettext("Motorhome")),
-        ("Bus", gettext("Bus")),
-        ("Camión", gettext("Truck"))
-    )
     main_transportation_mean = models.CharField(
         verbose_name=gettext("Main transportation mean"), max_length=64,
-        choices=_main_transportation_mean, help_text=(
+        choices=transportation_means, help_text=(
             gettext('%s\n* Also can be filled with custom entry') % (
-                choices_to_helptext(_main_transportation_mean),
+                choices_to_helptext(transportation_means),
             )
         )
     )

@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as gettext
 
-from .common import transportation_modes
+from .choices import transportation_modes
 from .util import choices_to_helptext
 
 

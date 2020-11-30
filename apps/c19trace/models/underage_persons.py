@@ -3,7 +3,7 @@ from copy import deepcopy
 from django.db import models
 from django.utils.translation import gettext_lazy as gettext
 
-from .common import underage_relationships
+from .choices import underage_relationships
 from .person import Person
 from .util import choices_to_helptext
 
