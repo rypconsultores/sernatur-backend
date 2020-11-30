@@ -68,7 +68,7 @@ class BingWidgetAysen(widgets_geo.OSMWidget):
 class InlinePlaceCheckPoints(admin_geo.StackedInline):
     model = models.PlaceCheckPoint
     formfield_overrides = {
-        models_geo.PointField: {"widget": BingWidgetAysen}
+        models_geo.PointField: {"widget": OSMWidgetAysen}
     }
     extra = 0
 
