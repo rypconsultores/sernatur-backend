@@ -18,7 +18,7 @@
         (function() {
             const fn = function() {
                 const elem = document.getElementById("{{ id }}_map");
-                if (!!( elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length)) {
+                if (elem && !!( elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length)) {
                     {% block map_options %}var map_options = {};{% endblock %}
                     {% block base_layer %}
                         let base_layer = new ol.layer.Tile({
@@ -47,7 +47,8 @@
                 }
             }
 
-            fn()
+            if(!/__prefix__/.test("{{ id }}"))
+                fn();
         })();
     </script>
 </div>

@@ -14,11 +14,8 @@
     <textarea id="{{ id }}" class="vSerializedField required" cols="150" rows="10" name="{{ name }}">{{ serialized }}</textarea>
     <script>
         (function() {
-            console.log("asidhaklfshaf");
             const fn = function() {
                 const elem = document.getElementById("{{ id }}_map");
-                console.log("asdaf");
-
                 if (!!( elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length)) {
                     {% block map_options %}var map_options = {};{% endblock %}
                     {% block base_layer %}
@@ -42,7 +39,7 @@
                         name: '{{ name }}'
                     };
                     {% endblock %}
-                    var {{ module }} = new MapWidget(options);
+                    {{ module }} = new MapWidget(options);
                 } else {
                     setTimeout(fn, 100);
                 }

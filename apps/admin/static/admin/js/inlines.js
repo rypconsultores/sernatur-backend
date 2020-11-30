@@ -25,6 +25,7 @@
         const updateElementIndex = function(el, prefix, ndx) {
             const id_regex = new RegExp("((" + prefix + ")([_-])(\\d+|__prefix__))", "g");
             const replacement = prefix + "$3" + ndx;
+
             if ($(el).prop("for")) {
                 $(el).prop("for", $(el).prop("for").replace(id_regex, replacement));
             }
@@ -78,6 +79,22 @@
             row.find("*").each(function() {
                 updateElementIndex(this, options.prefix, totalForms.val());
             });
+            row.find('script').each(function() {
+                let s = document.createElement('script');
+                let code = this.firstChild.data;
+                s.type = 'text/javascript';
+                this.parentNode.removeChild(this);
+                try {
+                  s.appendChild(document.createTextNode(code));
+                  document.body.appendChild(s);
+                } catch (e) {
+                  s.text = code;
+                  document.body.appendChild(s);
+                }
+            })
+
+            //document.write(scripts.outerHTML)
+
             // Insert the new form when it has been fully edited.
             row.insertBefore($(template));
             // Update number of total forms.
