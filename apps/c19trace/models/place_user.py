@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as gettext
 from .place import Place
 
 
-class UserPlace(models.Model):
+class PlaceUser(models.Model):
     user = models.ForeignKey(
         User, verbose_name=gettext('User'), on_delete=models.CASCADE
     )
@@ -17,8 +17,8 @@ class UserPlace(models.Model):
     )
 
     class Meta:
-        verbose_name = gettext("User place")
-        verbose_name_plural = gettext("User places")
+        verbose_name = gettext("Place user")
+        verbose_name_plural = gettext("Place users")
 
-        db_table = 'c19t_user_place'
+        db_table = 'c19t_place_users'
         ordering = ('place__name',)

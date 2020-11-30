@@ -1,0 +1,53 @@
+{% load i18n l10n %}
+<div id="{{ id }}_div_map">
+    <style type="text/css">{% block map_css %}{% get_current_language_bidi as LANGUAGE_BIDI %}
+        #{{ id }}_map { width: {{ map_width }}px; height: {{ map_height }}px; }
+        #{{ id }}_map .aligned label { float: inherit; }
+        #{{ id }}_div_map { position: relative; vertical-align: top; float: {{ LANGUAGE_BIDI|yesno:"right,left" }}; }
+        {% if not display_raw %}#{{ id }} { display: none; }{% endif %}
+        {% endblock %}
+    </style>
+
+    <div id="{{ id }}_map"></div>
+    {% if not disabled %}<span class="clear_features"><a href="javascript:{{ module }}.clearFeatures()">{% translate "Delete all Features" %}</a></span>{% endif %}
+    {% if display_raw %}<p>{% translate "Debugging window (serialized value)" %}</p>{% endif %}
+    <textarea id="{{ id }}" class="vSerializedField required" cols="150" rows="10" name="{{ name }}">{{ serialized }}</textarea>
+    <script>
+        let {{ module }};
+
+        (function() {
+            const fn = function() {
+                const elem = document.getElementById("{{ id }}_map");
+                if (!!( elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length)) {
+                    {% block map_options %}var map_options = {};{% endblock %}
+                    {% block base_layer %}
+                        let base_layer = new ol.layer.Tile({
+                            source: new ol.source.XYZ({
+                                attributions: "NASA Worldview",
+                                maxZoom: 8,
+                                url: "https://map1{a-c}.vis.earthdata.nasa.gov/wmts-webmerc/" +
+                                    "BlueMarble_ShadedRelief_Bathymetry/default/%7BTime%7D/" +
+                                    "GoogleMapsCompatible_Level8/{z}/{y}/{x}.jpg"
+                            })
+                        });
+                    {% endblock %}
+                    {% block options %}let options = {
+                        base_layer: base_layer,
+                        geom_name: '{{ geom_type }}',
+                        id: '{{ id }}',
+                        map_id: '{{ id }}_map',
+                        map_options: map_options,
+                        map_srid: {{ map_srid|unlocalize }},
+                        name: '{{ name }}'
+                    };
+                    {% endblock %}
+                    {{ module }} = new MapWidget(options);
+                } else {
+                    setTimeout(fn, 100);
+                }
+            }
+
+            fn()
+        })();
+    </script>
+</div>

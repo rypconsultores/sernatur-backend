@@ -21,7 +21,7 @@ class Place(models.Model):
         (PLACE_TYPE_TURISTIC_INFO_OFFICE, gettext('Turistic information office')),
         (PLACE_TYPE_HEALTH_PLACE, gettext("Health place")),
         (PLACE_TYPE_CHECK_POINT_MUNICIPAL, gettext('Check point municipal')),
-        (PLACE_TYPE_SANITARY_CHECK_POINT, gettext('Sanitary check point ')),
+        (PLACE_TYPE_SANITARY_CHECK_POINT, gettext('Sanitary check point')),
         (PLACE_TYPE_BORDER_CROSSING, gettext('Border crossing')),
     )
     place_type = models.IntegerField(
@@ -73,13 +73,13 @@ class Place(models.Model):
         max_length=128, verbose_name=gettext("Representative: Mail")
     )
     users = models.ManyToManyField(
-        User, through='UserPlace', verbose_name=gettext("Users"),
+        User, through='PlaceUser', verbose_name=gettext("Users"),
         related_name='places'
     )
 
     class Meta:
-        verbose_name = gettext("Place entity")
-        verbose_name_plural = gettext("Place entities")
+        verbose_name = gettext("Place")
+        verbose_name_plural = gettext("Places")
 
         db_table = 'c19t_place_entity'
         ordering = ('name',)

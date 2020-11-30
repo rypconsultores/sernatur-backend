@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.c19trace',
     'rest_framework',
-    'drf_yasg'
+    'drf_yasg',
+    'django.contrib.gis',
 ]
 
 MIDDLEWARE = [

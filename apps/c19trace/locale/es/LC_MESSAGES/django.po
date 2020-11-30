@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-29 15:21-0300\n"
+"POT-Creation-Date: 2020-11-29 22:30-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -298,10 +298,8 @@ msgid "Check point municipal"
 msgstr "Punto de control municipal"
 
 #: apps/c19trace/models/place.py:24
-#, fuzzy
-#| msgid "Entry point"
-msgid "Sanitary check point "
-msgstr "Punto de ingreso"
+msgid "Sanitary check point"
+msgstr "Aduana sanitaria"
 
 #: apps/c19trace/models/place.py:25
 msgid "Border crossing"
@@ -355,33 +353,45 @@ msgstr "Representante: Mail"
 msgid "Users"
 msgstr "Usuarios"
 
-#: apps/c19trace/models/place.py:81
-msgid "Place entity"
-msgstr "Entidad de lugar"
+#: apps/c19trace/models/place.py:81 apps/c19trace/models/place_user.py:13
+msgid "Place"
+msgstr "lugar"
 
 #: apps/c19trace/models/place.py:82
-msgid "Place entities"
-msgstr "Entidades de lugar"
+msgid "Places"
+msgstr "Lugares"
 
-#: apps/c19trace/models/place_check_point.py:9
+#: apps/c19trace/models/place_check_point.py:10
 msgid "Nombre"
 msgstr "Nombre"
 
-#: apps/c19trace/models/place_check_point.py:12
-msgid "Longitude"
-msgstr "Longitud"
+#: apps/c19trace/models/place_check_point.py:13
+msgid "Location"
+msgstr "Ubicación"
 
-#: apps/c19trace/models/place_check_point.py:16
-msgid "Latitude"
-msgstr "Latitud"
-
-#: apps/c19trace/models/place_check_point.py:25
+#: apps/c19trace/models/place_check_point.py:21
 msgid "Place check point"
 msgstr "Punto de control de lugar"
 
-#: apps/c19trace/models/place_check_point.py:26
+#: apps/c19trace/models/place_check_point.py:22
 msgid "Place check points"
 msgstr "Puntos de control de lugar"
+
+#: apps/c19trace/models/place_user.py:10
+msgid "User"
+msgstr "Usuario"
+
+#: apps/c19trace/models/place_user.py:16
+msgid "Is owner"
+msgstr "Es dueño"
+
+#: apps/c19trace/models/place_user.py:20
+msgid "Place user"
+msgstr "Usuario de lugar"
+
+#: apps/c19trace/models/place_user.py:21
+msgid "Place users"
+msgstr "Usuarios de lugar"
 
 #: apps/c19trace/models/service_class.py:16
 #: apps/c19trace/models/service_type.py:10
@@ -412,30 +422,19 @@ msgstr "Menor de edad"
 msgid "Underage persons"
 msgstr "Menores de edad"
 
-#: apps/c19trace/models/user_place.py:10
-msgid "User"
-msgstr "Usuario"
-
-#: apps/c19trace/models/user_place.py:13
-msgid "Place"
-msgstr "Lugar"
-
-#: apps/c19trace/models/user_place.py:16
-msgid "Is owner"
-msgstr "Es dueño"
-
-#: apps/c19trace/models/user_place.py:20
-msgid "User place"
-msgstr "Usuario de lugar"
-
-#: apps/c19trace/models/user_place.py:21
-msgid "Uaer places"
-msgstr "Usuarios de lugar"
-
 #: apps/c19trace/urls.py:15
-msgid "SERNATUR Aysen: Traceability COVID19 API"
-msgstr "SERNATUR Aysen: API de Tracabilidad COVID19"
+msgid "Sernatur COVID19 traceability API"
+msgstr ""
 
 #: apps/c19trace/urls.py:17
 msgid "For mobile and web app."
 msgstr "Para aplicaciones mobiles y web."
+
+#~ msgid "Longitude"
+#~ msgstr "Longitud"
+
+#~ msgid "Latitude"
+#~ msgstr "Latitud"
+
+#~ msgid "SERNATUR Aysen: Traceability COVID19 API"
+#~ msgstr "SERNATUR Aysen: API de Tracabilidad COVID19"

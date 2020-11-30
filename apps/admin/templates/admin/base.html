@@ -14,7 +14,12 @@
 <link rel="stylesheet" type="text/css" href="{% static "jet/css/themes/"|add:THEME|add:"/base.css" as url %}{{ url|jet_append_version }}" class="base-stylesheet" />
 <link rel="stylesheet" type="text/css" href="{% static "jet/css/themes/"|add:THEME|add:"/select2.theme.css" as url %}{{ url|jet_append_version }}" class="select2-stylesheet" />
 <link rel="stylesheet" type="text/css" href="{% static "jet/css/themes/"|add:THEME|add:"/jquery-ui.theme.css" as url %}{{ url|jet_append_version }}" class="jquery-ui-stylesheet" />
+<style>
+    .tabular.inline-related tr[class*="dynamic"] div[id$="div_map"] > div{
+        height: 10rem;
+    }
 
+</style>
 {% block extrastyle %}{% endblock %}
 {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}" />{% endif %}
 {% jet_get_date_format as date_format %}
@@ -26,15 +31,15 @@
     var TIME_FORMAT = "{{ time_format }}";
     var DATETIME_FORMAT = "{{ datetime_format }}";
 </script>
-<script type="text/javascript" src="{% url 'jet:jsi18n' %}"></script>
+{% block extrahead %}{% endblock %}
 <script src="{% static "jet/js/build/bundle.min.js" as url %}{{ url|jet_append_version }}"></script>
+<script type="text/javascript" src="{% url 'jet:jsi18n' %}"></script>
 
 {% jet_static_translation_urls as translation_urls %}
 {% for url in translation_urls %}
     <script src="{% static url as url %}{{ url|jet_append_version }}"></script>
 {% endfor %}
 
-{% block extrahead %}{% endblock %}
 {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
 </head>
 {% load i18n %}

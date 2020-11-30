@@ -10,7 +10,7 @@ class PlaceCheckPoint(models_geo.Model):
         verbose_name=gettext('Nombre'), max_length=96,
     )
     location = models_geo.PointField(
-        verbose_name=gettext('Location')
+        verbose_name=gettext('Location'), srid=4326
     )
     place = models.ForeignKey(
         Place, verbose_name=Place._meta.verbose_name,

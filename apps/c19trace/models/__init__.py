@@ -4,5 +4,5 @@ from .underage_persons import UnderagePerson
 from .service_type import ServiceType
 from .service_class import ServiceClass
 from .place import Place
-from .user_place import UserPlace
+from .place_user import PlaceUser
 from .place_check_point import PlaceCheckPoint
