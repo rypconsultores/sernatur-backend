@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-29 22:30-0300\n"
+"POT-Creation-Date: 2020-11-30 06:15-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -111,8 +111,10 @@ msgstr ""
 msgid "current theme"
 msgstr ""
 
-#~ msgid "PRISMA Campaigns Admin"
-#~ msgstr "PRISMA Administrador de campañas"
+#: apps/admin/templates/gis/openlayers.html:12
+msgid "Delete all Features"
+msgstr ""
 
-#~ msgid "Campaign"
-#~ msgstr "Campaña"
+#: apps/admin/templates/gis/openlayers.html:13
+msgid "Debugging window (serialized value)"
+msgstr ""

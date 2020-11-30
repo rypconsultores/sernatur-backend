@@ -49,3 +49,4 @@ genders: ViewType = view_maker(choices_data.genders, serializers.choices.CharCho
 travel_documents: ViewType = view_maker(choices_data.travel_documents, serializers.choices.CharChoices)
 residence_choices: ViewType = view_maker(choices_data.residence_choices, serializers.choices.CharChoices)
 transportation_means: ViewType = view_maker(choices_data.transportation_means, serializers.choices.CharChoices)
+entry_point_types: ViewType = view_maker(choices_data.entry_point_types, serializers.choices.CharChoices)

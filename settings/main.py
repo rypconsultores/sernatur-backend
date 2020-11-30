@@ -51,6 +51,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -131,7 +132,7 @@ DATABASES = {
     'default': dj_database_url.parse(os.getenv('DATABASE_DEFAULT_URL', 'no-database-found://'))
 }
 
-JET_DEFAULT_THEME = 'prisma'
+JET_DEFAULT_THEME = 'sernatur'
 
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
@@ -141,3 +142,5 @@ STATICFILES_FINDERS = (
 STATICFILES_DIRS = (
     os.path.join(CUSTOM_ADMIN_PATH, 'static'),
 )
+
+CORS_ALLOW_ALL_ORIGINS = True

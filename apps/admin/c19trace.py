@@ -84,3 +84,11 @@ class Place(admin_geo.OSMGeoAdmin):
 
     class Media:
         model = models.Place
+
+
+class ServiceClass(admin.ModelAdmin):
+    model = models.ServiceClass
+
+
+class ServiceType(admin.ModelAdmin):
+    model = models.ServiceType

@@ -7,13 +7,6 @@
  * General
  */
 /*
-Azul #023F86
-cyan #00B0B4
-fucsia #e51b54
-amarillo #ffd600
-amarillo oscuro #f7b305
- */
-/*
  * Sidebar
  */
 /*
@@ -478,23 +471,23 @@ amarillo oscuro #f7b305
 }
 
 .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
-  border: 1px solid #e51b54;
-  background: #e51b54;
+  border: 1px solid #002a4b;
+  background: #002a4b;
   font-weight: bold;
   color: #fff;
 }
 
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
-  border: 1px solid #023974;
-  background: #023974;
+  border: 1px solid #005588;
+  background: #005588;
   font-weight: bold;
   color: #fff;
 }
 
 .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
-  border: 1px solid #e51b54;
+  border: 1px solid #003957;
   background: #fff;
-  color: #e51b54;
+  color: #003957;
 }
 
 @media only screen and (max-width: 480px) {

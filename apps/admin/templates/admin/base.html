@@ -14,12 +14,7 @@
 <link rel="stylesheet" type="text/css" href="{% static "jet/css/themes/"|add:THEME|add:"/base.css" as url %}{{ url|jet_append_version }}" class="base-stylesheet" />
 <link rel="stylesheet" type="text/css" href="{% static "jet/css/themes/"|add:THEME|add:"/select2.theme.css" as url %}{{ url|jet_append_version }}" class="select2-stylesheet" />
 <link rel="stylesheet" type="text/css" href="{% static "jet/css/themes/"|add:THEME|add:"/jquery-ui.theme.css" as url %}{{ url|jet_append_version }}" class="jquery-ui-stylesheet" />
-<style>
-    .tabular.inline-related tr[class*="dynamic"] div[id$="div_map"] > div{
-        height: 10rem;
-    }
 
-</style>
 {% block extrastyle %}{% endblock %}
 {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}" />{% endif %}
 {% jet_get_date_format as date_format %}
@@ -56,7 +51,7 @@
         <div id="branding">
             <span id="branding-menu" class="sidebar-header-menu-icon icon-menu sidebar-toggle"></span>
             <span id="branding-pin" class="sidebar-link-icon icon-pin sidebar-pin"></span>
-            <img src="{%  static "images/prisma-nega.png" %}" style="width: 100%"/>
+            <img src="{%  static "images/logo.png" %}" style="width: 100%"/>
             <!-- {% block branding %}{% endblock %} -->
         </div>
         {% block usertools %}

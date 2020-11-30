@@ -10,22 +10,15 @@
 $background-color: #f8fafc;
 $text-color: #5b676f;
 $dim-text-color: #c0c6cc;
-$error-text-color: #c7254e;
+$error-text-color: #661313;
 
-$link-color: #611736;
-$hover-link-color: #e51b54;
+$link-color: #0099cc;
+$hover-link-color: #003957;
 
-$contrast-color: #023974;
+$contrast-color: #005588;
 
 $font: Arial, sans-serif !default;
 $font-size: 14px;
-/*
-Azul #023F86
-cyan #00B0B4
-fucsia #e51b54
-amarillo #ffd600
-amarillo oscuro #f7b305
- */
 
 /*
  * Sidebar
@@ -33,24 +26,24 @@ amarillo oscuro #f7b305
 
 $sidebar-width: 250px;
 
-$sidebar-background-color: #023F86;
-$sidebar-contrast-background-color: #023974;
+$sidebar-background-color: #006799;
+$sidebar-contrast-background-color: #005588;
 $sidebar-contrast-text-color: #eee;
 
 $sidebar-arrow-color: #fff;
 $sidebar-hover-arrow-color: #fff;
 
-$sidebar-action-color: #00B0B4;
+$sidebar-action-color: #aaa;
 $sidebar-hover-action-color: #fff;
 
 $sidebar-title-action-color: #fff;
 $sidebar-hover-title-action-item-color: #fd8b5e;
 
 $sidebar-text-color: #fff;
-$sidebar-icon-color: #fff;
+$sidebar-icon-color: #0099cc;
 $sidebar-link-color: #ddd;
-$sidebar-hover-link-color: #fff;
-$sidebar-hover-background-color: #00B0B4;
+$sidebar-hover-link-color: #03345e;
+$sidebar-hover-background-color: #ccc;
 
 $sidebar-popup-search-input-background-color: #dfdfdf;
 $sidebar-popup-search-input-text-color: #7f8fa4;
@@ -60,9 +53,9 @@ $sidebar-popup-background-color: #dbdbdb;
 $sidebar-popup-text-color: #7f8fa4;
 $sidebar-popup-overlay-color: #000;
 
-$sidebar-popup-link-text-color: #7f8fa4;
-$sidebar-popup-hover-link-color: #fff;
-$sidebar-popup-hover-link-background-color: #00B0B4;
+$sidebar-popup-link-text-color: #666;
+$sidebar-popup-hover-link-color: #005588;
+$sidebar-popup-hover-link-background-color: #a6b4c6;
 
 
 /*
@@ -102,15 +95,15 @@ $content-border-color: #f1f2f4; //row bottom
 $content-border2-color: #D5E3EC; //table bottom
 $content-selected-border-color: #EFEDC8;
 
-$tab-selected-border-color: #b41010;
-$tab-error-border-color: #c7254e;
+$tab-selected-border-color: #890606;
+$tab-error-border-color: #c72525;
 
 /*
  * Buttons
  */
 
 $button-background-color: #E3ECF2;
-$button-hover-background-color: #e51b54;
+$button-hover-background-color: #002a4b;
 $button-active-background-color: $contrast-color;
 $button-text-color: #364350;
 $button-hover-text-color: #fff;
@@ -132,7 +125,7 @@ $background-button-text-color: #7f8fa4;
 $input-background-color: #fff;
 $input-contrast-background-color: #E3ECF2;
 $input-border-color: #EDEDED;
-$input-hover-background-color: #e51b54;
+$input-hover-background-color: #ad0303;
 $input-icon-color: $link-color;
 $input-text-color: $text-color;
 $input-contrast-text-color: #7f8fa4;

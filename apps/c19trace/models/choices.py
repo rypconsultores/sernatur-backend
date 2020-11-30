@@ -58,3 +58,9 @@ transportation_means = (
     ("Bus", gettext("Bus")),
     ("Camión", gettext("Truck"))
 )
+
+entry_point_types = (
+    ('maritimo', gettext("Maritime")),
+    ('aereo', gettext("Aereal")),
+    ('terrestre', gettext("Ground")),
+)

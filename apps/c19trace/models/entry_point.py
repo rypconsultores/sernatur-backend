@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as gettext
 
-from .choices import transportation_modes
+from .choices import transportation_modes, entry_point_types
 from .util import choices_to_helptext
 
 
@@ -13,8 +13,8 @@ class EntryPoint(models.Model):
     type = models.CharField(
         verbose_name=gettext("Transportation mode"),
         max_length=64,
-        choices=transportation_modes,
-        help_text=choices_to_helptext(transportation_modes)
+        choices=entry_point_types,
+        help_text=choices_to_helptext(entry_point_types)
     )
 
     class Meta:

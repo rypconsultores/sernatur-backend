@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-29 22:30-0300\n"
+"POT-Creation-Date: 2020-11-30 06:15-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,77 +22,129 @@ msgstr ""
 msgid "Traceability COVID19"
 msgstr "Trazabilidad COVID19"
 
-#: apps/c19trace/models/common.py:4
+#: apps/c19trace/models/choices.py:4
 msgid "Grandparent"
 msgstr "Abuela/o"
 
-#: apps/c19trace/models/common.py:5 apps/c19trace/models/common.py:19
+#: apps/c19trace/models/choices.py:5 apps/c19trace/models/choices.py:19
 msgid "Friend"
 msgstr "Amiga/o"
 
-#: apps/c19trace/models/common.py:6 apps/c19trace/models/common.py:20
+#: apps/c19trace/models/choices.py:6 apps/c19trace/models/choices.py:20
 msgid "Colegue"
 msgstr "Colega"
 
-#: apps/c19trace/models/common.py:7 apps/c19trace/models/common.py:21
+#: apps/c19trace/models/choices.py:7 apps/c19trace/models/choices.py:21
 msgid "Sibling in law"
 msgstr "Cuñada/o"
 
-#: apps/c19trace/models/common.py:8 apps/c19trace/models/common.py:22
+#: apps/c19trace/models/choices.py:8 apps/c19trace/models/choices.py:22
 msgid "sibling"
 msgstr "hermanoa/o"
 
-#: apps/c19trace/models/common.py:9 apps/c19trace/models/common.py:23
+#: apps/c19trace/models/choices.py:9 apps/c19trace/models/choices.py:23
 msgid "Child"
 msgstr "Hija/o"
 
-#: apps/c19trace/models/common.py:10 apps/c19trace/models/common.py:24
+#: apps/c19trace/models/choices.py:10 apps/c19trace/models/choices.py:24
 msgid "Grandchild"
 msgstr "Nieta/o"
 
-#: apps/c19trace/models/common.py:11
+#: apps/c19trace/models/choices.py:11
 msgid "Parent"
 msgstr "Madre/Padre"
 
-#: apps/c19trace/models/common.py:12 apps/c19trace/models/common.py:25
+#: apps/c19trace/models/choices.py:12 apps/c19trace/models/choices.py:25
 msgid "Cousin"
 msgstr "Prima/o"
 
-#: apps/c19trace/models/common.py:13 apps/c19trace/models/common.py:26
+#: apps/c19trace/models/choices.py:13 apps/c19trace/models/choices.py:26
 msgid "Nephew"
 msgstr "Sobrina/o"
 
-#: apps/c19trace/models/common.py:14
+#: apps/c19trace/models/choices.py:14
 msgid "Parent in law"
 msgstr "Suegra/o"
 
-#: apps/c19trace/models/common.py:15
+#: apps/c19trace/models/choices.py:15 apps/c19trace/models/choices.py:27
 msgid "Uncle/aunt"
 msgstr "Tía/Tío"
 
-#: apps/c19trace/models/common.py:30
-msgid "water"
-msgstr "agua"
+#: apps/c19trace/models/choices.py:31
+msgid "Water"
+msgstr "Agua"
 
-#: apps/c19trace/models/common.py:31
-msgid "air"
-msgstr "aire"
+#: apps/c19trace/models/choices.py:32
+msgid "Air"
+msgstr "Aire"
 
-#: apps/c19trace/models/common.py:32
+#: apps/c19trace/models/choices.py:33
 msgid "Land"
 msgstr "tierra"
 
-#: apps/c19trace/models/common.py:36
+#: apps/c19trace/models/choices.py:37
 msgid "Male"
 msgstr "Masculino"
 
-#: apps/c19trace/models/common.py:37
+#: apps/c19trace/models/choices.py:38
 msgid "Female"
 msgstr "Femenino"
 
-#: apps/c19trace/models/common.py:38 apps/c19trace/models/person.py:43
+#: apps/c19trace/models/choices.py:39 apps/c19trace/models/choices.py:45
 msgid "Other"
 msgstr "Otro"
+
+#: apps/c19trace/models/choices.py:43
+msgid "RUN"
+msgstr ""
+
+#: apps/c19trace/models/choices.py:44
+msgid "Passport"
+msgstr "Pasaporte"
+
+#: apps/c19trace/models/choices.py:49
+msgid "Chile"
+msgstr ""
+
+#: apps/c19trace/models/choices.py:50
+msgid "Not Chile"
+msgstr "Extranjero"
+
+#: apps/c19trace/models/choices.py:54
+msgid "Motorcycle"
+msgstr "Moto"
+
+#: apps/c19trace/models/choices.py:55
+msgid "Bycicle"
+msgstr "Bicicleta"
+
+#: apps/c19trace/models/choices.py:56
+msgid "Car/Jeep/Pickup truck"
+msgstr "Automóvil/Jeep/Camioneta"
+
+#: apps/c19trace/models/choices.py:57
+msgid "Motorhome"
+msgstr "Casa rodante/Motorhome"
+
+#: apps/c19trace/models/choices.py:58
+msgid "Bus"
+msgstr ""
+
+#: apps/c19trace/models/choices.py:59
+msgid "Truck"
+msgstr "Camion"
+
+#: apps/c19trace/models/choices.py:63
+msgid "Maritime"
+msgstr "Maritimo"
+
+#: apps/c19trace/models/choices.py:64
+msgid "Aereal"
+msgstr "Aereo"
+
+#: apps/c19trace/models/choices.py:65
+msgid "Ground"
+msgstr "Terrestre"
 
 #: apps/c19trace/models/entry_point.py:10 apps/c19trace/models/place.py:49
 #: apps/c19trace/models/service_class.py:9
@@ -101,11 +153,11 @@ msgstr "Otro"
 msgid "Name"
 msgstr "Nombre"
 
-#: apps/c19trace/models/entry_point.py:14 apps/c19trace/models/person.py:91
+#: apps/c19trace/models/entry_point.py:14 apps/c19trace/models/person.py:85
 msgid "Transportation mode"
 msgstr "Modo de transporte"
 
-#: apps/c19trace/models/entry_point.py:21 apps/c19trace/models/person.py:99
+#: apps/c19trace/models/entry_point.py:21 apps/c19trace/models/person.py:93
 msgid "Entry point"
 msgstr "Punto de ingreso"
 
@@ -113,167 +165,123 @@ msgstr "Punto de ingreso"
 msgid "Entry points"
 msgstr "Puntos de ingreso"
 
-#: apps/c19trace/models/person.py:14
+#: apps/c19trace/models/person.py:17
 msgid "ID"
 msgstr ""
 
-#: apps/c19trace/models/person.py:18
+#: apps/c19trace/models/person.py:21
 msgid "Date/Time"
 msgstr "Fecha/Hora"
 
-#: apps/c19trace/models/person.py:21
+#: apps/c19trace/models/person.py:24
 msgid "First surname"
 msgstr "Primer apellido"
 
-#: apps/c19trace/models/person.py:24
+#: apps/c19trace/models/person.py:27
 msgid "Last surname"
 msgstr "Segundo apellido"
 
-#: apps/c19trace/models/person.py:27
+#: apps/c19trace/models/person.py:30
 msgid "Names"
 msgstr "Nombres"
 
-#: apps/c19trace/models/person.py:30
+#: apps/c19trace/models/person.py:33
 msgid "Gender"
 msgstr "Género"
 
-#: apps/c19trace/models/person.py:35
+#: apps/c19trace/models/person.py:38
 #: apps/c19trace/models/underage_persons.py:16
 msgid "Birth date"
 msgstr "Fecha de nacimiento"
 
-#: apps/c19trace/models/person.py:38
+#: apps/c19trace/models/person.py:41
 msgid "Nationality"
 msgstr "Nacionalidad"
 
-#: apps/c19trace/models/person.py:41
-msgid "RUN"
-msgstr ""
-
-#: apps/c19trace/models/person.py:42
-msgid "Passport"
-msgstr "Pasaporte"
-
-#: apps/c19trace/models/person.py:46
+#: apps/c19trace/models/person.py:44
 msgid "Travel document"
 msgstr "Documento de viaje"
 
-#: apps/c19trace/models/person.py:51
+#: apps/c19trace/models/person.py:49
 msgid "Document Number"
 msgstr "Número de documento"
 
-#: apps/c19trace/models/person.py:54
-msgid "Chile"
-msgstr ""
-
-#: apps/c19trace/models/person.py:55
-msgid "Not Chile"
-msgstr "Extranjero"
-
-#: apps/c19trace/models/person.py:58
+#: apps/c19trace/models/person.py:52
 msgid "Residence place"
 msgstr "Lugar de residencia"
 
-#: apps/c19trace/models/person.py:63
+#: apps/c19trace/models/person.py:57
 msgid "Residence in Chile: Region"
 msgstr "Residencia en ChileÑ Región"
 
-#: apps/c19trace/models/person.py:66
+#: apps/c19trace/models/person.py:60
 msgid "Residence in Chile: Comuna"
 msgstr "Residencia en Chile: Comuna"
 
-#: apps/c19trace/models/person.py:69
+#: apps/c19trace/models/person.py:63
 msgid "Residence outside Chile: Country"
 msgstr "Residencia en el extranjero: País"
 
-#: apps/c19trace/models/person.py:72
+#: apps/c19trace/models/person.py:66
 msgid "Residence outside Chile: Place"
 msgstr "Residencia en el extranjero: Lugar"
 
-#: apps/c19trace/models/person.py:75
+#: apps/c19trace/models/person.py:69
 msgid "Email"
 msgstr ""
 
-#: apps/c19trace/models/person.py:78
+#: apps/c19trace/models/person.py:72
 msgid "Mobile Phone"
 msgstr "Teléfono móvil"
 
-#: apps/c19trace/models/person.py:81
+#: apps/c19trace/models/person.py:75
 msgid "Previous lodging place"
 msgstr "Lugar de alojamiento previo"
 
-#: apps/c19trace/models/person.py:84
+#: apps/c19trace/models/person.py:78
 msgid "Visit subject"
 msgstr "Asunto de la visita"
 
-#: apps/c19trace/models/person.py:87
+#: apps/c19trace/models/person.py:81
 msgid "Visit number"
 msgstr "Numero de visita"
 
-#: apps/c19trace/models/person.py:96
+#: apps/c19trace/models/person.py:90
 msgid "Destination"
 msgstr "Destino"
 
-#: apps/c19trace/models/person.py:102
-msgid "Motorcycle"
-msgstr "Moto"
-
-#: apps/c19trace/models/person.py:103
-msgid "Bycicle"
-msgstr "Bicicleta"
-
-#: apps/c19trace/models/person.py:104
-msgid "Car/Jeep/Pickup truck"
-msgstr "Automóvil/Jeep/Camioneta"
-
-#: apps/c19trace/models/person.py:105
-msgid "Motorhome"
-msgstr "Casa rodante/Motorhome"
-
-#: apps/c19trace/models/person.py:106
-msgid "Bus"
-msgstr ""
-
-#: apps/c19trace/models/person.py:107
-msgid "Truck"
-msgstr "Camion"
-
-#: apps/c19trace/models/person.py:110
+#: apps/c19trace/models/person.py:96
 msgid "Main transportation mean"
 msgstr "Principal medio de transporte"
 
-#: apps/c19trace/models/person.py:112 apps/c19trace/models/person.py:123
+#: apps/c19trace/models/person.py:98 apps/c19trace/models/person.py:109
 #: apps/c19trace/models/underage_persons.py:21
 #, python-format
-msgid ""
-"%s\n"
-"* Also can be filled with custom entry"
-msgstr ""
-"%s\n"
-"* Tambien puede ser llenado con una entrada personalizada"
+msgid "%s\n* Also can be filled with custom entry"
+msgstr "%s\n* Tambien puede ser llenado con una entrada personalizada"
 
-#: apps/c19trace/models/person.py:118
+#: apps/c19trace/models/person.py:104
 msgid "Contact Name"
 msgstr "Nombre de contacto"
 
-#: apps/c19trace/models/person.py:121
+#: apps/c19trace/models/person.py:107
 #: apps/c19trace/models/underage_persons.py:19
 msgid "Contact replationship"
 msgstr "Relacion con el contacto"
 
-#: apps/c19trace/models/person.py:129
+#: apps/c19trace/models/person.py:115
 msgid "Contact phone or email"
 msgstr "Teléfono o email del contacto"
 
-#: apps/c19trace/models/person.py:132
+#: apps/c19trace/models/person.py:118
 msgid "Contact comuna"
 msgstr "Comuna del contacto"
 
-#: apps/c19trace/models/person.py:135
+#: apps/c19trace/models/person.py:121
 msgid "Contact localidad"
 msgstr "Localidad del contacto"
 
-#: apps/c19trace/models/person.py:148 apps/c19trace/models/person.py:149
+#: apps/c19trace/models/person.py:134 apps/c19trace/models/person.py:135
 msgid "Person"
 msgstr "Persona"
 
@@ -422,19 +430,35 @@ msgstr "Menor de edad"
 msgid "Underage persons"
 msgstr "Menores de edad"
 
-#: apps/c19trace/urls.py:15
-msgid "Sernatur COVID19 traceability API"
+#: apps/c19trace/models/util.py:11
+msgid "Options"
+msgstr "Opciones"
+
+#: apps/c19trace/serializers/choices.py:7
+#: apps/c19trace/serializers/choices.py:16
+msgid "Value"
+msgstr "Valor"
+
+#: apps/c19trace/serializers/choices.py:10
+#: apps/c19trace/serializers/choices.py:19
+msgid "Label"
+msgstr "Etiqueta"
+
+#: apps/c19trace/templates/gis/openlayers.html:12
+msgid "Delete all Features"
 msgstr ""
+
+#: apps/c19trace/templates/gis/openlayers.html:13
+msgid "Debugging window (serialized value)"
+msgstr ""
+
+#: apps/c19trace/urls.py:15
+msgid "SERNATUR COVID19 traceability API"
+msgstr "SERNATUR API Trazabilidad COVID19"
 
 #: apps/c19trace/urls.py:17
 msgid "For mobile and web app."
 msgstr "Para aplicaciones mobiles y web."
-
-#~ msgid "Longitude"
-#~ msgstr "Longitud"
-
-#~ msgid "Latitude"
-#~ msgstr "Latitud"
 
 #~ msgid "SERNATUR Aysen: Traceability COVID19 API"
 #~ msgstr "SERNATUR Aysen: API de Tracabilidad COVID19"
