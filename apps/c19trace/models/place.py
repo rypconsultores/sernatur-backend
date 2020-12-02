@@ -37,7 +37,8 @@ class Place(models.Model):
     turistic_info_office_type = models.CharField(
         max_length=16, verbose_name=gettext('Turistic information office type'),
         choices=_turistic_info_office_type,
-        help_text=choices_to_helptext(_turistic_info_office_type)
+        help_text=choices_to_helptext(_turistic_info_office_type),
+        null=True, blank=True
     )
     rut = models.CharField(
         max_length=15, verbose_name=gettext("RUT Entity")
@@ -52,13 +53,13 @@ class Place(models.Model):
         max_length=128, verbose_name=gettext("Comuna")
     )
     localidad = models.CharField(
-        max_length=128, verbose_name=gettext("Localidad"), null=True
+        max_length=128, verbose_name=gettext("Localidad"), null=True, blank=True
     )
     zone = models.CharField(
-        max_length=98, verbose_name=gettext("Zone"), null=True
+        max_length=98, verbose_name=gettext("Zone"), null=True, blank=True
     )
     address = models.CharField(
-        max_length=128, verbose_name=gettext("Address"), null=True
+        max_length=128, verbose_name=gettext("Address"), null=True, blank=True
     )
     representative_name = models.CharField(
         max_length=128, verbose_name=gettext("Representative: Name")

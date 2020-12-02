@@ -5,10 +5,10 @@ from django.utils.translation import gettext_lazy as gettext
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
+from rest_framework_simplejwt import views as jwt_views
 
 from . import views
 from .rest import routers
-
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -35,6 +35,10 @@ api_path = path(
                 r'entry-points', views.api.entry_point.EntryPointViewSet,
                 "api.entry_point"
             ),
+            (
+                r'places', views.api.place.PlaceViewSet,
+                "api.places"
+            )
         ]).urls + [
             path('choices/', include([
                 path('relationships', views.api.choices.relationships, name="api.choices.relationships"),
@@ -45,6 +49,12 @@ api_path = path(
                 path('residence-choices', views.api.choices.residence_choices, name="api.choices.residence_choices"),
                 path('transportation-means', views.api.choices.transportation_means, name="api.choices.transportation_means"),
                 path('entry-point-types', views.api.choices.entry_point_types, name="api.choices.entry_point_types"),
+            ])),
+            path('auth/', include([
+                path('token/', include([
+                    path('', jwt_views.TokenObtainPairView.as_view(), name='api.auth.token'),
+                    path('refresh/', jwt_views.TokenRefreshView.as_view(), name='api.auth.token.refresh'),
+                ]))
             ]))
         ]
     )

@@ -9,3 +9,4 @@ django-3-jet
 unidecode
 boto3
 django-cors-headers
+djangorestframework_simplejwt

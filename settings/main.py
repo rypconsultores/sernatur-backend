@@ -60,6 +60,22 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+}
+
+SWAGGER_SETTINGS = {
+    "SECURITY_DEFINITIONS": {
+        "bearerAuth": {
+            "type": "HTTP",
+            "scheme": "bearer",
+            "bearerFormat": "JWT"
+        }
+    }
+}
+
 ROOT_URLCONF = 'apps.urls'
 
 CUSTOM_ADMIN_PATH = os.path.realpath(
