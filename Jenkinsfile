@@ -50,10 +50,10 @@ pipeline {
       steps{
         script{
           sh "export"
-          sh "python -m venv .venv"
-          sh "source .venv/bin/activate; xargs -n 1 pip install < requirements.txt || true";
-          sh "source .venv/bin/activate; pip install gdal==$(gdal-config --version)"
-          sh "source .venv/bin/activate; python manage.py collectstatic"
+//          sh "python -m venv .venv"
+//          sh "source .venv/bin/activate; xargs -n 1 pip install < requirements.txt || true";
+//          sh "source .venv/bin/activate; pip install gdal==$(gdal-config --version)"
+//          sh "source .venv/bin/activate; python manage.py collectstatic"
         }
       }
     }

@@ -124,7 +124,7 @@ class Person(models.Model):
     def create_id(self):
         return (
             'R' if 'aysen' in self.residence_chile_region.lower() else 'NR'
-            + thenow().strftime("%Y-%m-%d")
+            + thenow().strftime("%Y%m%d")
             + self.name[0:1].upper()
             + self.first_surname[0:1].upper()
             + uuid4().hex

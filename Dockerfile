@@ -3,14 +3,13 @@ ARG FROM_TAG=latest
 FROM python:alpine
 
 # Install
-RUN apk --no-cache add uwsgi-python3 nginx supervisor curl mariadb-connector-c-dev py3-gdal
-RUN apk add --no-cache --virtual .build-deps gcc musl-dev
-
+RUN apk --no-cache add uwsgi-python3 nginx supervisor curl mariadb-connector-c-dev gdal gdal-dev geos geos-dev binutils
+RUN apk add --no-cache --virtual .build-deps g++ gcc musl-dev gdal-tools
 
 # Build ENV
-#ENV DATABASE_DEFAULT_URL=sqlite:///:memory:
-#ENV APP_ENV=""
-#ENV DJANGO_SETTINGS_MODULE=settings.env.${APP_ENV}
+ENV DATABASE_DEFAULT_URL="sqlite:///:memory:"
+ENV APP_ENV="local"
+ENV DJANGO_SETTINGS_MODULE=settings.env.${APP_ENV}
 
 # copy configs
 COPY config/nginx.conf /etc/nginx/nginx.conf
@@ -28,10 +27,15 @@ COPY apps/ ./apps
 COPY settings/ ./settings
 COPY wsgi/ ./wsgi
 COPY manage.py requirements.txt ./
-COPY static/ ./static
+# COPY static/ ./static
 
+RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
+RUN pip install gdal==$(gdal-config --version)
+RUN python3 -c 'from ctypes.util import find_library as f;print(f("gdal"))'
 RUN apk del .build-deps
+RUN python3 -c 'from ctypes.util import find_library as f;print(f("gdal"))'
+RUN python3 /app/manage.py collectstatic
 
 HEALTHCHECK --interval=5s --timeout=3s CMD curl --fail http://localhost:80 || exit 1
 EXPOSE 80
