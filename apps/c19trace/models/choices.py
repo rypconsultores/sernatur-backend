@@ -64,3 +64,12 @@ entry_point_types = (
     ('aereo', gettext("Aereal")),
     ('terrestre', gettext("Ground")),
 )
+
+travel_subject = (
+    ('turismo', gettext("Turism")),
+    ('vacaciones', gettext('Vacations')),
+    ('visita familiares/amigos', gettext('Visit to family or friend')),
+    ('trabajo', gettext('Work')),
+    ('negocios', gettext('Business')),
+    ('other', gettext('Other'))
+)

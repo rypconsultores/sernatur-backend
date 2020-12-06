@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-30 06:15-0300\n"
+"POT-Creation-Date: 2020-12-05 21:30-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -91,6 +91,7 @@ msgid "Female"
 msgstr "Femenino"
 
 #: apps/c19trace/models/choices.py:39 apps/c19trace/models/choices.py:45
+#: apps/c19trace/models/choices.py:74
 msgid "Other"
 msgstr "Otro"
 
@@ -146,18 +147,40 @@ msgstr "Aereo"
 msgid "Ground"
 msgstr "Terrestre"
 
-#: apps/c19trace/models/entry_point.py:10 apps/c19trace/models/place.py:49
+#: apps/c19trace/models/choices.py:69
+msgid "Turism"
+msgstr ""
+
+#: apps/c19trace/models/choices.py:70
+#, fuzzy
+#| msgid "Location"
+msgid "Vacations"
+msgstr "Ubicación"
+
+#: apps/c19trace/models/choices.py:71
+msgid "Visit to family or friend"
+msgstr "Visita a familia o amigo"
+
+#: apps/c19trace/models/choices.py:72
+msgid "Work"
+msgstr "Trabajo"
+
+#: apps/c19trace/models/choices.py:73
+msgid "Business"
+msgstr "Negocios"
+
+#: apps/c19trace/models/entry_point.py:10 apps/c19trace/models/place.py:50
 #: apps/c19trace/models/service_class.py:9
 #: apps/c19trace/models/service_type.py:7
 #: apps/c19trace/models/underage_persons.py:13
 msgid "Name"
 msgstr "Nombre"
 
-#: apps/c19trace/models/entry_point.py:14 apps/c19trace/models/person.py:85
+#: apps/c19trace/models/entry_point.py:14 apps/c19trace/models/person.py:86
 msgid "Transportation mode"
 msgstr "Modo de transporte"
 
-#: apps/c19trace/models/entry_point.py:21 apps/c19trace/models/person.py:93
+#: apps/c19trace/models/entry_point.py:21 apps/c19trace/models/person.py:94
 msgid "Entry point"
 msgstr "Punto de ingreso"
 
@@ -242,46 +265,50 @@ msgstr "Lugar de alojamiento previo"
 msgid "Visit subject"
 msgstr "Asunto de la visita"
 
-#: apps/c19trace/models/person.py:81
+#: apps/c19trace/models/person.py:82
 msgid "Visit number"
 msgstr "Numero de visita"
 
-#: apps/c19trace/models/person.py:90
+#: apps/c19trace/models/person.py:91
 msgid "Destination"
 msgstr "Destino"
 
-#: apps/c19trace/models/person.py:96
+#: apps/c19trace/models/person.py:97
 msgid "Main transportation mean"
 msgstr "Principal medio de transporte"
 
-#: apps/c19trace/models/person.py:98 apps/c19trace/models/person.py:109
+#: apps/c19trace/models/person.py:99 apps/c19trace/models/person.py:110
 #: apps/c19trace/models/underage_persons.py:21
 #, python-format
-msgid "%s\n* Also can be filled with custom entry"
-msgstr "%s\n* Tambien puede ser llenado con una entrada personalizada"
+msgid ""
+"%s\n"
+"* Also can be filled with custom entry"
+msgstr ""
+"%s\n"
+"* Tambien puede ser llenado con una entrada personalizada"
 
-#: apps/c19trace/models/person.py:104
+#: apps/c19trace/models/person.py:105
 msgid "Contact Name"
 msgstr "Nombre de contacto"
 
-#: apps/c19trace/models/person.py:107
+#: apps/c19trace/models/person.py:108
 #: apps/c19trace/models/underage_persons.py:19
 msgid "Contact replationship"
 msgstr "Relacion con el contacto"
 
-#: apps/c19trace/models/person.py:115
+#: apps/c19trace/models/person.py:116
 msgid "Contact phone or email"
 msgstr "Teléfono o email del contacto"
 
-#: apps/c19trace/models/person.py:118
+#: apps/c19trace/models/person.py:119
 msgid "Contact comuna"
 msgstr "Comuna del contacto"
 
-#: apps/c19trace/models/person.py:121
+#: apps/c19trace/models/person.py:122
 msgid "Contact localidad"
 msgstr "Localidad del contacto"
 
-#: apps/c19trace/models/person.py:134 apps/c19trace/models/person.py:135
+#: apps/c19trace/models/person.py:135 apps/c19trace/models/person.py:136
 msgid "Person"
 msgstr "Persona"
 
@@ -321,51 +348,51 @@ msgstr "Tipo de lugar"
 msgid "Turistic information office type"
 msgstr "Tipo de oficina de información turística"
 
-#: apps/c19trace/models/place.py:43
+#: apps/c19trace/models/place.py:44
 msgid "RUT Entity"
 msgstr "RUT Entidad"
 
-#: apps/c19trace/models/place.py:52
+#: apps/c19trace/models/place.py:53
 msgid "Comuna"
 msgstr ""
 
-#: apps/c19trace/models/place.py:55
+#: apps/c19trace/models/place.py:56
 msgid "Localidad"
 msgstr ""
 
-#: apps/c19trace/models/place.py:58
+#: apps/c19trace/models/place.py:59
 msgid "Zone"
 msgstr "Area"
 
-#: apps/c19trace/models/place.py:61
+#: apps/c19trace/models/place.py:62
 msgid "Address"
 msgstr "Dirección"
 
-#: apps/c19trace/models/place.py:64
+#: apps/c19trace/models/place.py:65
 msgid "Representative: Name"
 msgstr "Representante: Nombre"
 
-#: apps/c19trace/models/place.py:67
+#: apps/c19trace/models/place.py:68
 msgid "Representative: Position"
 msgstr "Representante: Cargo"
 
-#: apps/c19trace/models/place.py:70
+#: apps/c19trace/models/place.py:71
 msgid "Representative: Phone"
 msgstr "Representante: Teléfono"
 
-#: apps/c19trace/models/place.py:73
+#: apps/c19trace/models/place.py:74
 msgid "Representative: Mail"
 msgstr "Representante: Mail"
 
-#: apps/c19trace/models/place.py:76
+#: apps/c19trace/models/place.py:77
 msgid "Users"
 msgstr "Usuarios"
 
-#: apps/c19trace/models/place.py:81 apps/c19trace/models/place_user.py:13
+#: apps/c19trace/models/place.py:82 apps/c19trace/models/place_user.py:13
 msgid "Place"
 msgstr "lugar"
 
-#: apps/c19trace/models/place.py:82
+#: apps/c19trace/models/place.py:83
 msgid "Places"
 msgstr "Lugares"
 

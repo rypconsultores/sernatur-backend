@@ -41,14 +41,15 @@ api_path = path(
             )
         ]).urls + [
             path('choices/', include([
-                path('relationships', views.api.choices.relationships, name="api.choices.relationships"),
-                path('underage-relationships', views.api.choices.underage_relationships, name="api.choices.underage_relationships"),
-                path('transportation-modes', views.api.choices.transportation_modes, name="api.choices.transportation_modes"),
+                path('entry-point-types', views.api.choices.entry_point_types, name="api.choices.entry_point_types"),
                 path('genders', views.api.choices.genders, name="api.choices.genders"),
-                path('travel-documents', views.api.choices.travel_documents, name="api.choices.travel_documents"),
+                path('relationships', views.api.choices.relationships, name="api.choices.relationships"),
                 path('residence-choices', views.api.choices.residence_choices, name="api.choices.residence_choices"),
                 path('transportation-means', views.api.choices.transportation_means, name="api.choices.transportation_means"),
-                path('entry-point-types', views.api.choices.entry_point_types, name="api.choices.entry_point_types"),
+                path('transportation-modes', views.api.choices.transportation_modes, name="api.choices.transportation_modes"),
+                path('travel-documents', views.api.choices.travel_documents, name="api.choices.travel_documents"),
+                path('underage-relationships', views.api.choices.underage_relationships, name="api.choices.underage_relationships"),
+                path('travel-subject', views.api.choices.travel_subject, name="api.choices.travel_subject"),
             ])),
             path('auth/', include([
                 path('token/', include([

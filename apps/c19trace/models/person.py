@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as gettext
 
 from .choices import (
     relationships, transportation_modes, genders, travel_documents,
-    residence_choices, transportation_means
+    residence_choices, transportation_means, travel_subject
 )
 from .entry_point import EntryPoint
 from .util import choices_to_helptext, thenow
@@ -75,7 +75,8 @@ class Person(models.Model):
         max_length=128, verbose_name=gettext("Previous lodging place")
     )
     visit_subject = models.CharField(
-        max_length=128, verbose_name=gettext("Visit subject")
+        max_length=128, verbose_name=gettext("Visit subject"),
+        choices=travel_subject
     )
     visit_no = models.IntegerField(
         verbose_name=gettext("Visit number")
