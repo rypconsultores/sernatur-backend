@@ -1,7 +1,7 @@
 ARG FROM_TAG=latest
 #FROM registry.gitlab.com/viralcreation/retargeting-images/rt-python3:${FROM_TAG}
-FROM python:alpine
-
+#FROM python:alpine
+FROM python:3.8-alpine
 # Install
 RUN apk --no-cache add uwsgi-python3 nginx supervisor curl \
     mariadb-connector-c-dev py3-gdal gdal-dev geos-dev binutils
