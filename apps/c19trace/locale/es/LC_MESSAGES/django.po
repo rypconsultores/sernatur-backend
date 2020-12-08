@@ -149,13 +149,11 @@ msgstr "Terrestre"
 
 #: apps/c19trace/models/choices.py:69
 msgid "Turism"
-msgstr ""
+msgstr "Turism"
 
 #: apps/c19trace/models/choices.py:70
-#, fuzzy
-#| msgid "Location"
 msgid "Vacations"
-msgstr "Ubicación"
+msgstr "Vacations"
 
 #: apps/c19trace/models/choices.py:71
 msgid "Visit to family or friend"

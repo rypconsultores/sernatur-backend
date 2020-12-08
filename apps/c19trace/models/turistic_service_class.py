@@ -1,15 +1,15 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as gettext
 
-from .service_type import ServiceType
+from .turistic_service_type import TuristicServiceType
 
 
-class ServiceClass(models.Model):
+class TuristicServiceClass(models.Model):
     name = models.CharField(
         max_length=96, verbose_name=gettext("Name")
     )
     type = models.ForeignKey(
-        ServiceType, verbose_name=ServiceType._meta.verbose_name,
+        TuristicServiceType, verbose_name=TuristicServiceType._meta.verbose_name,
         on_delete=models.PROTECT
     )
     enabled = models.BooleanField(

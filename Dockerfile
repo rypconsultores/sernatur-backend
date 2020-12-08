@@ -3,7 +3,8 @@ ARG FROM_TAG=latest
 FROM python:alpine
 
 # Install
-RUN apk --no-cache add uwsgi-python3 nginx supervisor curl mariadb-connector-c-dev py3-gdal gdal-dev geos-dev binutils
+RUN apk --no-cache add uwsgi-python3 nginx supervisor curl \
+    mariadb-connector-c-dev py3-gdal gdal-dev geos-dev binutils
 RUN apk add --no-cache --virtual .build-deps g++ gcc musl-dev
 
 # Build ENV

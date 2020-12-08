@@ -1,5 +1,6 @@
 from uuid import uuid4
 
+from django.contrib.auth.models import User
 from django.db import models
 from django.dispatch import receiver
 from django.utils.translation import gettext_lazy as gettext
@@ -9,7 +10,10 @@ from .choices import (
     residence_choices, transportation_means, travel_subject
 )
 from .entry_point import EntryPoint
-from .util import choices_to_helptext, thenow
+from .util import (
+    choices_to_helptext, thenow, password_request_id, password_request_expiracy,
+    password_request_key
+)
 
 
 class Person(models.Model):
@@ -54,16 +58,16 @@ class Person(models.Model):
         help_text=choices_to_helptext(residence_choices)
     )
     residence_chile_region = models.CharField(
-        max_length=2, verbose_name=gettext("Residence in Chile: Region"), null=True
+        max_length=2, verbose_name=gettext("Residence in Chile: Region"), null=True, blank=True
     )
     residence_chile_comuna = models.CharField(
-        max_length=64, verbose_name=gettext("Residence in Chile: Comuna"), null=True
+        max_length=64, verbose_name=gettext("Residence in Chile: Comuna"), null=True, blank=True
     )
     residence_other_country = models.CharField(
-        max_length=64, verbose_name=gettext("Residence outside Chile: Country"), null=True
+        max_length=64, verbose_name=gettext("Residence outside Chile: Country"), null=True, blank=True
     )
     residence_other_place = models.CharField(
-        max_length=128, verbose_name=gettext("Residence outside Chile: Place"), null=True
+        max_length=128, verbose_name=gettext("Residence outside Chile: Place"), null=True, blank=True
     )
     email = models.CharField(
         max_length=128, verbose_name=gettext("Email")
@@ -87,8 +91,8 @@ class Person(models.Model):
         choices=transportation_modes,
         help_text=choices_to_helptext(transportation_modes)
     )
-    destination = models.IntegerField(
-        verbose_name=gettext("Destination")
+    destination = models.CharField(
+        max_length=128, verbose_name=gettext("Destination"),
     )
     entry_point = models.ForeignKey(
         EntryPoint, verbose_name=gettext("Entry point"), on_delete=models.CASCADE
@@ -121,14 +125,20 @@ class Person(models.Model):
     contact_localidad = models.CharField(
         max_length=24, verbose_name=gettext('Contact localidad'), blank=True, null=True
     )
+    user = models.OneToOneField(
+        User, verbose_name=gettext('User'), on_delete=models.CASCADE, blank=True, null=True
+    )
 
     def create_id(self):
         return (
-            'R' if 'aysen' in self.residence_chile_region.lower() else 'NR'
+            'R' if (
+                self.residence_chile_region
+                and 'aysen' in self.residence_chile_region.lower()
+            ) else 'NR'
             + thenow().strftime("%Y%m%d")
-            + self.name[0:1].upper()
+            + self.names[0:1].upper()
             + self.first_surname[0:1].upper()
-            + uuid4().hex
+            + uuid4().hex.upper()
         )
 
     class Meta:
@@ -145,3 +155,33 @@ def voucher_actions(
 ):
      if instance.id == '__noid__':
          instance.id = instance.create_id()
+
+
+class PasswordChangeOrCreate(models.Model):
+    id = models.CharField(
+        verbose_name=gettext("ID"), max_length=64, default=password_request_id,
+        primary_key=True
+    )
+
+    key = models.CharField(
+        verbose_name=gettext("Key"), max_length=128, default=password_request_key
+    )
+
+    expires = models.DateTimeField(
+        verbose_name=gettext("Expires"), default=password_request_expiracy
+    )
+
+    user = models.ForeignKey(
+        User, verbose_name=gettext("User"), on_delete=models.CASCADE, null=True
+    )
+
+    person = models.ForeignKey(
+        Person, verbose_name=gettext("Person"), on_delete=models.CASCADE, null=True
+    )
+
+    class Meta:
+        verbose_name = gettext("Password request")
+        verbose_name_plural = gettext("Password requests")
+
+        db_table = 'c19t_password_change_or_create'
+        ordering = ('-expires', 'user')

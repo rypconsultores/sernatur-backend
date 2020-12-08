@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as gettext
 
 
-class ServiceType(models.Model):
+class TuristicServiceType(models.Model):
     name = models.CharField(
         max_length=96, verbose_name=gettext("Name")
     )

@@ -87,8 +87,8 @@ class Place(admin_geo.OSMGeoAdmin):
 
 
 class ServiceClass(admin.ModelAdmin):
-    model = models.ServiceClass
+    model = models.TuristicServiceClass
 
 
 class ServiceType(admin.ModelAdmin):
-    model = models.ServiceType
+    model = models.TuristicServiceType

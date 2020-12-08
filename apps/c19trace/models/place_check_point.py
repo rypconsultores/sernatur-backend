@@ -14,7 +14,7 @@ class PlaceCheckPoint(models_geo.Model):
     )
     place = models.ForeignKey(
         Place, verbose_name=Place._meta.verbose_name,
-        related_name='checkpoints', on_delete=models.CASCADE
+        related_name='check_points', on_delete=models.CASCADE
     )
 
     class Meta:

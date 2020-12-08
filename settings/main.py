@@ -51,7 +51,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    # 'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -68,10 +68,10 @@ REST_FRAMEWORK = {
 
 SWAGGER_SETTINGS = {
     "SECURITY_DEFINITIONS": {
-        "bearerAuth": {
-            "type": "HTTP",
-            "scheme": "bearer",
-            "bearerFormat": "JWT"
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
         }
     }
 }
@@ -159,4 +159,19 @@ STATICFILES_DIRS = (
     os.path.join(CUSTOM_ADMIN_PATH, 'static'),
 )
 
+EMAIL_BACKEND = 'django_amazon_ses.EmailBackend'
+
 CORS_ALLOW_ALL_ORIGINS = True
+
+USER_PASSWORD_REQUEST_EXPIRES = dict(hours=8)
+USER_PASSWORD_REQUEST_MAX_PER_DAY = 8
+
+MAIL_STATIC_BASE = os.getenv("MAIL_STATIC_BASE", None)
+MAIL_FROM = os.getenv('MAIL_FROM', None)
+
+MAIL_S3_BUCKET_NAME = os.getenv("MAIL_S3_BUCKET_NAME", None)
+MAIL_S3_BUCKET_AWS_ACCESS_KEY_ID = os.getenv("MAIL_S3_BUCKET_AWS_ACCESS_KEY_ID", None)
+MAIL_S3_BUCKET_AWS_SECRET_ACCESS_KEY = os.getenv("MAIL_S3_BUCKET_AWS_SECRET_ACCESS_KEY", None)
+
+AWS_SES_ACCESS_KEY_ID = os.getenv("AWS_SES_ACCESS_KEY_ID", None)
+AWS_SES_SECRET_ACCESS_KEY = os.getenv("AWS_SES_SECRET_ACCESS_KEY", None)

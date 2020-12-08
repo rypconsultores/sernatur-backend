@@ -16,7 +16,7 @@ class PlaceViewSet(
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        queryset.filter(users__in=self.request.user)
+        queryset.filter(users__id=self.request.user.id)
         return queryset
 
     def create(self, request: Request, *args, **kwargs):
@@ -31,3 +31,19 @@ class PlaceViewSet(
         return Response(
             serializer.data, status=status.HTTP_201_CREATED, headers=headers
         )
+
+
+class TuristicServiceTypeViewSet(
+    mixins.ListModelMixin, viewsets.GenericViewSet
+):
+    serializer_class = serializers.TuristicServiceType
+    queryset = models.TuristicServiceType.objects.filter(enabled=True)
+    permission_classes = [IsAuthenticated]
+
+
+class TuristicServiceClassViewSet(
+    mixins.ListModelMixin, viewsets.GenericViewSet
+):
+    serializer_class = serializers.TuristicServiceClass
+    queryset = models.TuristicServiceClass.objects.filter(enabled=True)
+    permission_classes = [IsAuthenticated]

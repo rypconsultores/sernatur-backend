@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import gettext_lazy as gettext
 
-from .service_class import ServiceType
+from .turistic_service_class import TuristicServiceType, TuristicServiceClass
 from .util import choices_to_helptext
 
 
@@ -44,7 +44,10 @@ class Place(models.Model):
         max_length=15, verbose_name=gettext("RUT Entity")
     )
     service_type = models.ForeignKey(
-        ServiceType, verbose_name=ServiceType._meta.verbose_name, on_delete=models.CASCADE
+        TuristicServiceType, verbose_name=TuristicServiceType._meta.verbose_name, on_delete=models.CASCADE
+    )
+    service_class = models.ForeignKey(
+        TuristicServiceClass, verbose_name=TuristicServiceClass._meta.verbose_name, on_delete=models.CASCADE
     )
     name = models.CharField(
         max_length=128, verbose_name=gettext("Name")

@@ -32,12 +32,12 @@ api_path = path(
                 "api.person"
             ),
             (
-                r'entry-points', views.api.entry_point.EntryPointViewSet,
-                "api.entry_point"
-            ),
-            (
                 r'places', views.api.place.PlaceViewSet,
                 "api.places"
+            ),
+            (
+                r'entry-points', views.api.entry_point.EntryPointViewSet,
+                "api.entry_point"
             )
         ]).urls + [
             path('choices/', include([
@@ -55,6 +55,31 @@ api_path = path(
                 path('token/', include([
                     path('', jwt_views.TokenObtainPairView.as_view(), name='api.auth.token'),
                     path('refresh/', jwt_views.TokenRefreshView.as_view(), name='api.auth.token.refresh'),
+                    path('destroy/', jwt_views.TokenRefreshView.as_view(), name='api.auth.token.destroy'),
+                ]))
+            ])),
+            path('places/turistic/service/', include(
+                routers.DefaultRouter([
+                    (
+                        r'types', views.api.place.TuristicServiceTypeViewSet,
+                        "api.places.turistic.services.type"
+                    ),
+                    (
+                        r'classes', views.api.place.TuristicServiceClassViewSet,
+                        "api.places.turistic.services.class"
+                    ),
+                ]).urls
+            )),
+            path('user/password/', include([
+                path('change-or-create/', include([
+                    path(
+                         '', views.api.user.password_create_or_replace_request,
+                         name="api.user.password.change_or_create"
+                    ),
+                    path(
+                        '<id>/', views.api.user.PasswordChangeOrCreate.as_view(),
+                        name="api.user.password.change_or_create.item"
+                    )
                 ]))
             ]))
         ]
@@ -75,5 +100,6 @@ urlpatterns = [
     #path('imeilogs/<start_date>/<end_date>', views.app.imeilogs, name="app.imeilogs"),
     #path('login', views.app.login_view, name="app.login"),
     #path('logout', views.app.logout_view, name="app.logout"),
+    path('mail-test/', views.api.user.mailtest),
     api_path
 ]

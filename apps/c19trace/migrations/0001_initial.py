@@ -93,7 +93,7 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
-            name='ServiceType',
+            name='TuristicServiceType',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=96, verbose_name='Name')),
@@ -139,7 +139,7 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
-            name='ServiceClass',
+            name='TuristicServiceClass',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=96, verbose_name='Name')),

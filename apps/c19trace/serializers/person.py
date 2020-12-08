@@ -1,12 +1,63 @@
-from rest_framework.serializers import ModelSerializer
+import qrcode
+import qrcode.image.svg
+from django.conf import settings
+from django.db import transaction
+from django.utils.translation import gettext_lazy as gettext
+from fs_s3fs import S3FS
+from rest_framework import serializers
 
+from .underage_person import UnderagePerson
 from .. import models
 
 
-class Person(ModelSerializer):
+class Person(serializers.ModelSerializer):
+    underage_persons = UnderagePerson(
+        label=gettext('Underage persons'), many=True, allow_null=True, required=False
+    )
+
+    def create(self, validated_data):
+        foreign_key_nesteds = ('underage_persons',)
+
+        with transaction.atomic():
+            for field in foreign_key_nesteds:
+                field_serializer = self.fields[field]
+                values_list = validated_data.pop(field)
+                instance = super().create(validated_data)
+
+                for value_item in values_list:
+                    value_item_serialized: serializers.ModelSerializer = \
+                        field_serializer.child.__class__(data=value_item)
+                    value_item_serialized.is_valid(raise_exception=True)
+                    value_item_serialized._validated_data['related_to_id'] = instance.id
+                    value_item_serialized.save()
+
+            qr = qrcode.QRCode(
+                version=1,
+                error_correction=qrcode.constants.ERROR_CORRECT_H,
+                box_size=200,
+                border=4,
+            )
+            qr.add_data(instance.id)
+            qr.make(fit=True)
+
+            #image = qrcode.make(qr, image_factory=qrcode.image.svg.SvgPathImage)
+            image = qr.make_image()
+
+            with S3FS(
+                settings.MAIL_S3_BUCKET_NAME,
+                aws_access_key_id=settings.MAIL_S3_BUCKET_AWS_ACCESS_KEY_ID,
+                aws_secret_access_key=settings.MAIL_S3_BUCKET_AWS_SECRET_ACCESS_KEY,
+                acl="public-read"
+            ) as s3:
+                with s3.open(f'/qr/{instance.id}.png', 'wb+') as qr_image:
+                    image.save(qr_image)
+
+        return instance
+
     class Meta:
         model = models.Person
         fields = (
+            'id',
             'date',
             'first_surname',
             'last_surname',
@@ -34,4 +85,5 @@ class Person(ModelSerializer):
             'contact_phone_or_email',
             'contact_comuna',
             'contact_localidad',
+            'underage_persons'
         )
