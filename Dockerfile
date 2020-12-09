@@ -4,8 +4,10 @@ ARG FROM_TAG=latest
 FROM python:3.8-alpine
 # Install
 RUN apk --no-cache add uwsgi-python3 nginx supervisor curl \
-    mariadb-connector-c-dev py3-gdal gdal-dev geos-dev binutils
-RUN apk add --no-cache --virtual .build-deps g++ gcc musl-dev
+    mariadb-connector-c-dev py3-gdal gdal-dev geos-dev binutils \
+    libpng libjpeg-turbo
+RUN apk add --no-cache --virtual .build-deps g++ gcc musl-dev \
+    libjpeg-turbo-dev zlib-dev
 
 # Build ENV
 ENV DATABASE_DEFAULT_URL="sqlite:///:memory:"
