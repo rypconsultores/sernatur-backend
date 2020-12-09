@@ -18,7 +18,7 @@ class PointField(serializers_gis.GeometryField, serializers.Serializer):
 
 class PlaceCheckPoint(serializers.ModelSerializer):
     location = PointField(
-        label=gettext("PointField")
+        label=gettext("Location")
     )
 
     class Meta:

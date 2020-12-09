@@ -64,14 +64,15 @@ def password_create_or_replace_request(request):
             url_object = urlparse(request.META.get('HTTP_REFERER'))
             url_object = url_object._replace(path=f'/change-password/{password_request.id}')
 
+            action = gettext("change") if person.user else gettext("create")
             data.update({
-                "action": gettext("cambiar") if person.user else gettext("crear"),
+                "action": action,
                 "set_password_link": urlunparse(url_object)
             })
 
             mail_html = render_to_string('mail/password.html', data)
             mail.send_mail(
-                "Nueva contraseña para usuario",
+                gettext("%s request for password" % (action.title())),
                 strip_tags(mail_html),
                 settings.MAIL_FROM,
                 [person.email],

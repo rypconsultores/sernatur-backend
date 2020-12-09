@@ -26,7 +26,7 @@ class PersonViewSet(
                 mail_html = render_to_string('mail/qr.html', data)
 
                 mail.send_mail(
-                    gettext("Identificación digital para la región de Aysén"),
+                    gettext("Digital ID for the Aysén region."),
                     strip_tags(mail_html),
                     settings.MAIL_FROM,
                     [data['email']],
@@ -38,8 +38,8 @@ class PersonViewSet(
             return Response(
                 {
                     "non_field_errors": gettext(
-                        "There is an error when create a person, "
-                        "please try again later"
+                        "There is an error registring this person, "
+                        "please try again later."
                     )
                 },
                 status=500
