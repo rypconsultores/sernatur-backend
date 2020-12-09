@@ -5,6 +5,9 @@ from django.contrib.gis.db import models as models_geo
 from django.contrib.gis.forms import widgets as widgets_geo
 
 from django.contrib import admin
+from django.utils.safestring import mark_safe
+from django.utils.translation import gettext
+
 from ..c19trace import models
 
 
@@ -86,9 +89,29 @@ class Place(admin_geo.OSMGeoAdmin):
         model = models.Place
 
 
-class ServiceClass(admin.ModelAdmin):
+class TuristicServiceClass(admin.ModelAdmin):
+    list_display = ('id', 'name', 'type_name', 'enabled_b')
+    list_display_links = ('id', 'name', 'enabled_b')
+
+    def type_name(self, instance):
+        return mark_safe(
+            f'<a href="../turisticservicetype/{instance.type.id}/change/">{instance.type.name}</a>'
+        )
+    type_name.admin_order_field = 'type__name'
+
+    def enabled_b(self, instance):
+        return gettext("Yes") if instance.enabled else gettext("No")
+    enabled_b.admin_order_field = 'enabled'
+
     model = models.TuristicServiceClass
 
 
-class ServiceType(admin.ModelAdmin):
+class TuristicServiceType(admin.ModelAdmin):
+    list_display = ('id', 'name', 'enabled_b')
+    list_display_links = list_display
+
+    def enabled_b(self, instance):
+        return gettext("Yes") if instance.enabled else gettext("No")
+    enabled_b.admin_order_field = 'enabled'
+
     model = models.TuristicServiceType
