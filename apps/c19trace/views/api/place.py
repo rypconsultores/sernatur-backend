@@ -16,7 +16,8 @@ class PlaceViewSet(
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        queryset.filter(users__id=self.request.user.id)
+        queryset = queryset.filter(users__id=self.request.user.id)
+
         return queryset
 
     def create(self, request: Request, *args, **kwargs):

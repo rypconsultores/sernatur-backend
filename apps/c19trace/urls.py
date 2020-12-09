@@ -100,6 +100,5 @@ urlpatterns = [
     #path('imeilogs/<start_date>/<end_date>', views.app.imeilogs, name="app.imeilogs"),
     #path('login', views.app.login_view, name="app.login"),
     #path('logout', views.app.logout_view, name="app.logout"),
-    path('mail-test/', views.api.user.mailtest),
     api_path
 ]
