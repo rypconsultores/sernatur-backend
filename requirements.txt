@@ -12,6 +12,7 @@ django-cors-headers
 djangorestframework_simplejwt
 djangorestframework-gis
 qrcode
+qrcode[pil]
 django-cors-headers
 fs-s3fs
 django-amazon-ses
