@@ -1,4 +1,5 @@
 #!groovy
+def props
 def getEnv(branch) {
     return (branch == 'master') ? 'prod' : (branch == 'develop') ? 'dev' : 'local'
 }
@@ -30,6 +31,7 @@ pipeline {
     registry = "docker.pkg.github.com/apareja1/sernatur-backend"
     pkgName = "sernatur-backend"
     registryCred = "GH_TOKEN"
+    CONFIG_GENERIC = "c807b08f-f27f-44de-8181-037708ece077"
   }
   triggers {
     githubPush()
@@ -42,24 +44,24 @@ pipeline {
       }
     }
 
-    stage ('Static'){
-      environment {
-        DJANGO_SETTINGS_MODULE="settings.env.${APP_ENV}"
-        DATABASE_DEFAULT_URL="sqlite:///:memory:"
-      }
-      when {
-      expression { env.BRANCH_NAME ==~ /^feature\/[a-zA-Z\d_-]+$/ || env.BRANCH_NAME == 'develop' || env.BRANCH_NAME == 'master' }
-      }
-      steps{
-        script{
-          sh "export"
+//    stage ('Static'){
+//      environment {
+//        DJANGO_SETTINGS_MODULE="settings.env.${APP_ENV}"
+//        DATABASE_DEFAULT_URL="sqlite:///:memory:"
+//      }
+//      when {
+//      expression { env.BRANCH_NAME ==~ /^feature\/[a-zA-Z\d_-]+$/ || env.BRANCH_NAME == 'develop' || env.BRANCH_NAME == 'master' }
+//      }
+//      steps{
+//        script{
+//          sh "export"
 //          sh "python -m venv .venv"
 //          sh "source .venv/bin/activate; xargs -n 1 pip install < requirements.txt || true";
 //          sh "source .venv/bin/activate; pip install gdal==$(gdal-config --version)"
 //          sh "source .venv/bin/activate; python manage.py collectstatic"
-        }
-      }
-    }
+//        }
+//      }
+//    }
 
     stage ('Docker build and Push2GH') {
       steps{
@@ -78,52 +80,63 @@ pipeline {
       agent {label 'host-to-deploy'}
       environment {
         PORT_ENV = getPort(APP_ENV)
-        DATABASE_DEFAULT_URL=getDatabaseURL(APP_ENV)
+        DATABASE_DEFAULT_URL = getDatabaseURL(APP_ENV)
       }
       when {
       expression { env.BRANCH_NAME ==~ /^feature\/[a-zA-Z\d_-]+$/ || env.BRANCH_NAME == 'develop' || env.BRANCH_NAME == 'master' }
       }
       steps{
         script{
-          env.deployImage = "${registry}/${pkgName}:${env.GIT_COMMIT}"
-          echo "Deploy image en ${APP_ENV}"
-          docker.withRegistry('https://'+registry, registryCred) {
-            sh '''
-            #!/bin/bash
-            set +x
-            runFocker () {
-              docker run -itd --name ${pkgName}-${APP_ENV}\
-              -e "DJANGO_SETTINGS_MODULE=settings.env.${APP_ENV}"\
-              -e "DATABASE_DEFAULT_URL=${DATABASE_DEFAULT_URL}"\
-              -e "MAIL_STATIC_BASE=https://${BUCKET_ENV}.s3.amazonaws.com"\
-              -e "MAIL_S3_BUCKET_AWS_ACCESS_KEY_ID=${AWS_ID}"\
-              -e "MAIL_S3_BUCKET_AWS_SECRET_ACCESS_KEY=${AWS_KEY}"\
-              -e "AWS_SES_ACCESS_KEY_ID=$MAIL_S3_BUCKET_AWS_ACCESS_KEY_ID"\
-              -e "AWS_SES_SECRET_ACCESS_KEY=$MAIL_S3_BUCKET_AWS_SECRET_ACCESS_KEY"\
-              --restart always -p ${PORT_ENV}:80 ${deployImage};
+          configFileProvider(
+            [configFile(fileId: "${CONFIG_GENERIC}", variable: 'configFile')]) {
+              props = readProperties file: "$configFile"
             }
-            issue=$(docker ps -a | grep ${pkgName}-${APP_ENV}| awk '{print $1}')
-            if [ -z "$issue" ];
-            then
-            echo "Nuevo despliegue"
-            runFocker
-            else
-            echo "Actualiza Docker"
-            docker stop ${pkgName}-${APP_ENV} && docker rm ${pkgName}-${APP_ENV}
-            echo "Run ${deployImage}"
-            runFocker
-            fi
-            sleep 5
-            echo ""
-            echo "### Healthy Docker Image ###"
-            docker ps -a --format "{{.Names}}: {{.Status}} {{.ID}}" --filter "name=${pkgName}-${APP_ENV}"
-            echo "----------------------------"
-            echo ""
-            '''
+            env.MAIL_S3_BUCKET_NAME = props['_MAIL_S3_BUCKET_NAME']
+            env.MAIL_STATIC_BASE    = 'https://'+MAIL_S3_BUCKET_NAME+props['_MAIL_STATIC_BASE']
+            env.MAIL_FROM           = props['_MAIL_FROM']
+            env.deployImage = "${registry}/${pkgName}:${env.GIT_COMMIT}"
+            echo "Deploy image en ${APP_ENV}"
+            docker.withRegistry('https://'+registry, registryCred) {
+              withCredentials([usernamePassword(credentialsId: 'aws-dev-sernatur', passwordVariable: 'AWS_KEY', usernameVariable: 'AWS_ID')]) {
+                sh '''
+                #!/bin/bash
+                set +x
+                runFocker () {
+                  docker run -itd --name ${pkgName}-${APP_ENV}\
+                  -e "DJANGO_SETTINGS_MODULE=settings.env.${APP_ENV}"\
+                  -e "DATABASE_DEFAULT_URL=${DATABASE_DEFAULT_URL}"\
+                  -e "MAIL_FROM=${MAIL_FROM}"\
+                  -e "MAIL_STATIC_BASE=${MAIL_STATIC_BASE}"\
+                  -e "MAIL_S3_BUCKET_NAME=${MAIL_S3_BUCKET_NAME}"\
+                  -e "MAIL_S3_BUCKET_AWS_ACCESS_KEY_ID=${AWS_ID}"\
+                  -e "MAIL_S3_BUCKET_AWS_SECRET_ACCESS_KEY=${AWS_KEY}"\
+                  -e "AWS_SES_ACCESS_KEY_ID=${AWS_ID}"\
+                  -e "AWS_SES_SECRET_ACCESS_KEY=${AWS_KEY}"\
+                  --restart always -p ${PORT_ENV}:80 ${deployImage};
+                }
+                issue=$(docker ps -a | grep ${pkgName}-${APP_ENV}| awk '{print $1}')
+                if [ -z "$issue" ];
+                then
+                echo "Nuevo despliegue"
+                runFocker
+                else
+                echo "Actualiza Docker"
+                docker stop ${pkgName}-${APP_ENV} && docker rm ${pkgName}-${APP_ENV}
+                echo "Run ${deployImage}"
+                runFocker
+                fi
+                sleep 5
+                echo ""
+                echo "### Healthy Docker Image ###"
+                docker ps -a --format "{{.Names}}: {{.Status}} {{.ID}}" --filter "name=${pkgName}-${APP_ENV}"
+                echo "----------------------------"
+                echo ""
+                '''
+              }
+            }
           }
         }
       }
-    }
   //Stages
   }
   post {
