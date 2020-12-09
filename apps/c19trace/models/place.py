@@ -85,5 +85,5 @@ class Place(models.Model):
         verbose_name = gettext("Place")
         verbose_name_plural = gettext("Places")
 
-        db_table = 'c19t_place_entity'
+        db_table = 'c19t_places'
         ordering = ('name',)

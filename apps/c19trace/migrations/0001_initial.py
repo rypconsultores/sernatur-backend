@@ -144,7 +144,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=96, verbose_name='Name')),
                 ('enabled', models.BooleanField(default=True, verbose_name='Enabled')),
-                ('type', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='c19trace.servicetype', verbose_name='Service type')),
+                ('type', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='c19trace.turisticservicetype', verbose_name='Service type')),
             ],
             options={
                 'verbose_name': 'Service class',
@@ -156,7 +156,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='place',
             name='service_type',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='c19trace.servicetype', verbose_name='Service type'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='c19trace.turisticservicetype', verbose_name='Service type'),
         ),
         migrations.AddField(
             model_name='place',
