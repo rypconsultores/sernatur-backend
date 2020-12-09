@@ -11,3 +11,7 @@ boto3
 django-cors-headers
 djangorestframework_simplejwt
 djangorestframework-gis
+qrcode
+django-cors-headers
+fs-s3fs
+django-amazon-ses
