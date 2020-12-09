@@ -7,6 +7,9 @@ def getPort(env) {
     return (APP_ENV == 'dev') ? '3080' : (APP_ENV == 'prod') ? '4080' : '2080'
 }
 
+def bucketEnv(env) {
+    return (APP_ENV == 'dev') ? '3080' : (APP_ENV == 'prod') ? '4080' : '2080'
+}
 def getDatabaseURL(branch) {
     return (
         (APP_ENV == 'dev')
@@ -89,7 +92,15 @@ pipeline {
             #!/bin/bash
             set +x
             runFocker () {
-              docker run -itd --name ${pkgName}-${APP_ENV} -e "DJANGO_SETTINGS_MODULE=settings.env.${APP_ENV}" -e "DATABASE_DEFAULT_URL=${DATABASE_DEFAULT_URL}" --restart always -p ${PORT_ENV}:80 ${deployImage};
+              docker run -itd --name ${pkgName}-${APP_ENV}\
+              -e "DJANGO_SETTINGS_MODULE=settings.env.${APP_ENV}"\
+              -e "DATABASE_DEFAULT_URL=${DATABASE_DEFAULT_URL}"\
+              -e "MAIL_STATIC_BASE=https://${BUCKET_ENV}.s3.amazonaws.com"\
+              -e "MAIL_S3_BUCKET_AWS_ACCESS_KEY_ID=${AWS_ID}"\
+              -e "MAIL_S3_BUCKET_AWS_SECRET_ACCESS_KEY=${AWS_KEY}"\
+              -e "AWS_SES_ACCESS_KEY_ID=$MAIL_S3_BUCKET_AWS_ACCESS_KEY_ID"\
+              -e "AWS_SES_SECRET_ACCESS_KEY=$MAIL_S3_BUCKET_AWS_SECRET_ACCESS_KEY"\
+              --restart always -p ${PORT_ENV}:80 ${deployImage};
             }
             issue=$(docker ps -a | grep ${pkgName}-${APP_ENV}| awk '{print $1}')
             if [ -z "$issue" ];
