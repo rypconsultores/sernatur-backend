@@ -1,48 +1,20 @@
+from urllib.parse import urlparse, urlunparse
+
 from django.conf import settings
 from django.contrib.auth.models import User
-from django.urls import reverse
-from django.utils.translation import gettext_lazy as gettext
-from drf_yasg.utils import swagger_auto_schema
-from rest_framework import viewsets, views
-from rest_framework.generics import get_object_or_404
-from rest_framework.response import Response
-from django.db import transaction
-from rest_framework.views import APIView
-
-from django.http import HttpResponse
 from django.core import mail
+from django.db import transaction
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
+from django.utils.translation import gettext_lazy as gettext
+from drf_yasg.utils import swagger_auto_schema
+from rest_framework import views
+from rest_framework.generics import get_object_or_404
+from rest_framework.response import Response
+
 from apps.c19trace.util.api import api_view
-from ... import serializers
 from ... import models
-
-
-def mailtest(request):
-    person = models.Person.objects.get(pk='NR20201206AP7681316FB321473EA8100B950CBB219A')
-    data = serializers.Person(instance=person).data
-    data['mail_static_base'] = settings.MAIL_STATIC_BASE
-    data.update({
-        "action": "crear",
-        "set_password_link": request.build_absolute_uri(
-            reverse(
-                'api.user.password.change_or_create.item',
-                kwargs=dict(id='asdalskdjalsdkjalsdalsdasldkajsdlkasjldal')
-            )
-        )
-    })
-
-    mail_html = render_to_string('mail/password.html', data)
-    if False:
-        mail.send_mail(
-            "Identificación digital para la región de Aysén",
-            strip_tags(mail_html),
-            settings.MAIL_FROM,
-            ['falcacibar@gmail.com'],
-            html_message=mail_html
-        )
-
-    return HttpResponse(mail_html, content_type='text/html')
+from ... import serializers
 
 
 @swagger_auto_schema(
@@ -88,14 +60,13 @@ def password_create_or_replace_request(request):
 
             data = serializers.Person(instance=person).data
             data['mail_static_base'] = settings.MAIL_STATIC_BASE
+
+            url_object = urlparse(request.META.get('HTTP_REFERER'))
+            url_object = url_object._replace(path=f'/change-password/{password_request.id}')
+
             data.update({
                 "action": gettext("cambiar") if person.user else gettext("crear"),
-                "set_password_link": request.build_absolute_uri(
-                    reverse(
-                        'api.user.password.change_or_create.item',
-                        kwargs=dict(id=password_request.id)
-                    )
-                )
+                "set_password_link": urlunparse(url_object)
             })
 
             mail_html = render_to_string('mail/password.html', data)
