@@ -1,4 +1,7 @@
+
+
 from django.db import transaction
+from django.utils.translation import gettext_lazy as gettext
 from rest_framework import serializers
 
 from .. import models
@@ -6,6 +9,9 @@ from .place_check_point import PlaceCheckPoint
 
 
 class Place(serializers.ModelSerializer):
+    owner = serializers.BooleanField(
+        label=gettext('Owner'), read_only=True
+    )
     check_points = PlaceCheckPoint(
         label=models.PlaceCheckPoint._meta.verbose_name_plural, many=True
     )
@@ -37,6 +43,7 @@ class Place(serializers.ModelSerializer):
     class Meta:
         model = models.Place
         fields = (
+            'id',
             'place_type',
             'turistic_info_office_type',
             'rut',
@@ -45,6 +52,7 @@ class Place(serializers.ModelSerializer):
             'name',
             'comuna',
             'localidad',
+            'owner',
             'zone',
             'address',
             'representative_name',
@@ -69,3 +77,17 @@ class TuristicServiceClass(serializers.ModelSerializer):
         fields = (
             'id', 'name', 'type'
         )
+
+
+class PlaceAddPerson(serializers.Serializer):
+    person_id = serializers.CharField(
+        min_length=models.Person._meta.get_field('id').max_length,
+        max_length=models.Person._meta.get_field('id').max_length,
+        label=models.Person._meta.verbose_name,
+    )
+
+
+class PlaceUser(PlaceAddPerson):
+    full_name = serializers.CharField(
+        label=gettext("Full name")
+    )

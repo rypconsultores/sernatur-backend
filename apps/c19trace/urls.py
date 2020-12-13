@@ -58,6 +58,10 @@ api_path = path(
                     path('destroy/', jwt_views.TokenRefreshView.as_view(), name='api.auth.token.destroy'),
                 ]))
             ])),
+            path(
+                'places/<int:id>/persons/', views.api.place.place_add_person,
+                name="api.places.persons"
+            ),
             path('places/turistic/service/', include(
                 routers.DefaultRouter([
                     (
