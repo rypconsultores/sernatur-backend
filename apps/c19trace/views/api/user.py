@@ -61,13 +61,18 @@ def password_create_or_replace_request(request):
             data = serializers.Person(instance=person).data
             data['mail_static_base'] = settings.MAIL_STATIC_BASE
 
-            url_object = urlparse(request.META.get('HTTP_REFERER'))
-            url_object = url_object._replace(path=f'/change-password/{password_request.id}')
+            url_object = urlparse(
+                    request.META.get(
+                        'HTTP_REFERER', request.build_absolute_uri('/')
+                    )
+                ) \
+                ._replace(path=f'/change-password/{password_request.id}')
 
             action = gettext("change") if person.user else gettext("create")
             data.update({
                 "action": action,
-                "set_password_link": urlunparse(url_object)
+                "set_password_link": urlunparse(url_object),
+                "set_password_key": password_request.key
             })
 
             mail_html = render_to_string('mail/password.html', data)
