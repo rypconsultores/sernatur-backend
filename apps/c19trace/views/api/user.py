@@ -72,7 +72,7 @@ def password_create_or_replace_request(request):
             data.update({
                 "action": action,
                 "set_password_link": urlunparse(url_object),
-                "set_password_key": password_request.id
+                "set_password_key": password_request.key
             })
 
             mail_html = render_to_string('mail/password.html', data)
