@@ -150,7 +150,7 @@ class Person(models.Model):
 
 
 @receiver(models.signals.pre_save, sender=Person)
-def voucher_actions(
+def person_auto_make_id(
     sender, instance, raw, using, update_fields, **kwargs
 ):
      if instance.id == '__noid__':

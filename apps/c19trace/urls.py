@@ -62,6 +62,16 @@ api_path = path(
                 'places/<int:id>/persons/', views.api.place.place_add_person,
                 name="api.places.persons"
             ),
+            path(
+                'places/<int:place_id>/person/', include(
+                    routers.DefaultRouter([
+                        (
+                            r'check', views.api.place_person_check.PlacePersonCheckViewSet,
+                            "api.places.person.check"
+                        )
+                    ]).urls
+                )
+            ),
             path('places/turistic/service/', include(
                 routers.DefaultRouter([
                     (

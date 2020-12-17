@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-09 00:24-0300\n"
+"POT-Creation-Date: 2020-12-17 04:12-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -187,6 +187,7 @@ msgid "Entry points"
 msgstr "Puntos de ingreso"
 
 #: apps/c19trace/models/person.py:21 apps/c19trace/models/person.py:162
+#: apps/c19trace/models/place_person_check.py:49
 msgid "ID"
 msgstr ""
 
@@ -433,6 +434,74 @@ msgstr "Punto de control de lugar"
 msgid "Place check points"
 msgstr "Puntos de control de lugar"
 
+#: apps/c19trace/models/place_person_check.py:13
+msgid "Cough"
+msgstr "Tos"
+
+#: apps/c19trace/models/place_person_check.py:16
+msgid "Dispnea or breathing difficulty"
+msgstr "Disnea o dificultad respiratoria"
+
+#: apps/c19trace/models/place_person_check.py:19
+msgid "Throracic pain"
+msgstr "Dolor torácico"
+
+#: apps/c19trace/models/place_person_check.py:22
+msgid "Throat pain or odynophagia"
+msgstr "Dolor de garganta o odinofagia"
+
+#: apps/c19trace/models/place_person_check.py:25
+msgid "Myalgia, muscular or articular pain"
+msgstr "Mialgia, dolor muscular o articular"
+
+#: apps/c19trace/models/place_person_check.py:28
+msgid "Chills"
+msgstr "Escalofrios"
+
+#: apps/c19trace/models/place_person_check.py:31
+msgid "Headache"
+msgstr "Dolor de cabeza"
+
+#: apps/c19trace/models/place_person_check.py:34
+msgid "Diarrhea"
+msgstr "Dearrea"
+
+#: apps/c19trace/models/place_person_check.py:37
+msgid "Abrupt lost of smell"
+msgstr "Pérdida brusca del olfato"
+
+#: apps/c19trace/models/place_person_check.py:40
+msgid "Abrupt lost of taste"
+msgstr "Pérdida brusca del gusto"
+
+#: apps/c19trace/models/place_person_check.py:43
+msgid "fever"
+msgstr "Fiebre"
+
+#: apps/c19trace/models/place_person_check.py:52
+msgid "Creation date"
+msgstr "Fecha de creación"
+
+#: apps/c19trace/models/place_person_check.py:55
+msgid "Modification date"
+msgstr "Fecha de modificación"
+
+#: apps/c19trace/models/place_person_check.py:67
+msgid "Symptoms"
+msgstr "Síntomas"
+
+#: apps/c19trace/models/place_person_check.py:71
+msgid "Observations"
+msgstr "Observaciones"
+
+#: apps/c19trace/models/place_person_check.py:75
+msgid "Place person check"
+msgstr "Control de persona en lugar"
+
+#: apps/c19trace/models/place_person_check.py:76
+msgid "Place persons checks"
+msgstr "Controles de personas en lugar"
+
 #: apps/c19trace/models/place_user.py:16
 msgid "Is owner"
 msgstr "Es dueño"
@@ -489,9 +558,33 @@ msgstr "Valor"
 msgid "Label"
 msgstr "Etiqueta"
 
+#: apps/c19trace/serializers/place.py:13
+msgid "Owner"
+msgstr "Es dueño"
+
+#: apps/c19trace/serializers/place.py:92
+msgid "Full name"
+msgstr "Nombre completo"
+
 #: apps/c19trace/serializers/place_check_point.py:10
 msgid "Geometry type"
 msgstr "Tipo de geometría"
+
+#: apps/c19trace/serializers/place_person_check.py:17
+msgid "It fills automatically from path"
+msgstr "Se rellena automaticamente desde la ruta"
+
+#: apps/c19trace/serializers/place_person_check.py:18
+msgid "Place ID"
+msgstr "ID de lugar"
+
+#: apps/c19trace/serializers/place_person_check.py:21
+msgid "Place check point ID"
+msgstr "ID de punto de control de lugar"
+
+#: apps/c19trace/serializers/place_person_check.py:24
+msgid "Person ID"
+msgstr "ID persona"
 
 #: apps/c19trace/templates/gis/openlayers.html:12
 msgid "Delete all Features"
@@ -517,24 +610,37 @@ msgstr "Identificación digital para la región de Aysén"
 msgid "There is an error registring this person, please try again later."
 msgstr "Hay un error al registrar esta persona, por favor inténtelo más tarde."
 
+#: apps/c19trace/views/api/place.py:107
+msgid "This field is required."
+msgstr "Este campo es requerido."
+
+#: apps/c19trace/views/api/place.py:119
+#, python-format
+msgid "Person with ID %s does not exists"
+msgstr "No existe la persona con el ID %s"
+
+#: apps/c19trace/views/api/place.py:127
+#, python-format
+msgid "Person with ID %s is already in this place"
+msgstr "En este lugar ya hay una persona con ID %s"
+
 #: apps/c19trace/views/api/user.py:50
 msgid "Enough password requests for today."
 msgstr "Peticiones de contraseña suficientes por hoy."
 
-#: apps/c19trace/views/api/user.py:68
+#: apps/c19trace/views/api/user.py:71
 msgid "change"
 msgstr "cambiar"
 
-#: apps/c19trace/views/api/user.py:68
+#: apps/c19trace/views/api/user.py:71
 msgid "create"
 msgstr "crear"
 
-#: apps/c19trace/views/api/user.py:74
+#: apps/c19trace/views/api/user.py:80
 #, python-format
-msgid "%s request for user password"
+msgid "%s request for password"
 msgstr "%s contraseña para usuario"
 
-#: apps/c19trace/views/api/user.py:83
+#: apps/c19trace/views/api/user.py:89
 msgid "Unexpected internal error, try again"
 msgstr "Error interno inesperado, intente nuevamente"
-
