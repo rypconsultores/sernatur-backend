@@ -8,7 +8,7 @@ from .. import models
 from .place_check_point import PlaceCheckPoint
 
 
-class Place(serializers.ModelSerializer):
+class PlaceInput(serializers.ModelSerializer):
     owner = serializers.BooleanField(
         label=gettext('Owner'), read_only=True
     )
@@ -91,3 +91,50 @@ class PlaceUser(PlaceAddPerson):
     full_name = serializers.CharField(
         label=gettext("Full name")
     )
+
+
+class PlaceType(serializers.Serializer):
+    id = serializers.IntegerField(
+        label=gettext("ID")
+    )
+
+    name = serializers.CharField(
+        label=gettext("Name")
+    )
+
+    def to_internal_value(self, data):
+        return self.id
+
+    def to_representation(self, type_id):
+        return {
+            "id": type_id,
+            "name": next((
+                o[1]
+                for o in models.Place._place_type_choices
+                if o[0] == type_id
+            ))
+        }
+
+
+class PlaceOutput(serializers.ModelSerializer):
+    place_type = PlaceType(
+        label="PlaceType",
+        help_text=models.Place._meta.get_field('place_type').verbose_name
+    )
+    service_type = TuristicServiceType(
+        label='TuristicServiceType',
+        help_text=models.TuristicServiceType._meta.verbose_name
+    )
+    service_class = TuristicServiceClass(
+        label='TuristicServiceClass',
+        help_text=models.TuristicServiceClass._meta.verbose_name
+    )
+    owner = serializers.BooleanField(
+        label=gettext('Owner'), read_only=True
+    )
+    check_points = PlaceCheckPoint(
+        label=models.PlaceCheckPoint._meta.verbose_name_plural, many=True
+    )
+
+    class Meta(PlaceInput.Meta):
+        pass

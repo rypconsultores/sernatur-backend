@@ -25,9 +25,15 @@ class PlaceViewSet(
     mixins.UpdateModelMixin, mixins.RetrieveModelMixin,
     viewsets.GenericViewSet
 ):
-    serializer_class = serializers.Place
+    serializer_class = serializers.PlaceInput
     queryset = models.Place.objects.all()
     permission_classes = [IsAuthenticated, OwnProfilePermission]
+
+    def get_serializer_class(self):
+        if self.request.method == "GET":
+            return serializers.PlaceOutput
+        else:
+            return serializers.PlaceInput
 
     def get_queryset(self):
         queryset = super().get_queryset() \

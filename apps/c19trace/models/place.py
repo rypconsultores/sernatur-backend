@@ -15,7 +15,7 @@ class Place(models.Model):
     PLACE_TYPE_SANITARY_CHECK_POINT = 6
     PLACE_TYPE_BORDER_CROSSING = 7
 
-    _entity_type_choices = (
+    _place_type_choices = (
         (PLACE_TYPE_TURISTIC_SERVICE, gettext("Turistic service")),
         (PLACE_TYPE_TURIST_ATTRACTION, gettext('Turist attraction')),
         (PLACE_TYPE_TURISTIC_INFO_OFFICE, gettext('Turistic information office')),
@@ -26,8 +26,8 @@ class Place(models.Model):
     )
     place_type = models.IntegerField(
         verbose_name=gettext('Place type'),
-        choices=_entity_type_choices,
-        help_text=choices_to_helptext(_entity_type_choices)
+        choices=_place_type_choices,
+        help_text=choices_to_helptext(_place_type_choices)
     )
     _turistic_info_office_type = (
         ('SERNATUR', 'SERNATUR'),
