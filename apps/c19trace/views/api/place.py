@@ -116,13 +116,19 @@ def place_add_person(request: Request, id: int):
 
         try:
             person_id = request.data['person_id']
-            is_owner = request.data('is_owner', False)
+            is_owner = request.data.get('is_owner', False)
             user_id = models.Person.objects\
                 .values_list('user_id', flat=True)\
                 .get(id=person_id)
         except models.Person.DoesNotExist:
             return Response(
                 {"non_field_errors": [gettext("Person with ID %s does not exists") % person_id]}
+                , status=400
+            )
+
+        if not user_id:
+            return Response(
+                {"non_field_errors": [gettext("Person with ID %s does not have user") % person_id]}
                 , status=400
             )
 

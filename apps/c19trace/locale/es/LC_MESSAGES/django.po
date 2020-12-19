@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-17 04:12-0300\n"
+"POT-Creation-Date: 2020-12-19 01:20-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -171,6 +171,7 @@ msgstr "Negocios"
 #: apps/c19trace/models/turistic_service_class.py:9
 #: apps/c19trace/models/turistic_service_type.py:7
 #: apps/c19trace/models/underage_persons.py:13
+#: apps/c19trace/serializers/place.py:102
 msgid "Name"
 msgstr "Nombre"
 
@@ -188,6 +189,7 @@ msgstr "Puntos de ingreso"
 
 #: apps/c19trace/models/person.py:21 apps/c19trace/models/person.py:162
 #: apps/c19trace/models/place_person_check.py:49
+#: apps/c19trace/serializers/place.py:98
 msgid "ID"
 msgstr ""
 
@@ -544,6 +546,10 @@ msgstr "Menor de edad"
 msgid "Underage persons"
 msgstr "Menores de edad"
 
+#: apps/c19trace/models/user.py:6
+msgid "Trazabilidad"
+msgstr ""
+
 #: apps/c19trace/models/util.py:15
 msgid "Options"
 msgstr "Opciones"
@@ -558,7 +564,7 @@ msgstr "Valor"
 msgid "Label"
 msgstr "Etiqueta"
 
-#: apps/c19trace/serializers/place.py:13
+#: apps/c19trace/serializers/place.py:13 apps/c19trace/serializers/place.py:133
 msgid "Owner"
 msgstr "Es dueño"
 
@@ -610,16 +616,20 @@ msgstr "Identificación digital para la región de Aysén"
 msgid "There is an error registring this person, please try again later."
 msgstr "Hay un error al registrar esta persona, por favor inténtelo más tarde."
 
-#: apps/c19trace/views/api/place.py:107
+#: apps/c19trace/views/api/place.py:113
 msgid "This field is required."
 msgstr "Este campo es requerido."
 
-#: apps/c19trace/views/api/place.py:119
+#: apps/c19trace/views/api/place.py:125
 #, python-format
 msgid "Person with ID %s does not exists"
 msgstr "No existe la persona con el ID %s"
 
-#: apps/c19trace/views/api/place.py:127
+#: apps/c19trace/views/api/place.py:131
+msgid "Person with ID %s does not have user"
+msgstr "La persona con el ID %s no tiene usuario aún"
+
+#: apps/c19trace/views/api/place.py:139
 #, python-format
 msgid "Person with ID %s is already in this place"
 msgstr "En este lugar ya hay una persona con ID %s"
