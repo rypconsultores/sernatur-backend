@@ -34,7 +34,7 @@ class PersonSearchViewSet(
     filter_backends = [filters.DjangoFilterBackend, filters_drf.SearchFilter]
     filterset_class = PersonSearchFilterset
     search_fields = (
-        'names', 'first_surname', 'last_surname', 'underage_persons__n'
+        'names', 'first_surname', 'last_surname'
     )
 
 
