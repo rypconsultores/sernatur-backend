@@ -67,12 +67,12 @@ api_path = path(
                 name="api.places.by_person_check.list"
             ),
             path(
-                'places/<int:place_id>/person/check/<person_id>/'
+                'places/<int:place_id>/person/checks/<person_id>/'
                 , views.api.place_person_check.check_upsert
                 , name="api.places.person.check.upsert"
             ),
             path(
-                'places/<int:place_id>/person/check/<person_id>/<check_id>/'
+                'places/<int:place_id>/person/checks/<person_id>/<check_id>/'
                 , views.api.place_person_check.check_retrieve
                 , name="api.places.person.check.retrieve"
             ),
