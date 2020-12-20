@@ -61,7 +61,8 @@ class PlacePersonCheck(models.Model):
         PlaceCheckPoint, verbose_name=Place._meta.verbose_name, on_delete=models.CASCADE
     )
     person = models.ForeignKey(
-        Person, verbose_name=Person._meta.verbose_name, on_delete=models.CASCADE
+        Person, verbose_name=Person._meta.verbose_name, on_delete=models.CASCADE,
+        related_name='persons_checks'
     )
     symptoms = models.OneToOneField(
         PlacePersonCheckSymptom, verbose_name=gettext("Symptoms"),

@@ -91,6 +91,9 @@ class PlaceUser(PlaceAddPerson):
     full_name = serializers.CharField(
         label=gettext("Full name")
     )
+    is_owner = serializers.BooleanField(
+        label=models.PlaceUser._meta.get_field('is_owner').verbose_name
+    )
 
 
 class PlaceType(serializers.Serializer):

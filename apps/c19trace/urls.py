@@ -60,17 +60,21 @@ api_path = path(
             ])),
             path(
                 'places/<int:id>/persons/', views.api.place.place_add_person,
-                name="api.places.persons"
+                name="api.places.persons.add"
             ),
             path(
-                'places/<int:place_id>/person/', include(
-                    routers.DefaultRouter([
-                        (
-                            r'check', views.api.place_person_check.PlacePersonCheckViewSet,
-                            "api.places.person.check"
-                        )
-                    ]).urls
-                )
+                'places/by-person-check/<id>/', views.api.place_person_check.by_person,
+                name="api.places.by_person_check.list"
+            ),
+            path(
+                'places/<int:place_id>/person/check/<person_id>/'
+                , views.api.place_person_check.check_upsert
+                , name="api.places.person.check.upsert"
+            ),
+            path(
+                'places/<int:place_id>/person/check/<person_id>/<check_id>/'
+                , views.api.place_person_check.check_retrieve
+                , name="api.places.person.check.retrieve"
             ),
             path('places/turistic/service/', include(
                 routers.DefaultRouter([

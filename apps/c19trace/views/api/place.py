@@ -157,14 +157,15 @@ def place_add_person(request: Request, id: int):
                     'full_name': "%s %s" % (
                         row['user__person__names'],
                         row['user__person__first_surname']
-                    )
+                    ),
+                    'is_owner': row['is_owner']
                 },
                 models.PlaceUser
                     .objects
                     .filter(place_id=id)
                     .values(
                         'user__person__id', 'user__person__names',
-                        'user__person__first_surname'
+                        'user__person__first_surname', 'is_owner'
                     )
             ))
         )

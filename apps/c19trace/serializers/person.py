@@ -12,7 +12,8 @@ from .. import models
 
 class Person(serializers.ModelSerializer):
     underage_persons = UnderagePerson(
-        label=gettext('Underage persons'), many=True, allow_null=True, required=False
+        help_text=gettext('Underage persons'), many=True,
+        allow_null=True, required=False
     )
 
     def create(self, validated_data):

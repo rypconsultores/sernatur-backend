@@ -23,4 +23,4 @@ class PlaceCheckPoint(serializers.ModelSerializer):
 
     class Meta:
         model = models.PlaceCheckPoint
-        fields = ('name', 'location')
+        fields = ('name', 'location', 'id')

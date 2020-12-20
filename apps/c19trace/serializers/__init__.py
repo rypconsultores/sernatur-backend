@@ -9,4 +9,8 @@ from .underage_person import UnderagePerson
 from .user import (
     PasswordChangeOrCreateRequest, PasswordChangeOrCreate, PasswordSet
 )
-from .place_person_check import PlacePersonCheck
+from .place_person_check import (
+    PlacePersonCheckInput, PlacePersonCheckSwagger,
+    PlacePersonCheckOutput
+)
+
