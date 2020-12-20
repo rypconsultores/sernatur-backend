@@ -99,7 +99,12 @@ api_path = path(
                         name="api.user.password.change_or_create.item"
                     )
                 ]))
-            ]))
+            ])),
+            path(
+                'person/<id>/places/',
+                views.api.place_person_check.PlacePersonCheckViewSetByUser.as_view({"get": "list"}),
+                name="api.user.places.list"
+            ),
         ]
     )
 )

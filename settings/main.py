@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.c19trace',
     'rest_framework',
+    'django_filters',
     'drf_yasg',
     'django.contrib.gis',
 ]
@@ -64,6 +65,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
+    'PAGE_SIZE': 50
 }
 
 SWAGGER_SETTINGS = {

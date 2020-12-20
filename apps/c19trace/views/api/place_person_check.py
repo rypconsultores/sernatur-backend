@@ -1,17 +1,17 @@
-from collections.abc import Mapping as MappingBase
-from typing import Any, Sequence, Mapping, List, Dict
-
+from django.db.models import Q
 from django.http import Http404
+from django.utils.dateparse import parse_datetime
 from django.utils.translation import gettext_lazy as gettext
 from drf_yasg.utils import swagger_auto_schema
-from rest_framework import mixins, viewsets
+from rest_framework import mixins, viewsets, pagination
 from rest_framework.decorators import permission_classes
+from rest_framework.exceptions import ValidationError, APIException
 from rest_framework.generics import get_object_or_404
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.request import Empty, Request
 from rest_framework.response import Response
+import django_filters.rest_framework as filters
 
 from ... import models, serializers
+from ...rest import permissions
 from ...util.api import api_view
 
 
@@ -23,7 +23,7 @@ from ...util.api import api_view
     }
 )
 @api_view(['PUT'], serializers.PlacePersonCheckSwagger)
-@permission_classes([IsAuthenticated])
+@permission_classes([permissions.IsAuthenticated])
 def check_upsert(request, place_id, person_id):
     place_person_check = models.PlacePersonCheck\
         .objects\
@@ -55,7 +55,7 @@ def check_upsert(request, place_id, person_id):
 
 
 @api_view(['GET'], serializers.PlacePersonCheckOutput)
-@permission_classes([IsAuthenticated])
+@permission_classes([permissions.IsAuthenticated])
 def check_retrieve(request, place_id, person_id, check_id):
     place_person_check = get_object_or_404(
         models.PlacePersonCheck,
@@ -76,7 +76,7 @@ def check_retrieve(request, place_id, person_id, check_id):
     }
 )
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
+@permission_classes([permissions.IsSuperuserOrTracerUser])
 def by_person(request, user_id):
     if not (
         request.user.is_superuser
@@ -101,3 +101,54 @@ def by_person(request, user_id):
         )
     )
 
+class PlacePersonCheckViewSet(
+    mixins.ListModelMixin, viewsets.GenericViewSet
+):
+    serializer_class = serializers.PlacePersonCheckOutput
+    queryset = models.PlacePersonCheck.objects.all()
+    permission_classes = [permissions.IsSuperuserOrTracerUser]
+
+
+class PlacePersonCheckByUserFilterset(filters.FilterSet):
+        date__range = filters.CharFilter(
+            method="date_range",
+            help_text=gettext('Format: `<ISO DateTime>,<ISO DateTime>`')
+        )
+
+        @staticmethod
+        def date_range(queryset, name, value):
+            date_range = value.split(',')
+
+            if len(date_range) != 2:
+                error = [gettext('Invalid format, format is `<ISO DateTime>,<ISO DateTime>`.')]
+            else:
+                error = []
+                date_range = [parse_datetime(date) for date in date_range]
+                for idx, error_str in enumerate((
+                    gettext("Invalid `from` date (first one)"),
+                    gettext("Invalid `to` date (second one)"),
+                )):
+                    if not date_range[idx]:
+                        error.append(error_str)
+
+            if error:
+                raise APIException(
+                    detail={"date__range": error}, code=400
+                )
+
+            return queryset.filter(
+                Q(creation_date__range=date_range)
+                | Q(modification_date__range=date_range)
+            )
+
+@swagger_auto_schema()
+class PlacePersonCheckViewSetByUser(
+    mixins.ListModelMixin, viewsets.GenericViewSet
+):
+    serializer_class = serializers.PlacePersonCheckOutput
+    queryset = models.PlacePersonCheck.objects.all()
+    permission_classes = [permissions.IsSuperuserOrTracerUser]
+    lookup_field = 'user_id'
+    pagination_class = pagination.PageNumberPagination
+    filter_backends = [filters.DjangoFilterBackend]
+    filterset_class = PlacePersonCheckByUserFilterset
