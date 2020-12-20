@@ -1,14 +1,14 @@
 from django.db.models import OuterRef, Subquery
 from django.utils.translation import gettext_lazy as gettext
 from drf_yasg.utils import swagger_auto_schema
-from rest_framework import mixins, viewsets, status, permissions
+from rest_framework import mixins, viewsets, status
 from rest_framework.decorators import permission_classes
 from rest_framework.exceptions import PermissionDenied
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.request import Request
 from rest_framework.response import Response
 
 from ... import serializers, models
+from ...rest import permissions
 from ...util.api import api_view
 
 
@@ -27,7 +27,7 @@ class PlaceViewSet(
 ):
     serializer_class = serializers.PlaceInput
     queryset = models.Place.objects.all()
-    permission_classes = [IsAuthenticated, OwnProfilePermission]
+    permission_classes = [permissions.IsAuthenticated, OwnProfilePermission]
 
     def get_serializer_class(self):
         if self.request.method == "GET":
@@ -71,7 +71,7 @@ class TuristicServiceTypeViewSet(
 ):
     serializer_class = serializers.TuristicServiceType
     queryset = models.TuristicServiceType.objects.filter(enabled=True)
-    permission_classes = [IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
 
 
 class TuristicServiceClassViewSet(
@@ -79,7 +79,7 @@ class TuristicServiceClassViewSet(
 ):
     serializer_class = serializers.TuristicServiceClass
     queryset = models.TuristicServiceClass.objects.filter(enabled=True)
-    permission_classes = [IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
 
 
 @swagger_auto_schema(
@@ -98,7 +98,7 @@ class TuristicServiceClassViewSet(
     }
 )
 @api_view(http_method_names=["POST", "GET", "DELETE"], use_serializer=serializers.PlaceAddPerson)
-@permission_classes((IsAuthenticated,))
+@permission_classes((permissions.IsAuthenticated,))
 def place_add_person(request: Request, id: int):
     if (
         not models.PlaceUser.objects \
@@ -169,4 +169,3 @@ def place_add_person(request: Request, id: int):
                     )
             ))
         )
-

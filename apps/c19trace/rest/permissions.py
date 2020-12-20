@@ -1,8 +1,9 @@
 from rest_framework import permissions
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, BasePermission
 
 __all__ = [
-    "IsAuthenticated", "IsSuperuserOrTracerUser"
+    "IsAuthenticated", "IsSuperuserOrTracerUser",
+    "BasePermission"
 ]
 
 

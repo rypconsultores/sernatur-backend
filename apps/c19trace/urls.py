@@ -59,6 +59,10 @@ api_path = path(
                 ]))
             ])),
             path(
+                'persons', views.api.person.PersonSearchViewSet.as_view({"get": "list"}),
+                name="api.places.persons.search"
+            ),
+            path(
                 'places/<int:id>/persons/', views.api.place.place_add_person,
                 name="api.places.persons.add"
             ),

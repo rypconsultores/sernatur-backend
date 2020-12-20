@@ -1,13 +1,41 @@
+import django_filters.rest_framework as filters
+import rest_framework.filters as filters_drf
 from django.conf import settings
 from django.core import mail
 from django.db import transaction
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.utils.translation import gettext_lazy as gettext
-from rest_framework import mixins, viewsets
+from rest_framework import mixins, viewsets, pagination
 from rest_framework.response import Response
 
 from ... import serializers, models
+from ...rest import permissions
+
+
+class PersonSearchFilterset(filters.FilterSet):
+    underage_person = filters.CharFilter(
+        label=models.UnderagePerson._meta.verbose_name,
+        lookup_expr='icontains', field_name='underage_persons__name'
+    )
+
+    class Meta:
+        model = models.Person
+        fields = ('document_no',)
+
+
+class PersonSearchViewSet(
+    mixins.ListModelMixin, viewsets.GenericViewSet
+):
+    serializer_class = serializers.Person
+    queryset = models.Person.objects.all()
+    permission_classes = [permissions.IsSuperuserOrTracerUser]
+    pagination_class = pagination.PageNumberPagination
+    filter_backends = [filters.DjangoFilterBackend, filters_drf.SearchFilter]
+    filterset_class = PersonSearchFilterset
+    search_fields = (
+        'names', 'first_surname', 'last_surname', 'underage_persons__n'
+    )
 
 
 class PersonViewSet(
