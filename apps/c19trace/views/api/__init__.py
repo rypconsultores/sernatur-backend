@@ -4,3 +4,4 @@ from . import entry_point
 from . import place
 from . import user
 from . import place_person_check
+from . import auth
