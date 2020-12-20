@@ -2,7 +2,9 @@
 django-c19trace.rst admin file example.
 """
 from django.contrib import admin
+from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
+
 from . import c19trace
 from ..c19trace import models
 
@@ -23,7 +25,13 @@ class AdminSite(admin.sites.AdminSite):
 
 site = AdminSite()
 
+site.unregister(User)
+site.register(User, c19trace.CustomUserAdmin)
+
 for item in dir(c19trace):
+    if hasattr(item, 'ignore_auto'):
+        continue
+
     model_admin = getattr(c19trace, item)
     try:
         is_class = issubclass(model_admin, object)

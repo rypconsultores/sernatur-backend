@@ -1,5 +1,7 @@
 from decimal import Decimal
 
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import User
 from django.contrib.gis import admin as admin_geo
 from django.contrib.gis.db import models as models_geo
 from django.contrib.gis.forms import widgets as widgets_geo
@@ -115,3 +117,20 @@ class TuristicServiceType(admin.ModelAdmin):
     enabled_b.admin_order_field = 'enabled'
 
     model = models.TuristicServiceType
+
+
+class ProfileInline(admin.StackedInline):
+    model = models.UserExtraConf
+    can_delete = False
+    verbose_name_plural = gettext("Extra configuration")
+    fk_name = 'user'
+
+
+class CustomUserAdmin(UserAdmin):
+    ignore_auto = True
+    inlines = (ProfileInline, )
+
+    def get_inline_instances(self, request, obj=None):
+        if not obj:
+            return list()
+        return super(CustomUserAdmin, self).get_inline_instances(request, obj)
