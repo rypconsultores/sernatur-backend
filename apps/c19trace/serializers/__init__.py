@@ -3,7 +3,7 @@ from .entry_point import EntryPoint
 from .person import Person
 from .place import (
     PlaceInput, PlaceOutput, TuristicServiceClass, TuristicServiceType,
-    PlaceAddPerson, PlaceUser
+    PlaceAddPerson, PlaceUser, Stats
 )
 from .underage_person import UnderagePerson
 from .user import (

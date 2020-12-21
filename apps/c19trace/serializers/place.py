@@ -141,3 +141,15 @@ class PlaceOutput(serializers.ModelSerializer):
 
     class Meta(PlaceInput.Meta):
         pass
+
+
+class Stats(serializers.Serializer):
+    today = serializers.IntegerField(
+        label=gettext("Today person checks count in the current place")
+    )
+    week = serializers.IntegerField(
+        label=gettext("Person checks count of the week in the current place")
+    )
+    month = serializers.IntegerField(
+        label=gettext("Person checks count of the month in the current place")
+    )

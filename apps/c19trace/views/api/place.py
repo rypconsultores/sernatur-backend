@@ -1,15 +1,19 @@
-from django.db.models import OuterRef, Subquery
+from collections import OrderedDict
+from copy import deepcopy
+
+from django.db.models import OuterRef, Subquery, Count
 from django.utils.translation import gettext_lazy as gettext
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import mixins, viewsets, status
 from rest_framework.decorators import permission_classes
-from rest_framework.exceptions import PermissionDenied
+from rest_framework.generics import get_object_or_404
 from rest_framework.request import Request
 from rest_framework.response import Response
 
 from ... import serializers, models
 from ...rest import permissions
 from ...util.api import api_view
+from ...util.datetime import start_day_date, start_week_date, start_month_date
 
 
 class OwnProfilePermission(permissions.BasePermission):
@@ -87,27 +91,29 @@ class TuristicServiceClassViewSet(
     responses={200: serializers.PlaceUser(many=True)}
 )
 @swagger_auto_schema(
-    methods=["DELETE"],
-    responses={204: "When deleted"}
-)
-@swagger_auto_schema(
     methods=["POST"],
     responses={
         201: "Created",
         409: "Person already in this place"
     }
 )
-@api_view(http_method_names=["POST", "GET", "DELETE"], use_serializer=serializers.PlaceAddPerson)
+@api_view(http_method_names=["POST", "GET"], use_serializer=serializers.PlaceAddPerson)
 @permission_classes((permissions.IsAuthenticated,))
 def place_add_person(request: Request, id: int):
-    if (
-        not models.PlaceUser.objects \
-        .filter(is_owner=True, user=request.user) \
-        .count()
-    ):
-        raise PermissionDenied()
+    if not models.PlaceUser.objects \
+        .values_list('id', flat=True) \
+        .filter(
+            place_id=id, user_id=request.user.id,
+            is_owner=True
+        ) \
+        .first() \
+    :
+        return Response(
+            {"detail": gettext("You are not an owner of this place")},
+            status=403
+        )
 
-    if request.method in ["POST", "DELETE"]:
+    if request.method == "POST":
         if 'person_id' not in request.data:
             return Response(
                 {"person_id": gettext('This field is required.')},
@@ -133,22 +139,18 @@ def place_add_person(request: Request, id: int):
             )
 
         current_place_user = models.PlaceUser.objects.only('id').filter(place_id=id, user_id=user_id).first()
-        if request.method == "POST":
-            if current_place_user:
-                return Response(
-                    {"non_field_errors": [gettext("Person with ID %s is already in this place") % person_id]}
-                    , status=409
-                )
+        if current_place_user:
+            return Response(
+                {"non_field_errors": [gettext("Person with ID %s is already in this place") % person_id]}
+                , status=409
+            )
 
-            models.PlaceUser(
-                place_id=id, user_id=user_id, is_owner=is_owner
-            )\
-                .save()
+        models.PlaceUser(
+            place_id=id, user_id=user_id, is_owner=is_owner
+        )\
+            .save()
 
-            return Response(status=201)
-        else:
-            current_place_user.delete()
-            return Response(status=204)
+        return Response(status=201)
     else:  # GET
         return Response(
             tuple(map(
@@ -169,3 +171,76 @@ def place_add_person(request: Request, id: int):
                     )
             ))
         )
+
+
+@swagger_auto_schema(
+    methods=["DELETE"],
+    responses={204: "When deleted"}
+)
+@api_view(http_method_names=["DELETE"], use_serializer=serializers.PlaceAddPerson)
+@permission_classes((permissions.IsAuthenticated,))
+def place_delete_person(request: Request, id: int, person_id):
+    if not models.PlaceUser.objects \
+        .values_list('id', flat=True) \
+        .filter(
+            place_id=id, user_id=request.user.id,
+            is_owner=True
+        ) \
+        .first() \
+    :
+        return Response(
+            {"detail": gettext("You are not an owner of this place")},
+            status=403
+        )
+
+    place_person = get_object_or_404(
+        models.PlaceUser,
+        user__person__id=person_id
+    )
+
+    place_person.delete()
+    return Response(status=204)
+
+
+@api_view(http_method_names=["GET"], use_serializer=serializers.Stats)
+@permission_classes((permissions.IsAuthenticated,))
+def stats(request, id):
+    if not models.PlaceUser.objects \
+        .values_list('id', flat=True) \
+        .filter(
+            place_id=id, user_id=request.user.id,
+            is_owner=True
+        ) \
+        .first() \
+    :
+        return Response(
+            {"detail": gettext("You are not an owner of this place")},
+            status=403
+        )
+
+    timezone = "America/Santiago"
+    stats_groups = ('today', 'week', 'month')
+    base_query = models.PlacePersonCheck\
+        .objects\
+        .annotate(ids=Count('id')) \
+        .values('ids') \
+        .filter(place_id=id)
+
+    stats = models.Place.objects\
+        .annotate(
+            today=deepcopy(base_query).filter(creation_date__gte=start_day_date(timezone)),
+            week=deepcopy(base_query).filter(creation_date__gte=start_week_date(timezone)),
+            month=deepcopy(base_query).filter(creation_date__gte=start_month_date(timezone))
+        )\
+        .values_list(*stats_groups)\
+        [0:1][0]
+
+    return Response(
+        OrderedDict(zip(
+            stats_groups,
+            (
+                0 if stat is None else stat
+                for stat in stats
+            )
+        ))
+    )

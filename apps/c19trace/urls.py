@@ -67,6 +67,10 @@ api_path = path(
                 name="api.places.persons.add"
             ),
             path(
+                'places/<int:id>/persons/<person_id>/', views.api.place.place_delete_person,
+                name="api.places.persons.delete"
+            ),
+            path(
                 'places/by-person-check/<id>/', views.api.place_person_check.by_person,
                 name="api.places.by_person_check.list"
             ),
@@ -84,6 +88,11 @@ api_path = path(
                 'places/<int:place_id>/person/checks/<person_id>/<check_id>/'
                 , views.api.place_person_check.check_retrieve
                 , name="api.places.person.check.retrieve"
+            ),
+            path(
+                'places/<int:id>/stats/'
+                , views.api.place.stats
+                , name="api.places.stats"
             ),
             path('places/turistic/service/', include(
                 routers.DefaultRouter([
