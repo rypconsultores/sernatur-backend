@@ -195,7 +195,8 @@ def place_delete_person(request: Request, id: int, person_id):
 
     place_person = get_object_or_404(
         models.PlaceUser,
-        user__person__id=person_id
+        user__person__id=person_id,
+        place_id=id
     )
 
     place_person.delete()
