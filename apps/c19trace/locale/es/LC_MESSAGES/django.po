@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-19 01:20-0300\n"
+"POT-Creation-Date: 2020-12-21 01:24-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -171,7 +171,7 @@ msgstr "Negocios"
 #: apps/c19trace/models/turistic_service_class.py:9
 #: apps/c19trace/models/turistic_service_type.py:7
 #: apps/c19trace/models/underage_persons.py:13
-#: apps/c19trace/serializers/place.py:102
+#: apps/c19trace/serializers/place.py:105
 msgid "Name"
 msgstr "Nombre"
 
@@ -189,7 +189,7 @@ msgstr "Puntos de ingreso"
 
 #: apps/c19trace/models/person.py:21 apps/c19trace/models/person.py:162
 #: apps/c19trace/models/place_person_check.py:49
-#: apps/c19trace/serializers/place.py:98
+#: apps/c19trace/serializers/place.py:101
 msgid "ID"
 msgstr ""
 
@@ -488,19 +488,19 @@ msgstr "Fecha de creación"
 msgid "Modification date"
 msgstr "Fecha de modificación"
 
-#: apps/c19trace/models/place_person_check.py:67
+#: apps/c19trace/models/place_person_check.py:68
 msgid "Symptoms"
 msgstr "Síntomas"
 
-#: apps/c19trace/models/place_person_check.py:71
+#: apps/c19trace/models/place_person_check.py:72
 msgid "Observations"
 msgstr "Observaciones"
 
-#: apps/c19trace/models/place_person_check.py:75
+#: apps/c19trace/models/place_person_check.py:76
 msgid "Place person check"
 msgstr "Control de persona en lugar"
 
-#: apps/c19trace/models/place_person_check.py:76
+#: apps/c19trace/models/place_person_check.py:77
 msgid "Place persons checks"
 msgstr "Controles de personas en lugar"
 
@@ -546,9 +546,14 @@ msgstr "Menor de edad"
 msgid "Underage persons"
 msgstr "Menores de edad"
 
-#: apps/c19trace/models/user.py:6
-msgid "Trazabilidad"
-msgstr ""
+#: apps/c19trace/models/user_extra_conf.py:10
+msgid "Traceability"
+msgstr "Trazabilidad"
+
+#: apps/c19trace/models/user_extra_conf.py:19
+#: apps/c19trace/models/user_extra_conf.py:20
+msgid "User extra config"
+msgstr "Config extra de usuario"
 
 #: apps/c19trace/models/util.py:15
 msgid "Options"
@@ -564,7 +569,7 @@ msgstr "Valor"
 msgid "Label"
 msgstr "Etiqueta"
 
-#: apps/c19trace/serializers/place.py:13 apps/c19trace/serializers/place.py:133
+#: apps/c19trace/serializers/place.py:13 apps/c19trace/serializers/place.py:136
 msgid "Owner"
 msgstr "Es dueño"
 
@@ -572,25 +577,40 @@ msgstr "Es dueño"
 msgid "Full name"
 msgstr "Nombre completo"
 
+#: apps/c19trace/serializers/place.py:148
+msgid "Today's person checks count in the current place"
+msgstr "Conteo de personas controladas de hoy en el lugar actual"
+
+#: apps/c19trace/serializers/place.py:151
+msgid "Person checks count at the week in the current place"
+msgstr "Conteo de personas controladas en la semana en este lugar"
+
+#: apps/c19trace/serializers/place.py:154
+msgid "Person checks count at the month in the current place"
+msgstr "Conteo de personas controladas en el mes en este lugar"
+
 #: apps/c19trace/serializers/place_check_point.py:10
 msgid "Geometry type"
 msgstr "Tipo de geometría"
 
-#: apps/c19trace/serializers/place_person_check.py:17
+#: apps/c19trace/serializers/place_person_check.py:18
+#: apps/c19trace/serializers/place_person_check.py:23
 msgid "It fills automatically from path"
 msgstr "Se rellena automaticamente desde la ruta"
 
-#: apps/c19trace/serializers/place_person_check.py:18
+#: apps/c19trace/serializers/place_person_check.py:19
+msgid "Person ID"
+msgstr "ID persona"
+
+#: apps/c19trace/serializers/place_person_check.py:24
 msgid "Place ID"
 msgstr "ID de lugar"
 
-#: apps/c19trace/serializers/place_person_check.py:21
+#: apps/c19trace/serializers/place_person_check.py:28
+#: apps/c19trace/serializers/place_person_check.py:61
+#: apps/c19trace/serializers/place_person_check.py:82
 msgid "Place check point ID"
 msgstr "ID de punto de control de lugar"
-
-#: apps/c19trace/serializers/place_person_check.py:24
-msgid "Person ID"
-msgstr "ID persona"
 
 #: apps/c19trace/templates/gis/openlayers.html:12
 msgid "Delete all Features"
@@ -608,31 +628,61 @@ msgstr "SERNATUR API Trazabilidad COVID19"
 msgid "For mobile and web app."
 msgstr "Para aplicaciones mobiles y web."
 
-#: apps/c19trace/views/api/person.py:29
+#: apps/c19trace/views/api/person.py:57
 msgid "Digital ID for the Aysén region."
 msgstr "Identificación digital para la región de Aysén"
 
-#: apps/c19trace/views/api/person.py:41
+#: apps/c19trace/views/api/person.py:69
 msgid "There is an error registring this person, please try again later."
 msgstr "Hay un error al registrar esta persona, por favor inténtelo más tarde."
 
-#: apps/c19trace/views/api/place.py:113
+#: apps/c19trace/views/api/place.py:112 apps/c19trace/views/api/place.py:192
+#: apps/c19trace/views/api/place.py:217
+msgid "You are not an owner of this place"
+msgstr "No eres un dueño de este lugar"
+
+#: apps/c19trace/views/api/place.py:119
 msgid "This field is required."
 msgstr "Este campo es requerido."
 
-#: apps/c19trace/views/api/place.py:125
+#: apps/c19trace/views/api/place.py:131
 #, python-format
 msgid "Person with ID %s does not exists"
 msgstr "No existe la persona con el ID %s"
 
-#: apps/c19trace/views/api/place.py:131
+#: apps/c19trace/views/api/place.py:137
+#, python-format
 msgid "Person with ID %s does not have user"
 msgstr "La persona con el ID %s no tiene usuario aún"
 
-#: apps/c19trace/views/api/place.py:139
+#: apps/c19trace/views/api/place.py:144
 #, python-format
 msgid "Person with ID %s is already in this place"
 msgstr "En este lugar ya hay una persona con ID %s"
+
+#: apps/c19trace/views/api/place_person_check.py:23
+msgid "When Update"
+msgstr "Cuando actualice"
+
+#: apps/c19trace/views/api/place_person_check.py:24
+msgid "When Create"
+msgstr "Cuando cree"
+
+#: apps/c19trace/views/api/place_person_check.py:118
+msgid "Format: `<ISO DateTime>,<ISO DateTime>`"
+msgstr "Formato: `<ISO DateTime>,<ISO DateTime>`"
+
+#: apps/c19trace/views/api/place_person_check.py:126
+msgid "Invalid format, format is `<ISO DateTime>,<ISO DateTime>`."
+msgstr "formato inválido, format is `<ISO DateTime>,<ISO DateTime>`."
+
+#: apps/c19trace/views/api/place_person_check.py:131
+msgid "Invalid `from` date (first one)"
+msgstr "Fecha `desde` inválida (la primera)"
+
+#: apps/c19trace/views/api/place_person_check.py:132
+msgid "Invalid `to` date (second one)"
+msgstr "Fecha `hasta` inválida (la segunda)"
 
 #: apps/c19trace/views/api/user.py:50
 msgid "Enough password requests for today."

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-19 01:20-0300\n"
+"POT-Creation-Date: 2020-12-21 01:24-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,20 +18,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps/admin/__init__.py:11 apps/admin/__init__.py:14
+#: apps/admin/__init__.py:13 apps/admin/__init__.py:16
 msgid "SERNATUR Aysen: Traceability COVID19 Admin"
 msgstr "SERNATUR Aysen: Administrador trazabilidad COVID19"
 
-#: apps/admin/__init__.py:17
+#: apps/admin/__init__.py:19
 msgid "Administration"
 msgstr "Administracion"
 
-#: apps/admin/c19trace.py:103 apps/admin/c19trace.py:114
+#: apps/admin/c19trace.py:105 apps/admin/c19trace.py:116
 msgid "Yes"
 msgstr ""
 
-#: apps/admin/c19trace.py:103 apps/admin/c19trace.py:114
+#: apps/admin/c19trace.py:105 apps/admin/c19trace.py:116
 msgid "No"
+msgstr ""
+
+#: apps/admin/c19trace.py:125
+msgid "Extra configuration"
 msgstr ""
 
 #: apps/admin/templates/admin/base.html:61

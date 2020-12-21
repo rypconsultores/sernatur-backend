@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as gettext
 
 class UserExtraConf(models.Model):
     traceability = models.BooleanField(
-        default=False, verbose_name=gettext("Tracabilidad")
+        default=False, verbose_name=gettext("Traceability")
     )
 
     user = models.OneToOneField(
