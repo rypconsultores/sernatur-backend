@@ -71,6 +71,11 @@ api_path = path(
                 name="api.places.by_person_check.list"
             ),
             path(
+                'places/<int:place_id>/person/checks/',
+                views.api.place_person_check.PlacePersonCheckViewSetByPlace.as_view({"get": "list"}),
+                name="api.user.places.list"
+            ),
+            path(
                 'places/<int:place_id>/person/checks/<person_id>/'
                 , views.api.place_person_check.check_upsert
                 , name="api.places.person.check.upsert"

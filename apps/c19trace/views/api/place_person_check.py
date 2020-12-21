@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 import django_filters.rest_framework as filters
 from django.db.models import Q
 from django.http import Http404
@@ -101,6 +103,7 @@ def by_person(request, user_id):
         )
     )
 
+
 class PlacePersonCheckViewSet(
     mixins.ListModelMixin, viewsets.GenericViewSet
 ):
@@ -109,37 +112,43 @@ class PlacePersonCheckViewSet(
     permission_classes = [permissions.IsSuperuserOrTracerUser]
 
 
-class PlacePersonCheckByUserFilterset(filters.FilterSet):
-        date__range = filters.CharFilter(
-            method="date_range",
-            help_text=gettext('Format: `<ISO DateTime>,<ISO DateTime>`')
-        )
+class PlacePersonCheckBaseFiltersetMixin():
+    date__range = filters.CharFilter(
+        method="date_range",
+        help_text=gettext('Format: `<ISO DateTime>,<ISO DateTime>`')
+    )
 
-        @staticmethod
-        def date_range(queryset, name, value):
-            date_range = value.split(',')
+    @staticmethod
+    def date_range(queryset, name, value):
+        date_range = value.split(',')
 
-            if len(date_range) != 2:
-                error = [gettext('Invalid format, format is `<ISO DateTime>,<ISO DateTime>`.')]
-            else:
-                error = []
-                date_range = [parse_datetime(date) for date in date_range]
-                for idx, error_str in enumerate((
+        if len(date_range) != 2:
+            error = [gettext('Invalid format, format is `<ISO DateTime>,<ISO DateTime>`.')]
+        else:
+            error = []
+            date_range = [parse_datetime(date) for date in date_range]
+            for idx, error_str in enumerate((
                     gettext("Invalid `from` date (first one)"),
                     gettext("Invalid `to` date (second one)"),
-                )):
-                    if not date_range[idx]:
-                        error.append(error_str)
+            )):
+                if not date_range[idx]:
+                    error.append(error_str)
 
-            if error:
-                raise APIException(
-                    detail={"date__range": error}, code=400
-                )
-
-            return queryset.filter(
-                Q(creation_date__range=date_range)
-                | Q(modification_date__rage=date_range)
+        if error:
+            raise APIException(
+                detail={"date__range": error}, code=400
             )
+
+        return queryset.filter(
+            Q(creation_date__range=date_range)
+            | Q(modification_date__rage=date_range)
+        )
+
+
+class PlacePersonCheckByUserFilterset(
+    PlacePersonCheckBaseFiltersetMixin, filters.FilterSet
+):
+    date__range = deepcopy(PlacePersonCheckBaseFiltersetMixin.date__range)
 
 
 class PlacePersonCheckViewSetByUser(
@@ -152,3 +161,25 @@ class PlacePersonCheckViewSetByUser(
     pagination_class = pagination.PageNumberPagination
     filter_backends = [filters.DjangoFilterBackend]
     filterset_class = PlacePersonCheckByUserFilterset
+
+
+class PlacePersonCheckByPlaceFilterset(
+    PlacePersonCheckBaseFiltersetMixin, filters.FilterSet
+):
+    date__range = deepcopy(PlacePersonCheckBaseFiltersetMixin.date__range)
+
+    class Meta:
+        model = models.PlacePersonCheck
+        fields = ('place_check_point_id',)
+
+
+class PlacePersonCheckViewSetByPlace(
+    mixins.ListModelMixin, viewsets.GenericViewSet
+):
+    serializer_class = serializers.PlacePersonCheckOutput
+    queryset = models.PlacePersonCheck.objects.all()
+    permission_classes = [permissions.IsSuperuserOrTracerUser]
+    lookup_field = 'place_id'
+    pagination_class = pagination.PageNumberPagination
+    filter_backends = [filters.DjangoFilterBackend]
+    filterset_class = PlacePersonCheckByPlaceFilterset
