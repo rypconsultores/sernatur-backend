@@ -1,7 +1,8 @@
 from collections import OrderedDict
-from copy import deepcopy
 
-from django.db.models import OuterRef, Subquery, Count
+from django.conf import settings
+from django.db import connection
+from django.db.models import OuterRef, Subquery
 from django.utils.translation import gettext_lazy as gettext
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import mixins, viewsets, status
@@ -219,22 +220,47 @@ def stats(request, id):
             status=403
         )
 
-    timezone = "America/Santiago"
     stats_groups = ('today', 'week', 'month')
-    base_query = models.PlacePersonCheck\
-        .objects\
-        .annotate(ids=Count('id')) \
-        .values('ids') \
-        .filter(place_id=id)
 
-    stats = models.Place.objects\
-        .annotate(
-            today=deepcopy(base_query).filter(creation_date__gte=start_day_date(timezone)),
-            week=deepcopy(base_query).filter(creation_date__gte=start_week_date(timezone)),
-            month=deepcopy(base_query).filter(creation_date__gte=start_month_date(timezone))
-        )\
-        .values_list(*stats_groups)\
-        [0:1][0]
+    sql = """
+        SELECT (
+                SELECT COUNT(U0.`place_id`) AS `ids`
+                FROM `c19t_place_persons_checks` U0
+                WHERE (
+                        U0.`place_id` = %s
+                        AND U0.`creation_date` >= %s
+                    )
+                GROUP BY U0.`place_id`
+            ) AS `today`,
+            (
+                SELECT COUNT(U0.`place_id`) AS `ids`
+                FROM `c19t_place_persons_checks` U0
+                WHERE (
+                        U0.`place_id` = %s
+                        AND U0.`creation_date` >= %s
+                    )
+                GROUP BY U0.`place_id`
+            ) AS `week`,
+            (
+                SELECT COUNT(U0.`place_id`) AS `ids`
+                FROM `c19t_place_persons_checks` U0
+                WHERE (
+                        U0.`place_id` = %s
+                        AND U0.`creation_date` >= %s
+                    )
+                GROUP BY U0.`place_id`
+            ) AS `month`
+    """
+
+    with connection.cursor() as cursor:
+        cursor.execute(
+            sql, [
+                id, start_day_date(settings.TIME_ZONE),
+                id, start_week_date(settings.TIME_ZONE),
+                id, start_month_date(settings.TIME_ZONE),
+            ]
+        )
+        stats = cursor.fetchall()[0]
 
     return Response(
         OrderedDict(zip(
