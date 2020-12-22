@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-21 01:24-0300\n"
+"POT-Creation-Date: 2020-12-22 18:25-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,147 +23,157 @@ msgid "Traceability COVID19"
 msgstr "Trazabilidad COVID19"
 
 #: apps/c19trace/models/choices.py:4
-msgid "Grandparent"
-msgstr "Abuela/o"
+#, fuzzy
+#| msgid "Friend"
+msgid "Family/Friend"
+msgstr "Amiga/o"
 
-#: apps/c19trace/models/choices.py:5 apps/c19trace/models/choices.py:19
+#: apps/c19trace/models/choices.py:5
+msgid "Travel Agency"
+msgstr "Agencia de viajes"
+
+#: apps/c19trace/models/choices.py:6
+msgid "Tour Operator"
+msgstr "Operador de tour"
+
+#: apps/c19trace/models/choices.py:7
+msgid "Company (Business or Work)"
+msgstr "Empresa (Negocios or trabajo)"
+
+#: apps/c19trace/models/choices.py:8
+msgid "None"
+msgstr "Ninguno"
+
+#: apps/c19trace/models/choices.py:12
 msgid "Friend"
 msgstr "Amiga/o"
 
-#: apps/c19trace/models/choices.py:6 apps/c19trace/models/choices.py:20
+#: apps/c19trace/models/choices.py:13
 msgid "Colegue"
 msgstr "Colega"
 
-#: apps/c19trace/models/choices.py:7 apps/c19trace/models/choices.py:21
+#: apps/c19trace/models/choices.py:14
 msgid "Sibling in law"
 msgstr "Cuñada/o"
 
-#: apps/c19trace/models/choices.py:8 apps/c19trace/models/choices.py:22
+#: apps/c19trace/models/choices.py:15
 msgid "sibling"
 msgstr "hermanoa/o"
 
-#: apps/c19trace/models/choices.py:9 apps/c19trace/models/choices.py:23
+#: apps/c19trace/models/choices.py:16
 msgid "Child"
 msgstr "Hija/o"
 
-#: apps/c19trace/models/choices.py:10 apps/c19trace/models/choices.py:24
+#: apps/c19trace/models/choices.py:17
 msgid "Grandchild"
 msgstr "Nieta/o"
 
-#: apps/c19trace/models/choices.py:11
-msgid "Parent"
-msgstr "Madre/Padre"
-
-#: apps/c19trace/models/choices.py:12 apps/c19trace/models/choices.py:25
+#: apps/c19trace/models/choices.py:18
 msgid "Cousin"
 msgstr "Prima/o"
 
-#: apps/c19trace/models/choices.py:13 apps/c19trace/models/choices.py:26
+#: apps/c19trace/models/choices.py:19
 msgid "Nephew"
 msgstr "Sobrina/o"
 
-#: apps/c19trace/models/choices.py:14
-msgid "Parent in law"
-msgstr "Suegra/o"
-
-#: apps/c19trace/models/choices.py:15 apps/c19trace/models/choices.py:27
+#: apps/c19trace/models/choices.py:20
 msgid "Uncle/aunt"
 msgstr "Tía/Tío"
 
-#: apps/c19trace/models/choices.py:31
+#: apps/c19trace/models/choices.py:24
 msgid "Water"
 msgstr "Agua"
 
-#: apps/c19trace/models/choices.py:32
+#: apps/c19trace/models/choices.py:25
 msgid "Air"
 msgstr "Aire"
 
-#: apps/c19trace/models/choices.py:33
+#: apps/c19trace/models/choices.py:26
 msgid "Land"
 msgstr "tierra"
 
-#: apps/c19trace/models/choices.py:37
+#: apps/c19trace/models/choices.py:30
 msgid "Male"
 msgstr "Masculino"
 
-#: apps/c19trace/models/choices.py:38
+#: apps/c19trace/models/choices.py:31
 msgid "Female"
 msgstr "Femenino"
 
-#: apps/c19trace/models/choices.py:39 apps/c19trace/models/choices.py:45
-#: apps/c19trace/models/choices.py:74
+#: apps/c19trace/models/choices.py:32 apps/c19trace/models/choices.py:38
+#: apps/c19trace/models/choices.py:67
 msgid "Other"
 msgstr "Otro"
 
-#: apps/c19trace/models/choices.py:43
+#: apps/c19trace/models/choices.py:36
 msgid "RUN"
 msgstr ""
 
-#: apps/c19trace/models/choices.py:44
+#: apps/c19trace/models/choices.py:37
 msgid "Passport"
 msgstr "Pasaporte"
 
-#: apps/c19trace/models/choices.py:49
+#: apps/c19trace/models/choices.py:42
 msgid "Chile"
 msgstr ""
 
-#: apps/c19trace/models/choices.py:50
+#: apps/c19trace/models/choices.py:43
 msgid "Not Chile"
 msgstr "Extranjero"
 
-#: apps/c19trace/models/choices.py:54
+#: apps/c19trace/models/choices.py:47
 msgid "Motorcycle"
 msgstr "Moto"
 
-#: apps/c19trace/models/choices.py:55
+#: apps/c19trace/models/choices.py:48
 msgid "Bycicle"
 msgstr "Bicicleta"
 
-#: apps/c19trace/models/choices.py:56
+#: apps/c19trace/models/choices.py:49
 msgid "Car/Jeep/Pickup truck"
 msgstr "Automóvil/Jeep/Camioneta"
 
-#: apps/c19trace/models/choices.py:57
+#: apps/c19trace/models/choices.py:50
 msgid "Motorhome"
 msgstr "Casa rodante/Motorhome"
 
-#: apps/c19trace/models/choices.py:58
+#: apps/c19trace/models/choices.py:51
 msgid "Bus"
 msgstr ""
 
-#: apps/c19trace/models/choices.py:59
+#: apps/c19trace/models/choices.py:52
 msgid "Truck"
 msgstr "Camion"
 
-#: apps/c19trace/models/choices.py:63
+#: apps/c19trace/models/choices.py:56
 msgid "Maritime"
 msgstr "Maritimo"
 
-#: apps/c19trace/models/choices.py:64
+#: apps/c19trace/models/choices.py:57
 msgid "Aereal"
 msgstr "Aereo"
 
-#: apps/c19trace/models/choices.py:65
+#: apps/c19trace/models/choices.py:58
 msgid "Ground"
 msgstr "Terrestre"
 
-#: apps/c19trace/models/choices.py:69
+#: apps/c19trace/models/choices.py:62
 msgid "Turism"
 msgstr "Turismo"
 
-#: apps/c19trace/models/choices.py:70
+#: apps/c19trace/models/choices.py:63
 msgid "Vacations"
 msgstr "Vacaciones"
 
-#: apps/c19trace/models/choices.py:71
+#: apps/c19trace/models/choices.py:64
 msgid "Visit to family or friend"
 msgstr "Visita a familia o amigo"
 
-#: apps/c19trace/models/choices.py:72
+#: apps/c19trace/models/choices.py:65
 msgid "Work"
 msgstr "Trabajo"
 
-#: apps/c19trace/models/choices.py:73
+#: apps/c19trace/models/choices.py:66
 msgid "Business"
 msgstr "Negocios"
 
@@ -636,26 +646,26 @@ msgstr "Identificación digital para la región de Aysén"
 msgid "There is an error registring this person, please try again later."
 msgstr "Hay un error al registrar esta persona, por favor inténtelo más tarde."
 
-#: apps/c19trace/views/api/place.py:112 apps/c19trace/views/api/place.py:192
-#: apps/c19trace/views/api/place.py:217
+#: apps/c19trace/views/api/place.py:113 apps/c19trace/views/api/place.py:193
+#: apps/c19trace/views/api/place.py:219
 msgid "You are not an owner of this place"
 msgstr "No eres un dueño de este lugar"
 
-#: apps/c19trace/views/api/place.py:119
+#: apps/c19trace/views/api/place.py:120
 msgid "This field is required."
 msgstr "Este campo es requerido."
 
-#: apps/c19trace/views/api/place.py:131
+#: apps/c19trace/views/api/place.py:132
 #, python-format
 msgid "Person with ID %s does not exists"
 msgstr "No existe la persona con el ID %s"
 
-#: apps/c19trace/views/api/place.py:137
+#: apps/c19trace/views/api/place.py:138
 #, python-format
 msgid "Person with ID %s does not have user"
 msgstr "La persona con el ID %s no tiene usuario aún"
 
-#: apps/c19trace/views/api/place.py:144
+#: apps/c19trace/views/api/place.py:145
 #, python-format
 msgid "Person with ID %s is already in this place"
 msgstr "En este lugar ya hay una persona con ID %s"
@@ -704,3 +714,12 @@ msgstr "%s contraseña para usuario"
 #: apps/c19trace/views/api/user.py:89
 msgid "Unexpected internal error, try again"
 msgstr "Error interno inesperado, intente nuevamente"
+
+#~ msgid "Grandparent"
+#~ msgstr "Abuela/o"
+
+#~ msgid "Parent"
+#~ msgstr "Madre/Padre"
+
+#~ msgid "Parent in law"
+#~ msgstr "Suegra/o"

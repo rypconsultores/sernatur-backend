@@ -1,18 +1,11 @@
 from django.utils.translation import gettext_lazy as gettext
 
 relationships = (
-    ("abuelo/a", gettext("Grandparent")),
-    ("amigo/a", gettext("Friend")),
-    ("colega", gettext("Colegue")),
-    ("cuñado/a", gettext("Sibling in law")),
-    ("hermano/a", gettext("sibling")),
-    ("hijo/a", gettext("Child")),
-    ("nieto/a", gettext("Grandchild")),
-    ("padre/madre", gettext("Parent")),
-    ("primo/a", gettext("Cousin")),
-    ("sobrino/a", gettext("Nephew")),
-    ("suegro/a", gettext("Parent in law")),
-    ("tio/a", gettext("Uncle/aunt")),
+    ("familiar/amigo", gettext("Family/Friend")),
+    ("travel agency", gettext("Travel Agency")),
+    ("tour operator", gettext("Tour Operator")),
+    ("empresa (negocios o trabajo)", gettext("Company (Business or Work)")),
+    ("ninguno", gettext("None")),
 )
 
 underage_relationships = (
