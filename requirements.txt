@@ -17,3 +17,4 @@ django-cors-headers
 fs-s3fs
 django-amazon-ses
 django-filter
+django-csv-export-view

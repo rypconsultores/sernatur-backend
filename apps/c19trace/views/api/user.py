@@ -63,7 +63,7 @@ def password_create_or_replace_request(request):
 
             url_object = urlparse(
                     request.META.get(
-                        'HTTP_REFERER', request.build_absolute_uri('/')
+                        'HTTP_REFERER', settings.FRONTEND_URL_BASE
                     )
                 ) \
                 ._replace(path=f'/change-password/{password_request.id}')
