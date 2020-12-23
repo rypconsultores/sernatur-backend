@@ -15,11 +15,13 @@ from .util import (
     password_request_key
 )
 
+person_auto_id_wildcard = '__auto__'
+
 
 class Person(models.Model):
     id = models.CharField(
         max_length=64, verbose_name=gettext("ID"), primary_key=True,
-        default='__noid__'
+        default=person_auto_id_wildcard
     )
     date = models.DateTimeField(
         default=thenow, verbose_name=gettext("Date/Time")
@@ -50,7 +52,7 @@ class Person(models.Model):
         help_text=choices_to_helptext(travel_documents)
     )
     document_no = models.CharField(
-        max_length=128, verbose_name=gettext("Document Number")
+        max_length=128, verbose_name=gettext("Document Number"), unique=True
     )
     residence = models.CharField(
         max_length=24, verbose_name=gettext("Residence place"),
@@ -83,7 +85,7 @@ class Person(models.Model):
         choices=travel_subject
     )
     visit_no = models.IntegerField(
-        verbose_name=gettext("Visit number")
+        verbose_name=gettext("Visit number"), null=True, blank=True
     )
     transportation_mode = models.CharField(
         max_length=8,
@@ -153,7 +155,7 @@ class Person(models.Model):
 def person_auto_make_id(
     sender, instance, raw, using, update_fields, **kwargs
 ):
-     if instance.id == '__noid__':
+     if instance.id == person_auto_id_wildcard:
          instance.id = instance.create_id()
 
 

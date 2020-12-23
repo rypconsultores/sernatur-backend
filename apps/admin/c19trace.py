@@ -32,11 +32,18 @@ class Person(admin.ModelAdmin):
         InlineUnderagePerson,
     )
 
-    list_display = ('names', 'first_surname', 'last_surname')
+    list_display = ('names', 'first_surname', 'last_surname', 'document_no')
     list_display_links = list_display
+
+    def get_form(self, *args, **kwargs):
+        form = super().get_form(*args, **kwargs)
+        form.base_fields['entry_point'].label_from_instance = \
+            lambda obj: gettext("%s: %s") % (dict(models.choices.entry_point_types)[obj.type], obj.name)
+        return form
 
     class Media:
         model = models.Person
+        js = ('admin/js/person.js',)
 
 
 class InlineUserPlace(admin.TabularInline):
@@ -87,8 +94,17 @@ class Place(admin_geo.OSMGeoAdmin):
     list_display = ('place_type', 'name', 'comuna', 'localidad', 'zone', 'address')
     list_display_links = list_display
 
+    def get_form(self, *args, **kwargs):
+        form = super().get_form(*args, **kwargs)
+        form.base_fields['service_class'].label_from_instance = \
+            lambda obj: obj.name
+        form.base_fields['service_type'].label_from_instance = \
+            lambda obj: obj.name
+        return form
+
     class Media:
         model = models.Place
+        js = ('admin/js/place.js',)
 
 
 class TuristicServiceClass(admin.ModelAdmin):

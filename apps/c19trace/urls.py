@@ -59,6 +59,15 @@ api_path = path(
                 ]))
             ])),
             path(
+                'person/<id>/places/',
+                views.api.place_person_check.PlacePersonCheckViewSetByUser.as_view({"get": "list"}),
+                name="api.user.places.list"
+            ),
+            path(
+                'persons/document-no/exists/<document_no>', views.api.person.check_if_document_no_exists,
+                name="api.places.persons.document_no.exists"
+            ),
+            path(
                 'persons', views.api.person.PersonSearchViewSet.as_view({"get": "list"}),
                 name="api.places.persons.search"
             ),
@@ -118,11 +127,6 @@ api_path = path(
                     )
                 ]))
             ])),
-            path(
-                'person/<id>/places/',
-                views.api.place_person_check.PlacePersonCheckViewSetByUser.as_view({"get": "list"}),
-                name="api.user.places.list"
-            ),
         ]
     )
 )

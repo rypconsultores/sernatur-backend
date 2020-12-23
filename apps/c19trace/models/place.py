@@ -24,6 +24,12 @@ class Place(models.Model):
         (PLACE_TYPE_SANITARY_CHECK_POINT, gettext('Sanitary check point')),
         (PLACE_TYPE_BORDER_CROSSING, gettext('Border crossing')),
     )
+    name = models.CharField(
+        max_length=128, verbose_name=gettext("Name")
+    )
+    rut = models.CharField(
+        max_length=15, verbose_name=gettext("RUT Entity")
+    )
     place_type = models.IntegerField(
         verbose_name=gettext('Place type'),
         choices=_place_type_choices,
@@ -40,17 +46,13 @@ class Place(models.Model):
         help_text=choices_to_helptext(_turistic_info_office_type),
         null=True, blank=True
     )
-    rut = models.CharField(
-        max_length=15, verbose_name=gettext("RUT Entity")
-    )
     service_type = models.ForeignKey(
-        TuristicServiceType, verbose_name=TuristicServiceType._meta.verbose_name, on_delete=models.CASCADE
+        TuristicServiceType, verbose_name=TuristicServiceType._meta.verbose_name, on_delete=models.CASCADE,
+        blank=True, null=True
     )
     service_class = models.ForeignKey(
-        TuristicServiceClass, verbose_name=TuristicServiceClass._meta.verbose_name, on_delete=models.CASCADE
-    )
-    name = models.CharField(
-        max_length=128, verbose_name=gettext("Name")
+        TuristicServiceClass, verbose_name=TuristicServiceClass._meta.verbose_name, on_delete=models.CASCADE,
+        blank=True, null=True
     )
     comuna = models.CharField(
         max_length=128, verbose_name=gettext("Comuna")

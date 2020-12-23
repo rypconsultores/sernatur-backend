@@ -8,3 +8,4 @@ from .place_user import PlaceUser
 from .place_check_point import PlaceCheckPoint
 from .place_person_check import PlacePersonCheck, PlacePersonCheckSymptom
 from .user_extra_conf import UserExtraConf
+from . import choices
