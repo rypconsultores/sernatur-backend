@@ -141,7 +141,7 @@ class PlacePersonCheckBaseFiltersetMixin():
 
         return queryset.filter(
             Q(creation_date__range=date_range)
-            | Q(modification_date__rage=date_range)
+            | Q(modification_date__range=date_range)
         )
 
 
