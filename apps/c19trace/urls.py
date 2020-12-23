@@ -89,6 +89,11 @@ api_path = path(
                 name="api.user.places.list"
             ),
             path(
+                'places/<int:place_id>/person/checks/export/',
+                views.api.place_person_check.PlacePersonCheckByPlaceExportView.as_view(),
+                name="api.user.places.list.export"
+            ),
+            path(
                 'places/<int:place_id>/person/checks/<person_id>/'
                 , views.api.place_person_check.check_upsert
                 , name="api.places.person.check.upsert"

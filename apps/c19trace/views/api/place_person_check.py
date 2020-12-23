@@ -1,9 +1,11 @@
 from copy import deepcopy
 
 import django_filters.rest_framework as filters
+from csv_export.views import CSVExportView
 from django.db.models import Q
 from django.http import Http404
 from django.utils.dateparse import parse_datetime
+from django.utils.decorators import method_decorator
 from django.utils.translation import gettext_lazy as gettext
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import mixins, viewsets, pagination
@@ -183,3 +185,30 @@ class PlacePersonCheckViewSetByPlace(
     pagination_class = pagination.PageNumberPagination
     filter_backends = [filters.DjangoFilterBackend]
     filterset_class = PlacePersonCheckByPlaceFilterset
+
+
+class PlacePersonCheckByPlaceExportView(CSVExportView):
+    http_method_names = ["get"]
+    model = models.PlacePersonCheck
+    fields = (
+        'creation_date','place__name','place_check_point__name','person__names',
+        'person__first_surname', 'person__last_surname', 'person__nationality',
+        'person__travel_document', 'person__document_no', 'person__email',
+        'person__mobile_phone'
+    )
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.filter(place_id=self.kwargs['place_id'])
+
+        if 'date__range' in self.request.GET:
+            da_range = [
+                parse_datetime(isodate)
+                for isodate in self.request.GET['date__range'].split(',')
+            ]
+            queryset = queryset.filter(
+                Q(creation_date__range=da_range)
+                | Q(modification_date__range=da_range)
+            )
+
+        return queryset
