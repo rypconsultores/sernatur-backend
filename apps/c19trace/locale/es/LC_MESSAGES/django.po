@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-22 18:25-0300\n"
+"POT-Creation-Date: 2020-12-23 00:53-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -198,7 +198,7 @@ msgid "Entry points"
 msgstr "Puntos de ingreso"
 
 #: apps/c19trace/models/person.py:21 apps/c19trace/models/person.py:162
-#: apps/c19trace/models/place_person_check.py:49
+#: apps/c19trace/models/place_person_check.py:58
 #: apps/c19trace/serializers/place.py:101
 msgid "ID"
 msgstr ""
@@ -447,70 +447,86 @@ msgid "Place check points"
 msgstr "Puntos de control de lugar"
 
 #: apps/c19trace/models/place_person_check.py:13
+msgid "Temperature"
+msgstr "Temperatura"
+
+#: apps/c19trace/models/place_person_check.py:16
 msgid "Cough"
 msgstr "Tos"
 
-#: apps/c19trace/models/place_person_check.py:16
+#: apps/c19trace/models/place_person_check.py:19
 msgid "Dispnea or breathing difficulty"
 msgstr "Disnea o dificultad respiratoria"
 
-#: apps/c19trace/models/place_person_check.py:19
+#: apps/c19trace/models/place_person_check.py:22
 msgid "Throracic pain"
 msgstr "Dolor torácico"
 
-#: apps/c19trace/models/place_person_check.py:22
+#: apps/c19trace/models/place_person_check.py:25
 msgid "Throat pain or odynophagia"
 msgstr "Dolor de garganta o odinofagia"
 
-#: apps/c19trace/models/place_person_check.py:25
+#: apps/c19trace/models/place_person_check.py:28
 msgid "Myalgia, muscular or articular pain"
 msgstr "Mialgia, dolor muscular o articular"
 
-#: apps/c19trace/models/place_person_check.py:28
+#: apps/c19trace/models/place_person_check.py:31
 msgid "Chills"
 msgstr "Escalofrios"
 
-#: apps/c19trace/models/place_person_check.py:31
+#: apps/c19trace/models/place_person_check.py:34
 msgid "Headache"
 msgstr "Dolor de cabeza"
 
-#: apps/c19trace/models/place_person_check.py:34
+#: apps/c19trace/models/place_person_check.py:37
 msgid "Diarrhea"
 msgstr "Dearrea"
 
-#: apps/c19trace/models/place_person_check.py:37
+#: apps/c19trace/models/place_person_check.py:40
 msgid "Abrupt lost of smell"
 msgstr "Pérdida brusca del olfato"
 
-#: apps/c19trace/models/place_person_check.py:40
+#: apps/c19trace/models/place_person_check.py:43
 msgid "Abrupt lost of taste"
 msgstr "Pérdida brusca del gusto"
 
-#: apps/c19trace/models/place_person_check.py:43
+#: apps/c19trace/models/place_person_check.py:46
 msgid "fever"
 msgstr "Fiebre"
 
-#: apps/c19trace/models/place_person_check.py:52
+#: apps/c19trace/models/place_person_check.py:50
+#, fuzzy
+#| msgid "Place persons checks"
+msgid "Place person check symptoms"
+msgstr "Controles de personas en lugar"
+
+#: apps/c19trace/models/place_person_check.py:51
+#, fuzzy
+#| msgid "Place persons checks"
+msgid "Place persons checks symptoms"
+msgstr "Controles de personas en lugar"
+
+#: apps/c19trace/models/place_person_check.py:61
 msgid "Creation date"
 msgstr "Fecha de creación"
 
-#: apps/c19trace/models/place_person_check.py:55
+#: apps/c19trace/models/place_person_check.py:64
 msgid "Modification date"
 msgstr "Fecha de modificación"
 
-#: apps/c19trace/models/place_person_check.py:68
+#: apps/c19trace/models/place_person_check.py:77
 msgid "Symptoms"
 msgstr "Síntomas"
 
-#: apps/c19trace/models/place_person_check.py:72
+#: apps/c19trace/models/place_person_check.py:81
 msgid "Observations"
 msgstr "Observaciones"
 
-#: apps/c19trace/models/place_person_check.py:76
+#: apps/c19trace/models/place_person_check.py:85
 msgid "Place person check"
 msgstr "Control de persona en lugar"
 
-#: apps/c19trace/models/place_person_check.py:77
+#: apps/c19trace/models/place_person_check.py:86
 msgid "Place persons checks"
 msgstr "Controles de personas en lugar"
 

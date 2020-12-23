@@ -9,6 +9,9 @@ from .util import thenow
 
 
 class PlacePersonCheckSymptom(models.Model):
+    temperature = models.IntegerField(
+        verbose_name=gettext("Temperature")
+    )
     cough = models.BooleanField(
         verbose_name=gettext("Cough"), default=False
     )
@@ -42,6 +45,12 @@ class PlacePersonCheckSymptom(models.Model):
     fever = models.BooleanField(
         verbose_name=gettext("fever"), default=False
     )
+
+    class Meta:
+        verbose_name = gettext("Place person check symptoms")
+        verbose_name_plural = gettext("Place persons checks symptoms")
+
+        db_table = 'c19t_place_persons_checks_symptoms'
 
 
 class PlacePersonCheck(models.Model):

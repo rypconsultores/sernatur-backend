@@ -109,7 +109,7 @@ class Person(models.Model):
         verbose_name=gettext("Contact Name"), max_length=128
     )
     contact_relationship = models.CharField(
-        max_length=24, verbose_name=gettext('Contact replationship'),
+        max_length=48, verbose_name=gettext('Contact replationship'),
         choices=relationships, help_text=(
             gettext('%s\n* Also can be filled with custom entry') % (
                 choices_to_helptext(relationships),
