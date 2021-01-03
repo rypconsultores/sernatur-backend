@@ -9,9 +9,6 @@ from .util import thenow
 
 
 class PlacePersonCheckSymptom(models.Model):
-    temperature = models.IntegerField(
-        verbose_name=gettext("Temperature")
-    )
     cough = models.BooleanField(
         verbose_name=gettext("Cough"), default=False
     )
@@ -76,6 +73,15 @@ class PlacePersonCheck(models.Model):
     symptoms = models.OneToOneField(
         PlacePersonCheckSymptom, verbose_name=gettext("Symptoms"),
         on_delete=models.RESTRICT
+    )
+    is_customer = models.BooleanField(
+        verbose_name=gettext("Es cliente"), default=False
+    )
+    is_employee = models.BooleanField(
+        verbose_name=gettext("Es trabajador"), default=False
+    )
+    is_provider = models.BooleanField(
+        verbose_name=gettext("Es proovedor"), default=False
     )
     observations = models.TextField(
         verbose_name=gettext("Observations"), null=True, blank=True

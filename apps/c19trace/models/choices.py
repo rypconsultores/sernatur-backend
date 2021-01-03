@@ -10,7 +10,6 @@ relationships = (
 
 underage_relationships = (
     ("amigo/a", gettext("Friend")),
-    ("colega", gettext("Colegue")),
     ("cuñado/a", gettext("Sibling in law")),
     ("hermano/a", gettext("sibling")),
     ("hijo/a", gettext("Child")),

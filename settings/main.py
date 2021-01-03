@@ -85,6 +85,8 @@ SWAGGER_SETTINGS = {
 
 ROOT_URLCONF = 'apps.urls'
 
+SILENCED_SYSTEM_CHECKS = ["rest_framework.W001"]
+
 CUSTOM_ADMIN_PATH = os.path.realpath(
     os.path.join(os.path.dirname(__file__), '..', 'apps', 'admin')
 )

@@ -78,26 +78,29 @@ class Person(models.Model):
         max_length=128, verbose_name=gettext("Mobile Phone")
     )
     previous_lodging_place = models.CharField(
-        max_length=128, verbose_name=gettext("Previous lodging place")
+        max_length=128, verbose_name=gettext("Previous lodging place"), null=True, blank=True
     )
     visit_subject = models.CharField(
         max_length=128, verbose_name=gettext("Visit subject"),
-        choices=travel_subject
+        choices=travel_subject, null=True, blank=True
     )
-    visit_no = models.IntegerField(
-        verbose_name=gettext("Visit number"), null=True, blank=True
+    visit_no = models.CharField(
+        max_length=12, verbose_name=gettext("Visit number"), null=True, blank=True
     )
     transportation_mode = models.CharField(
         max_length=8,
         verbose_name=gettext("Transportation mode"),
         choices=transportation_modes,
-        help_text=choices_to_helptext(transportation_modes)
+        help_text=choices_to_helptext(transportation_modes),
+        null=True, blank=True
     )
     destination = models.CharField(
         max_length=128, verbose_name=gettext("Destination"),
+        null=True, blank=True
     )
     entry_point = models.ForeignKey(
-        EntryPoint, verbose_name=gettext("Entry point"), on_delete=models.CASCADE
+        EntryPoint, verbose_name=gettext("Entry point"), on_delete=models.CASCADE,
+        null=True, blank=True
     )
     main_transportation_mean = models.CharField(
         verbose_name=gettext("Main transportation mean"), max_length=64,
@@ -105,10 +108,11 @@ class Person(models.Model):
             gettext('%s\n* Also can be filled with custom entry') % (
                 choices_to_helptext(transportation_means),
             )
-        )
+        ),
+        null=True, blank=True
     )
     contact_name = models.CharField(
-        verbose_name=gettext("Contact Name"), max_length=128
+        verbose_name=gettext("Contact Name"), max_length=128, null=True, blank=True
     )
     contact_relationship = models.CharField(
         max_length=48, verbose_name=gettext('Contact replationship'),
@@ -116,10 +120,11 @@ class Person(models.Model):
             gettext('%s\n* Also can be filled with custom entry') % (
                 choices_to_helptext(relationships),
             )
-        )
+        ),
+        null=True, blank=True
     )
     contact_phone_or_email = models.CharField(
-        max_length=24, verbose_name=gettext('Contact phone or email')
+        max_length=24, verbose_name=gettext('Contact phone or email'), blank=True, null=True
     )
     contact_comuna = models.CharField(
         max_length=24, verbose_name=gettext('Contact comuna'), blank=True, null=True

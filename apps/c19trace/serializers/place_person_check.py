@@ -44,7 +44,8 @@ class PlacePersonCheckInput(serializers.ModelSerializer):
     class Meta:
         model = models.PlacePersonCheck
         fields = (
-            'id', 'symptoms', 'creation_date',
+            'id', 'creation_date', 'is_customer',
+            'is_employee', 'is_provider', 'symptoms',
             'modification_date', 'observations',
             'place_id', 'place_check_point_id',
             'person_id'
@@ -64,7 +65,8 @@ class PlacePersonCheckSwagger(serializers.ModelSerializer):
     class Meta:
         model = models.PlacePersonCheck
         fields = (
-            'id', 'symptoms', 'creation_date',
+            'id', 'creation_date', 'is_customer', 'is_employee',
+            'is_provider', 'symptoms',
             'modification_date', 'observations',
             'place_check_point_id'
         )
@@ -85,9 +87,9 @@ class PlacePersonCheckOutput(serializers.ModelSerializer):
     class Meta:
         model = models.PlacePersonCheck
         fields = (
-            'id', 'symptoms', 'creation_date',
-            'modification_date', 'observations',
-            'place', 'place_check_point_id',
+            'id', 'creation_date', 'is_customer', 'is_employee',
+            'is_provider', 'symptoms', 'modification_date',
+            'observations', 'place', 'place_check_point_id',
             'person'
         )
         extra_kwargs = {
