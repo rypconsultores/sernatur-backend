@@ -1,41 +1,47 @@
-from datetime import datetime
-
-import pytz
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer, TokenRefreshSerializer
-from rest_framework_simplejwt.tokens import RefreshToken
+from drf_yasg.utils import swagger_auto_schema
+from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView
 
-
-class TokenObtainPairCustomSerializer(TokenObtainPairSerializer):
-    def validate(self, attrs):
-        data = super().validate(attrs)
-        refresh = self.get_token(self.user)
-        data.update({
-            'lifetime': int(refresh.access_token.lifetime.total_seconds()),
-            'expires': datetime.utcnow().replace(tzinfo=pytz.utc).isoformat(),
-            'person_id': self.user.person.id,
-            'names': self.user.person.names
-        })
-
-        return data
+from ...serializers import auth as serializers
 
 
-class TokenObtainPairCustomView(TokenObtainPairView):
-    serializer_class = TokenObtainPairCustomSerializer
+class TokenObtainPairView(TokenObtainPairView):
+    serializer_class = serializers.TokenObtainPair
     token_obtain_pair = TokenObtainPairView.as_view()
 
-
-class TokenRefreshPairCustomSerializer(TokenRefreshSerializer):
-    def validate(self, attrs):
-        data = super().validate(attrs)
-        refresh = RefreshToken(attrs['refresh'])
-        data.update({
-            'lifetime': int(refresh.access_token.lifetime.total_seconds()),
-            'expires': datetime.utcnow().replace(tzinfo=pytz.utc).isoformat(),
-        })
-        return data
+    @swagger_auto_schema(
+        responses={
+            200: serializers.TokenOutput
+        }
+    )
+    def post(self, request, *args, **kwargs):
+        return super().post(request, *args, **kwargs)
 
 
-class TokenRefreshPairCustomView(TokenObtainPairView):
-    serializer_class = TokenRefreshPairCustomSerializer
+class TokenRefreshPairView(TokenObtainPairView):
+    serializer_class = serializers.TokenRefreshPair
     token_obtain_pair = TokenObtainPairView.as_view()
+
+    @swagger_auto_schema(
+        responses={
+            200: serializers.TokenOutput
+        }
+    )
+    def post(self, request, *args, **kwargs):
+        return super().post(request, *args, **kwargs)
+
+
+class TokenDestroyPairView(TokenObtainPairView):
+    serializer_class = serializers.TokenDestroyPair
+    token_obtain_pair = TokenObtainPairView.as_view()
+
+    @swagger_auto_schema(
+        responses={
+            204: 'When successfully delete'
+        }
+    )
+    def post(self, request, *args):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(status=204)

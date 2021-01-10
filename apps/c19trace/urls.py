@@ -53,9 +53,9 @@ api_path = path(
             ])),
             path('auth/', include([
                 path('token/', include([
-                    path('', views.api.auth.TokenObtainPairCustomView.as_view(), name='api.auth.token'),
-                    path('refresh/', jwt_views.TokenRefreshView.as_view(), name='api.auth.token.refresh'),
-                    path('destroy/', jwt_views.TokenRefreshView.as_view(), name='api.auth.token.destroy'),
+                    path('', views.api.auth.TokenObtainPairView.as_view(), name='api.auth.token'),
+                    path('refresh/', views.api.auth.TokenRefreshPairView.as_view(), name='api.auth.token.refresh'),
+                    path('destroy/', views.api.auth.TokenDestroyPairView.as_view(), name='api.auth.token.destroy'),
                 ]))
             ])),
             path(
