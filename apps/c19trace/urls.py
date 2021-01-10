@@ -145,7 +145,7 @@ api_path.url_patterns.append(
 )
 
 urlpatterns = [
-    #path('', views.api.dashboard, name="app.dashboard"),
+    path('', views.root, name="root"),
     #path('reports', views.app.reports, name="app.reports"),
     #path('imeilogs/<start_date>/<end_date>', views.app.imeilogs, name="app.imeilogs"),
     #path('login', views.app.login_view, name="app.login"),
