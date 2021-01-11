@@ -26,9 +26,9 @@ transportation_modes = (
 )
 
 genders = (
-    ("Masculino", gettext("Male")),
-    ("Femenino", gettext("Female")),
-    ("Otro", gettext("Other"))
+    ("masculino", gettext("Male")),
+    ("femenino", gettext("Female")),
+    ("otro", gettext("Other"))
 )
 
 travel_documents = (
@@ -63,5 +63,5 @@ travel_subject = (
     ('visita familiares/amigos', gettext('Visit to family or friend')),
     ('trabajo', gettext('Work')),
     ('negocios', gettext('Business')),
-    ('other', gettext('Other'))
+    ('otro', gettext('Other'))
 )
