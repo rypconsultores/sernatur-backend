@@ -87,6 +87,12 @@ class PlacePersonCheck(models.Model):
         verbose_name=gettext("Observations"), null=True, blank=True
     )
 
+    def __str__(self):
+        return gettext("Person check: %s %s on %s") % (
+            self.person.names, self.person.first_surname,
+            self.place.name
+        )
+
     class Meta:
         verbose_name = gettext("Place person check")
         verbose_name_plural = gettext("Place persons checks")

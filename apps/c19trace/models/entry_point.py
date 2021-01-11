@@ -17,6 +17,9 @@ class EntryPoint(models.Model):
         help_text=choices_to_helptext(entry_point_types)
     )
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name = gettext("Entry point")
         verbose_name_plural = gettext("Entry points")

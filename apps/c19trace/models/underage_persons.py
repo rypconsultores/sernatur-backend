@@ -28,6 +28,9 @@ class UnderagePerson(models.Model):
         "Person", related_name="underage_persons", on_delete=models.CASCADE
     )
 
+    def __str__(self):
+        return f"{self.name}"
+
     class Meta:
         verbose_name = gettext("Underage person")
         verbose_name_plural = gettext("Underage persons")

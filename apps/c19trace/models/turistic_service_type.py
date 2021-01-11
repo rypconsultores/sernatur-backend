@@ -10,6 +10,9 @@ class TuristicServiceType(models.Model):
         verbose_name=gettext("Enabled"), default=True
     )
 
+    def __str__(self):
+        return f"{self.name} ({self.id})"
+
     class Meta:
         verbose_name = gettext("Service type")
         verbose_name_plural = gettext("Service types")

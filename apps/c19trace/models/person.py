@@ -148,6 +148,13 @@ class Person(models.Model):
             + uuid4().hex.upper()
         )
 
+    def __str__(self):
+        description = f"{self.names} {self.first_surname}"
+        if self.last_surname:
+            description = f"{description} {self.last_surname}"
+
+        return f"{description} ({self.id})"
+
     class Meta:
         verbose_name = gettext("Person")
         verbose_name_plural = gettext("Person")

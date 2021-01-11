@@ -83,6 +83,9 @@ class Place(models.Model):
         related_name='places'
     )
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name = gettext("Place")
         verbose_name_plural = gettext("Places")

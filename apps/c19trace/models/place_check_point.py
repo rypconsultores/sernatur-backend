@@ -17,6 +17,9 @@ class PlaceCheckPoint(models_geo.Model):
         related_name='check_points', on_delete=models.CASCADE
     )
 
+    def __str__(self):
+        return f"{self.name} en {self.place.name}"
+
     class Meta:
         verbose_name = gettext("Place check point")
         verbose_name_plural = gettext("Place check points")
