@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import pytz
 from django.utils.translation import gettext_lazy as gettext
@@ -20,9 +20,15 @@ class TokenObtainPair(TokenObtainPairSerializer):
     def validate(self, attrs):
         data = super().validate(attrs)
         refresh = self.get_token(self.user)
+        lifetime_secs = refresh.access_token.lifetime.total_seconds()
         data.update({
-            'lifetime': int(refresh.access_token.lifetime.total_seconds()),
-            'expires': datetime.utcnow().replace(tzinfo=pytz.utc).isoformat(),
+            'lifetime': int(lifetime_secs),
+            'expires': (
+                datetime.utcnow().replace(tzinfo=pytz.utc)
+                + timedelta(seconds=int(lifetime_secs))
+            ).isoformat(),
+            'person_id': self.user.person.id,
+            'names': self.user.person.names
         })
 
         return data
@@ -32,11 +38,13 @@ class TokenRefreshPair(TokenRefreshSerializer):
     def validate(self, attrs):
         data = super().validate(attrs)
         refresh = RefreshToken(attrs['refresh'])
+        lifetime_secs = refresh.access_token.lifetime.total_seconds()
         data.update({
-            'lifetime': int(refresh.access_token.lifetime.total_seconds()),
-            'expires': datetime.utcnow().replace(tzinfo=pytz.utc).isoformat(),
-            'person_id': self.user.person.id,
-            'names': self.user.person.names
+            'lifetime': int(lifetime_secs),
+            'expires': (
+                datetime.utcnow().replace(tzinfo=pytz.utc)
+                + timedelta(seconds=int(lifetime_secs))
+            ).isoformat()
         })
         return data
 
