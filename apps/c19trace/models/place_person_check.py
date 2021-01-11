@@ -61,27 +61,28 @@ class PlacePersonCheck(models.Model):
         default=thenow, verbose_name=gettext("Modification date")
     )
     place = models.ForeignKey(
-        Place, verbose_name=Place._meta.verbose_name, on_delete=models.CASCADE
+        Place, verbose_name=Place._meta.verbose_name, on_delete=models.CASCADE,
+        related_name='person_checks'
     )
     place_check_point = models.ForeignKey(
         PlaceCheckPoint, verbose_name=Place._meta.verbose_name, on_delete=models.CASCADE
     )
     person = models.ForeignKey(
         Person, verbose_name=Person._meta.verbose_name, on_delete=models.CASCADE,
-        related_name='persons_checks'
+        related_name='place_checks'
     )
     symptoms = models.OneToOneField(
         PlacePersonCheckSymptom, verbose_name=gettext("Symptoms"),
         on_delete=models.RESTRICT
     )
     is_customer = models.BooleanField(
-        verbose_name=gettext("Es cliente"), default=False
+        verbose_name=gettext("Is customer"), default=False
     )
     is_employee = models.BooleanField(
-        verbose_name=gettext("Es trabajador"), default=False
+        verbose_name=gettext("Is employee"), default=False
     )
     is_provider = models.BooleanField(
-        verbose_name=gettext("Es proovedor"), default=False
+        verbose_name=gettext("Is provider"), default=False
     )
     observations = models.TextField(
         verbose_name=gettext("Observations"), null=True, blank=True

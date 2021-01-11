@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 import django_filters.rest_framework as filters
 import rest_framework.filters as filters_drf
 from django.conf import settings
@@ -14,13 +16,19 @@ from rest_framework.response import Response
 from ... import serializers, models
 from ...rest import permissions
 from ...util.api import api_view
+from .place_person_check import PlacePersonCheckBaseFiltersetMixin
 
 
-class PersonSearchFilterset(filters.FilterSet):
+class PersonSearchFilterset(
+    PlacePersonCheckBaseFiltersetMixin, filters.FilterSet
+):
     underage_person = filters.CharFilter(
         label=models.UnderagePerson._meta.verbose_name,
         lookup_expr='icontains', field_name='underage_persons__name'
     )
+
+    symptoms = deepcopy(PlacePersonCheckBaseFiltersetMixin.symptoms)
+    symptoms_base_query = 'place_checks__symptoms__'
 
     class Meta:
         model = models.Person

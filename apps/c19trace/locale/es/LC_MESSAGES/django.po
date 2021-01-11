@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-23 00:53-0300\n"
+"POT-Creation-Date: 2021-01-11 04:41-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,246 +49,242 @@ msgid "Friend"
 msgstr "Amiga/o"
 
 #: apps/c19trace/models/choices.py:13
-msgid "Colegue"
-msgstr "Colega"
-
-#: apps/c19trace/models/choices.py:14
 msgid "Sibling in law"
 msgstr "Cuñada/o"
 
-#: apps/c19trace/models/choices.py:15
+#: apps/c19trace/models/choices.py:14
 msgid "sibling"
 msgstr "hermanoa/o"
 
-#: apps/c19trace/models/choices.py:16
+#: apps/c19trace/models/choices.py:15
 msgid "Child"
 msgstr "Hija/o"
 
-#: apps/c19trace/models/choices.py:17
+#: apps/c19trace/models/choices.py:16
 msgid "Grandchild"
 msgstr "Nieta/o"
 
-#: apps/c19trace/models/choices.py:18
+#: apps/c19trace/models/choices.py:17
 msgid "Cousin"
 msgstr "Prima/o"
 
-#: apps/c19trace/models/choices.py:19
+#: apps/c19trace/models/choices.py:18
 msgid "Nephew"
 msgstr "Sobrina/o"
 
-#: apps/c19trace/models/choices.py:20
+#: apps/c19trace/models/choices.py:19
 msgid "Uncle/aunt"
 msgstr "Tía/Tío"
 
-#: apps/c19trace/models/choices.py:24
+#: apps/c19trace/models/choices.py:23
 msgid "Water"
 msgstr "Agua"
 
-#: apps/c19trace/models/choices.py:25
+#: apps/c19trace/models/choices.py:24
 msgid "Air"
 msgstr "Aire"
 
-#: apps/c19trace/models/choices.py:26
+#: apps/c19trace/models/choices.py:25
 msgid "Land"
 msgstr "tierra"
 
-#: apps/c19trace/models/choices.py:30
+#: apps/c19trace/models/choices.py:29
 msgid "Male"
 msgstr "Masculino"
 
-#: apps/c19trace/models/choices.py:31
+#: apps/c19trace/models/choices.py:30
 msgid "Female"
 msgstr "Femenino"
 
-#: apps/c19trace/models/choices.py:32 apps/c19trace/models/choices.py:38
-#: apps/c19trace/models/choices.py:67
+#: apps/c19trace/models/choices.py:31 apps/c19trace/models/choices.py:37
+#: apps/c19trace/models/choices.py:66
 msgid "Other"
 msgstr "Otro"
 
-#: apps/c19trace/models/choices.py:36
+#: apps/c19trace/models/choices.py:35
 msgid "RUN"
 msgstr ""
 
-#: apps/c19trace/models/choices.py:37
+#: apps/c19trace/models/choices.py:36
 msgid "Passport"
 msgstr "Pasaporte"
 
-#: apps/c19trace/models/choices.py:42
+#: apps/c19trace/models/choices.py:41
 msgid "Chile"
 msgstr ""
 
-#: apps/c19trace/models/choices.py:43
+#: apps/c19trace/models/choices.py:42
 msgid "Not Chile"
 msgstr "Extranjero"
 
-#: apps/c19trace/models/choices.py:47
+#: apps/c19trace/models/choices.py:46
 msgid "Motorcycle"
 msgstr "Moto"
 
-#: apps/c19trace/models/choices.py:48
+#: apps/c19trace/models/choices.py:47
 msgid "Bycicle"
 msgstr "Bicicleta"
 
-#: apps/c19trace/models/choices.py:49
+#: apps/c19trace/models/choices.py:48
 msgid "Car/Jeep/Pickup truck"
 msgstr "Automóvil/Jeep/Camioneta"
 
-#: apps/c19trace/models/choices.py:50
+#: apps/c19trace/models/choices.py:49
 msgid "Motorhome"
 msgstr "Casa rodante/Motorhome"
 
-#: apps/c19trace/models/choices.py:51
+#: apps/c19trace/models/choices.py:50
 msgid "Bus"
 msgstr ""
 
-#: apps/c19trace/models/choices.py:52
+#: apps/c19trace/models/choices.py:51
 msgid "Truck"
 msgstr "Camion"
 
-#: apps/c19trace/models/choices.py:56
+#: apps/c19trace/models/choices.py:55
 msgid "Maritime"
 msgstr "Maritimo"
 
-#: apps/c19trace/models/choices.py:57
+#: apps/c19trace/models/choices.py:56
 msgid "Aereal"
 msgstr "Aereo"
 
-#: apps/c19trace/models/choices.py:58
+#: apps/c19trace/models/choices.py:57
 msgid "Ground"
 msgstr "Terrestre"
 
-#: apps/c19trace/models/choices.py:62
+#: apps/c19trace/models/choices.py:61
 msgid "Turism"
 msgstr "Turismo"
 
-#: apps/c19trace/models/choices.py:63
+#: apps/c19trace/models/choices.py:62
 msgid "Vacations"
 msgstr "Vacaciones"
 
-#: apps/c19trace/models/choices.py:64
+#: apps/c19trace/models/choices.py:63
 msgid "Visit to family or friend"
 msgstr "Visita a familia o amigo"
 
-#: apps/c19trace/models/choices.py:65
+#: apps/c19trace/models/choices.py:64
 msgid "Work"
 msgstr "Trabajo"
 
-#: apps/c19trace/models/choices.py:66
+#: apps/c19trace/models/choices.py:65
 msgid "Business"
 msgstr "Negocios"
 
-#: apps/c19trace/models/entry_point.py:10 apps/c19trace/models/place.py:53
+#: apps/c19trace/models/entry_point.py:10 apps/c19trace/models/place.py:28
 #: apps/c19trace/models/turistic_service_class.py:9
 #: apps/c19trace/models/turistic_service_type.py:7
 #: apps/c19trace/models/underage_persons.py:13
-#: apps/c19trace/serializers/place.py:105
+#: apps/c19trace/serializers/place.py:130
 msgid "Name"
 msgstr "Nombre"
 
-#: apps/c19trace/models/entry_point.py:14 apps/c19trace/models/person.py:90
+#: apps/c19trace/models/entry_point.py:14 apps/c19trace/models/person.py:92
 msgid "Transportation mode"
 msgstr "Modo de transporte"
 
-#: apps/c19trace/models/entry_point.py:21 apps/c19trace/models/person.py:98
+#: apps/c19trace/models/entry_point.py:24 apps/c19trace/models/person.py:102
 msgid "Entry point"
 msgstr "Punto de ingreso"
 
-#: apps/c19trace/models/entry_point.py:22
+#: apps/c19trace/models/entry_point.py:25
 msgid "Entry points"
 msgstr "Puntos de ingreso"
 
-#: apps/c19trace/models/person.py:21 apps/c19trace/models/person.py:162
-#: apps/c19trace/models/place_person_check.py:58
-#: apps/c19trace/serializers/place.py:101
+#: apps/c19trace/models/person.py:23 apps/c19trace/models/person.py:176
+#: apps/c19trace/models/place_person_check.py:55
+#: apps/c19trace/serializers/place.py:126
 msgid "ID"
 msgstr ""
 
-#: apps/c19trace/models/person.py:25
+#: apps/c19trace/models/person.py:27
 msgid "Date/Time"
 msgstr "Fecha/Hora"
 
-#: apps/c19trace/models/person.py:28
+#: apps/c19trace/models/person.py:30
 msgid "First surname"
 msgstr "Primer apellido"
 
-#: apps/c19trace/models/person.py:31
+#: apps/c19trace/models/person.py:33
 msgid "Last surname"
 msgstr "Segundo apellido"
 
-#: apps/c19trace/models/person.py:34
+#: apps/c19trace/models/person.py:36
 msgid "Names"
 msgstr "Nombres"
 
-#: apps/c19trace/models/person.py:37
+#: apps/c19trace/models/person.py:39
 msgid "Gender"
 msgstr "Género"
 
-#: apps/c19trace/models/person.py:42
+#: apps/c19trace/models/person.py:44
 #: apps/c19trace/models/underage_persons.py:16
 msgid "Birth date"
 msgstr "Fecha de nacimiento"
 
-#: apps/c19trace/models/person.py:45
+#: apps/c19trace/models/person.py:47
 msgid "Nationality"
 msgstr "Nacionalidad"
 
-#: apps/c19trace/models/person.py:48
+#: apps/c19trace/models/person.py:50
 msgid "Travel document"
 msgstr "Documento de viaje"
 
-#: apps/c19trace/models/person.py:53
+#: apps/c19trace/models/person.py:55
 msgid "Document Number"
 msgstr "Número de documento"
 
-#: apps/c19trace/models/person.py:56
+#: apps/c19trace/models/person.py:58
 msgid "Residence place"
 msgstr "Lugar de residencia"
 
-#: apps/c19trace/models/person.py:61
+#: apps/c19trace/models/person.py:63
 msgid "Residence in Chile: Region"
 msgstr "Residencia en ChileÑ Región"
 
-#: apps/c19trace/models/person.py:64
+#: apps/c19trace/models/person.py:66
 msgid "Residence in Chile: Comuna"
 msgstr "Residencia en Chile: Comuna"
 
-#: apps/c19trace/models/person.py:67
+#: apps/c19trace/models/person.py:69
 msgid "Residence outside Chile: Country"
 msgstr "Residencia en el extranjero: País"
 
-#: apps/c19trace/models/person.py:70
+#: apps/c19trace/models/person.py:72
 msgid "Residence outside Chile: Place"
 msgstr "Residencia en el extranjero: Lugar"
 
-#: apps/c19trace/models/person.py:73
+#: apps/c19trace/models/person.py:75
 msgid "Email"
 msgstr ""
 
-#: apps/c19trace/models/person.py:76
+#: apps/c19trace/models/person.py:78
 msgid "Mobile Phone"
 msgstr "Teléfono móvil"
 
-#: apps/c19trace/models/person.py:79
+#: apps/c19trace/models/person.py:81
 msgid "Previous lodging place"
 msgstr "Lugar de alojamiento previo"
 
-#: apps/c19trace/models/person.py:82
+#: apps/c19trace/models/person.py:84
 msgid "Visit subject"
 msgstr "Asunto de la visita"
 
-#: apps/c19trace/models/person.py:86
+#: apps/c19trace/models/person.py:88
 msgid "Visit number"
 msgstr "Numero de visita"
 
-#: apps/c19trace/models/person.py:95
+#: apps/c19trace/models/person.py:98
 msgid "Destination"
 msgstr "Destino"
 
-#: apps/c19trace/models/person.py:101
+#: apps/c19trace/models/person.py:106
 msgid "Main transportation mean"
 msgstr "Principal medio de transporte"
 
-#: apps/c19trace/models/person.py:103 apps/c19trace/models/person.py:114
+#: apps/c19trace/models/person.py:108 apps/c19trace/models/person.py:120
 #: apps/c19trace/models/underage_persons.py:21
 #, python-format
 msgid ""
@@ -298,50 +294,50 @@ msgstr ""
 "%s\n"
 "* Tambien puede ser llenado con una entrada personalizada"
 
-#: apps/c19trace/models/person.py:109
+#: apps/c19trace/models/person.py:115
 msgid "Contact Name"
 msgstr "Nombre de contacto"
 
-#: apps/c19trace/models/person.py:112
+#: apps/c19trace/models/person.py:118
 #: apps/c19trace/models/underage_persons.py:19
 msgid "Contact replationship"
 msgstr "Relacion con el contacto"
 
-#: apps/c19trace/models/person.py:120
+#: apps/c19trace/models/person.py:127
 msgid "Contact phone or email"
 msgstr "Teléfono o email del contacto"
 
-#: apps/c19trace/models/person.py:123
+#: apps/c19trace/models/person.py:130
 msgid "Contact comuna"
 msgstr "Comuna del contacto"
 
-#: apps/c19trace/models/person.py:126
+#: apps/c19trace/models/person.py:133
 msgid "Contact localidad"
 msgstr "Localidad del contacto"
 
-#: apps/c19trace/models/person.py:129 apps/c19trace/models/person.py:175
+#: apps/c19trace/models/person.py:136 apps/c19trace/models/person.py:189
 #: apps/c19trace/models/place_user.py:10
 msgid "User"
 msgstr "Usuario"
 
-#: apps/c19trace/models/person.py:145 apps/c19trace/models/person.py:146
-#: apps/c19trace/models/person.py:179
+#: apps/c19trace/models/person.py:159 apps/c19trace/models/person.py:160
+#: apps/c19trace/models/person.py:193
 msgid "Person"
 msgstr "Persona"
 
-#: apps/c19trace/models/person.py:167
+#: apps/c19trace/models/person.py:181
 msgid "Key"
 msgstr "Llave"
 
-#: apps/c19trace/models/person.py:171
+#: apps/c19trace/models/person.py:185
 msgid "Expires"
 msgstr "Expira"
 
-#: apps/c19trace/models/person.py:183
+#: apps/c19trace/models/person.py:197
 msgid "Password request"
 msgstr "Peticion de contraseña"
 
-#: apps/c19trace/models/person.py:184
+#: apps/c19trace/models/person.py:198
 msgid "Password requests"
 msgstr "Peticions de contraseña"
 
@@ -373,59 +369,59 @@ msgstr "Aduana sanitaria"
 msgid "Border crossing"
 msgstr "Punto fronterizo"
 
-#: apps/c19trace/models/place.py:28
-msgid "Place type"
-msgstr "Tipo de lugar"
-
-#: apps/c19trace/models/place.py:38
-msgid "Turistic information office type"
-msgstr "Tipo de oficina de información turística"
-
-#: apps/c19trace/models/place.py:44
+#: apps/c19trace/models/place.py:31
 msgid "RUT Entity"
 msgstr "RUT Entidad"
 
-#: apps/c19trace/models/place.py:56
+#: apps/c19trace/models/place.py:34
+msgid "Place type"
+msgstr "Tipo de lugar"
+
+#: apps/c19trace/models/place.py:44
+msgid "Turistic information office type"
+msgstr "Tipo de oficina de información turística"
+
+#: apps/c19trace/models/place.py:58
 msgid "Comuna"
 msgstr ""
 
-#: apps/c19trace/models/place.py:59
+#: apps/c19trace/models/place.py:61
 msgid "Localidad"
 msgstr ""
 
-#: apps/c19trace/models/place.py:62
+#: apps/c19trace/models/place.py:64
 msgid "Zone"
 msgstr "Area"
 
-#: apps/c19trace/models/place.py:65
+#: apps/c19trace/models/place.py:67
 msgid "Address"
 msgstr "Dirección"
 
-#: apps/c19trace/models/place.py:68
+#: apps/c19trace/models/place.py:70
 msgid "Representative: Name"
 msgstr "Representante: Nombre"
 
-#: apps/c19trace/models/place.py:71
+#: apps/c19trace/models/place.py:73
 msgid "Representative: Position"
 msgstr "Representante: Cargo"
 
-#: apps/c19trace/models/place.py:74
+#: apps/c19trace/models/place.py:76
 msgid "Representative: Phone"
 msgstr "Representante: Teléfono"
 
-#: apps/c19trace/models/place.py:77
+#: apps/c19trace/models/place.py:79
 msgid "Representative: Mail"
 msgstr "Representante: Mail"
 
-#: apps/c19trace/models/place.py:80
+#: apps/c19trace/models/place.py:82
 msgid "Users"
 msgstr "Usuarios"
 
-#: apps/c19trace/models/place.py:85 apps/c19trace/models/place_user.py:13
+#: apps/c19trace/models/place.py:90 apps/c19trace/models/place_user.py:13
 msgid "Place"
 msgstr "lugar"
 
-#: apps/c19trace/models/place.py:86
+#: apps/c19trace/models/place.py:91
 msgid "Places"
 msgstr "Lugares"
 
@@ -438,95 +434,104 @@ msgstr "Nombre"
 msgid "Location"
 msgstr "Ubicación"
 
-#: apps/c19trace/models/place_check_point.py:21
+#: apps/c19trace/models/place_check_point.py:24
 msgid "Place check point"
 msgstr "Punto de control de lugar"
 
-#: apps/c19trace/models/place_check_point.py:22
+#: apps/c19trace/models/place_check_point.py:25
 msgid "Place check points"
 msgstr "Puntos de control de lugar"
 
 #: apps/c19trace/models/place_person_check.py:13
-msgid "Temperature"
-msgstr "Temperatura"
-
-#: apps/c19trace/models/place_person_check.py:16
 msgid "Cough"
 msgstr "Tos"
 
-#: apps/c19trace/models/place_person_check.py:19
+#: apps/c19trace/models/place_person_check.py:16
 msgid "Dispnea or breathing difficulty"
 msgstr "Disnea o dificultad respiratoria"
 
-#: apps/c19trace/models/place_person_check.py:22
+#: apps/c19trace/models/place_person_check.py:19
 msgid "Throracic pain"
 msgstr "Dolor torácico"
 
-#: apps/c19trace/models/place_person_check.py:25
+#: apps/c19trace/models/place_person_check.py:22
 msgid "Throat pain or odynophagia"
 msgstr "Dolor de garganta o odinofagia"
 
-#: apps/c19trace/models/place_person_check.py:28
+#: apps/c19trace/models/place_person_check.py:25
 msgid "Myalgia, muscular or articular pain"
 msgstr "Mialgia, dolor muscular o articular"
 
-#: apps/c19trace/models/place_person_check.py:31
+#: apps/c19trace/models/place_person_check.py:28
 msgid "Chills"
 msgstr "Escalofrios"
 
-#: apps/c19trace/models/place_person_check.py:34
+#: apps/c19trace/models/place_person_check.py:31
 msgid "Headache"
 msgstr "Dolor de cabeza"
 
-#: apps/c19trace/models/place_person_check.py:37
+#: apps/c19trace/models/place_person_check.py:34
 msgid "Diarrhea"
 msgstr "Dearrea"
 
-#: apps/c19trace/models/place_person_check.py:40
+#: apps/c19trace/models/place_person_check.py:37
 msgid "Abrupt lost of smell"
 msgstr "Pérdida brusca del olfato"
 
-#: apps/c19trace/models/place_person_check.py:43
+#: apps/c19trace/models/place_person_check.py:40
 msgid "Abrupt lost of taste"
 msgstr "Pérdida brusca del gusto"
 
-#: apps/c19trace/models/place_person_check.py:46
+#: apps/c19trace/models/place_person_check.py:43
 msgid "fever"
 msgstr "Fiebre"
 
-#: apps/c19trace/models/place_person_check.py:50
-#, fuzzy
-#| msgid "Place persons checks"
+#: apps/c19trace/models/place_person_check.py:47
 msgid "Place person check symptoms"
-msgstr "Controles de personas en lugar"
+msgstr "Sintomas de control de personas en lugar"
 
-#: apps/c19trace/models/place_person_check.py:51
-#, fuzzy
-#| msgid "Place persons checks"
+#: apps/c19trace/models/place_person_check.py:48
 msgid "Place persons checks symptoms"
-msgstr "Controles de personas en lugar"
+msgstr "Sintomas de controles de personas en lugar"
 
-#: apps/c19trace/models/place_person_check.py:61
+#: apps/c19trace/models/place_person_check.py:58
 msgid "Creation date"
 msgstr "Fecha de creación"
 
-#: apps/c19trace/models/place_person_check.py:64
+#: apps/c19trace/models/place_person_check.py:61
 msgid "Modification date"
 msgstr "Fecha de modificación"
 
-#: apps/c19trace/models/place_person_check.py:77
+#: apps/c19trace/models/place_person_check.py:75
 msgid "Symptoms"
 msgstr "Síntomas"
 
-#: apps/c19trace/models/place_person_check.py:81
+#: apps/c19trace/models/place_person_check.py:79
+msgid "Is customer"
+msgstr "Es cliente"
+
+#: apps/c19trace/models/place_person_check.py:82
+msgid "Is employee"
+msgstr "Es trabajador"
+
+#: apps/c19trace/models/place_person_check.py:85
+msgid "Is provider"
+msgstr "Es proovedor"
+
+#: apps/c19trace/models/place_person_check.py:88
 msgid "Observations"
 msgstr "Observaciones"
 
-#: apps/c19trace/models/place_person_check.py:85
+#: apps/c19trace/models/place_person_check.py:92
+#, python-format
+msgid "Person check: %s %s on %s"
+msgstr "Control de persona: %s %s en %s"
+
+#: apps/c19trace/models/place_person_check.py:98
 msgid "Place person check"
 msgstr "Control de persona en lugar"
 
-#: apps/c19trace/models/place_person_check.py:86
+#: apps/c19trace/models/place_person_check.py:99
 msgid "Place persons checks"
 msgstr "Controles de personas en lugar"
 
@@ -547,27 +552,27 @@ msgstr "Usuarios de lugar"
 msgid "Enabled"
 msgstr "Habilitado"
 
-#: apps/c19trace/models/turistic_service_class.py:20
+#: apps/c19trace/models/turistic_service_class.py:23
 msgid "Service class"
 msgstr "Clase de servicio"
 
-#: apps/c19trace/models/turistic_service_class.py:21
+#: apps/c19trace/models/turistic_service_class.py:24
 msgid "Service classes"
 msgstr "Clases de servicio"
 
-#: apps/c19trace/models/turistic_service_type.py:14
+#: apps/c19trace/models/turistic_service_type.py:17
 msgid "Service type"
 msgstr "Tipo de Servicio"
 
-#: apps/c19trace/models/turistic_service_type.py:15
+#: apps/c19trace/models/turistic_service_type.py:18
 msgid "Service types"
 msgstr "Tipos de servicio"
 
-#: apps/c19trace/models/underage_persons.py:32
+#: apps/c19trace/models/underage_persons.py:35
 msgid "Underage person"
 msgstr "Menor de edad"
 
-#: apps/c19trace/models/underage_persons.py:33
+#: apps/c19trace/models/underage_persons.py:36
 #: apps/c19trace/serializers/person.py:15
 msgid "Underage persons"
 msgstr "Menores de edad"
@@ -585,6 +590,26 @@ msgstr "Config extra de usuario"
 msgid "Options"
 msgstr "Opciones"
 
+#: apps/c19trace/serializers/auth.py:13
+msgid "Refresh token"
+msgstr ""
+
+#: apps/c19trace/serializers/auth.py:14
+msgid "Access token"
+msgstr ""
+
+#: apps/c19trace/serializers/auth.py:15
+msgid "Life time (seconds)"
+msgstr ""
+
+#: apps/c19trace/serializers/auth.py:16
+msgid "Expiration date/time"
+msgstr "Fecha/hora de expiración"
+
+#: apps/c19trace/serializers/auth.py:58
+msgid "Token is invalid or expired"
+msgstr ""
+
 #: apps/c19trace/serializers/choices.py:7
 #: apps/c19trace/serializers/choices.py:16
 msgid "Value"
@@ -595,23 +620,23 @@ msgstr "Valor"
 msgid "Label"
 msgstr "Etiqueta"
 
-#: apps/c19trace/serializers/place.py:13 apps/c19trace/serializers/place.py:136
+#: apps/c19trace/serializers/place.py:13 apps/c19trace/serializers/place.py:161
 msgid "Owner"
 msgstr "Es dueño"
 
-#: apps/c19trace/serializers/place.py:92
+#: apps/c19trace/serializers/place.py:117
 msgid "Full name"
 msgstr "Nombre completo"
 
-#: apps/c19trace/serializers/place.py:148
+#: apps/c19trace/serializers/place.py:173
 msgid "Today's person checks count in the current place"
 msgstr "Conteo de personas controladas de hoy en el lugar actual"
 
-#: apps/c19trace/serializers/place.py:151
+#: apps/c19trace/serializers/place.py:176
 msgid "Person checks count at the week in the current place"
 msgstr "Conteo de personas controladas en la semana en este lugar"
 
-#: apps/c19trace/serializers/place.py:154
+#: apps/c19trace/serializers/place.py:179
 msgid "Person checks count at the month in the current place"
 msgstr "Conteo de personas controladas en el mes en este lugar"
 
@@ -633,8 +658,8 @@ msgid "Place ID"
 msgstr "ID de lugar"
 
 #: apps/c19trace/serializers/place_person_check.py:28
-#: apps/c19trace/serializers/place_person_check.py:61
-#: apps/c19trace/serializers/place_person_check.py:82
+#: apps/c19trace/serializers/place_person_check.py:62
+#: apps/c19trace/serializers/place_person_check.py:84
 msgid "Place check point ID"
 msgstr "ID de punto de control de lugar"
 
@@ -654,11 +679,11 @@ msgstr "SERNATUR API Trazabilidad COVID19"
 msgid "For mobile and web app."
 msgstr "Para aplicaciones mobiles y web."
 
-#: apps/c19trace/views/api/person.py:57
+#: apps/c19trace/views/api/person.py:68
 msgid "Digital ID for the Aysén region."
 msgstr "Identificación digital para la región de Aysén"
 
-#: apps/c19trace/views/api/person.py:69
+#: apps/c19trace/views/api/person.py:80
 msgid "There is an error registring this person, please try again later."
 msgstr "Hay un error al registrar esta persona, por favor inténtelo más tarde."
 
@@ -686,50 +711,91 @@ msgstr "La persona con el ID %s no tiene usuario aún"
 msgid "Person with ID %s is already in this place"
 msgstr "En este lugar ya hay una persona con ID %s"
 
-#: apps/c19trace/views/api/place_person_check.py:23
+#: apps/c19trace/views/api/place_person_check.py:25
 msgid "When Update"
 msgstr "Cuando actualice"
 
-#: apps/c19trace/views/api/place_person_check.py:24
+#: apps/c19trace/views/api/place_person_check.py:26
 msgid "When Create"
 msgstr "Cuando cree"
 
-#: apps/c19trace/views/api/place_person_check.py:118
+#: apps/c19trace/views/api/place_person_check.py:120
 msgid "Format: `<ISO DateTime>,<ISO DateTime>`"
 msgstr "Formato: `<ISO DateTime>,<ISO DateTime>`"
 
-#: apps/c19trace/views/api/place_person_check.py:126
+#: apps/c19trace/views/api/place_person_check.py:128
 msgid "Invalid format, format is `<ISO DateTime>,<ISO DateTime>`."
 msgstr "formato inválido, format is `<ISO DateTime>,<ISO DateTime>`."
 
-#: apps/c19trace/views/api/place_person_check.py:131
+#: apps/c19trace/views/api/place_person_check.py:133
 msgid "Invalid `from` date (first one)"
 msgstr "Fecha `desde` inválida (la primera)"
 
-#: apps/c19trace/views/api/place_person_check.py:132
+#: apps/c19trace/views/api/place_person_check.py:134
 msgid "Invalid `to` date (second one)"
 msgstr "Fecha `hasta` inválida (la segunda)"
+
+#: apps/c19trace/views/api/place_person_check.py:152
+msgid ""
+"A comma separated symptoms using the following values:\n"
+"- `cough`: Cough\n"
+"- `dispnea`: Dispnea or breathing difficulty\n"
+"- `thoracic_pain`: Throracic pain\n"
+"- `throat_pain`: Throat pain or odynophagia\n"
+"- `muscular_articular_pain`: Myalgia, muscular or articular pain\n"
+"- `chills`: Chills\n"
+"- `headache`: Headache\n"
+"- `diarrhea`: Diarrhea\n"
+"- `lost_smell`: Abrupt lost of smell\n"
+"- `lost_taste`: Abrupt lost of taste\n"
+"- `fever`: Fever\n"
+"            "
+msgstr ""
+"Una lista de síntomas separadas por comas con los siguientes valores:\n"
+"- `cough`: Tos\n"
+"- `dispnea`: Disnea o dificultad respiratoria\n"
+"- `thoracic_pain`: Dolor torácico\n"
+"- `throat_pain`: Dolor de garganta o odinofagia\n"
+"- `muscular_articular_pain`: Mialgia, dolor muscular o articular\n"
+"- `chills`: Escalofrios\n"
+"- `headache`: Dolor de cabeza\n"
+"- `diarrhea`: Diarrea\n"
+"- `lost_smell`: Pérdida brusca del olfato\n"
+"- `lost_taste`: Pérdida brusca del gusto\n"
+"- `fever`: Fiebre\n"
+"            "
+
+#: apps/c19trace/views/api/place_person_check.py:189
+#, python-format
+msgid "Symptom `%s` does not exists."
+msgstr "No existe la persona con el ID %s"
 
 #: apps/c19trace/views/api/user.py:50
 msgid "Enough password requests for today."
 msgstr "Peticiones de contraseña suficientes por hoy."
 
-#: apps/c19trace/views/api/user.py:71
+#: apps/c19trace/views/api/user.py:67
 msgid "change"
 msgstr "cambiar"
 
-#: apps/c19trace/views/api/user.py:71
+#: apps/c19trace/views/api/user.py:67
 msgid "create"
 msgstr "crear"
 
-#: apps/c19trace/views/api/user.py:80
+#: apps/c19trace/views/api/user.py:76
 #, python-format
 msgid "%s request for password"
 msgstr "%s contraseña para usuario"
 
-#: apps/c19trace/views/api/user.py:89
+#: apps/c19trace/views/api/user.py:85
 msgid "Unexpected internal error, try again"
 msgstr "Error interno inesperado, intente nuevamente"
+
+#~ msgid "Colegue"
+#~ msgstr "Colega"
+
+#~ msgid "Temperature"
+#~ msgstr "Temperatura"
 
 #~ msgid "Grandparent"
 #~ msgstr "Abuela/o"

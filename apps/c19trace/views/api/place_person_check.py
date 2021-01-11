@@ -146,11 +146,72 @@ class PlacePersonCheckBaseFiltersetMixin():
             | Q(modification_date__range=date_range)
         )
 
+    symptoms = filters.CharFilter(
+        method="symptoms_filter",
+        help_text=gettext(
+            f"""A comma separated symptoms using the following values:
+- `cough`: Cough
+- `dispnea`: Dispnea or breathing difficulty
+- `thoracic_pain`: Throracic pain
+- `throat_pain`: Throat pain or odynophagia
+- `muscular_articular_pain`: Myalgia, muscular or articular pain
+- `chills`: Chills
+- `headache`: Headache
+- `diarrhea`: Diarrhea
+- `lost_smell`: Abrupt lost of smell
+- `lost_taste`: Abrupt lost of taste
+- `fever`: Fever
+            """
+        )
+    )
+
+
+    def symptoms_filter(self, queryset, name, value):
+        symptoms_list = (
+            'cough',
+            'dispnea',
+            'thoracic_pain',
+            'throat_pain',
+            'muscular_articular_pain',
+            'chills',
+            'headache',
+            'diarrhea',
+            'lost_smell',
+            'lost_taste',
+            'fever',
+        )
+
+        filter = None
+        errors = []
+        symptoms = value.split(',')
+        for symptom in symptoms:
+            if symptom not in symptoms_list:
+                errors.append(gettext("Symptom `%s` does not exists.") % (symptom,))
+                continue
+
+            q_value = Q(**{(self.symptoms_base_query + symptom): True})
+            if filter is None:
+                filter = q_value
+            else:
+                filter |= q_value
+
+        if errors:
+            raise APIException(
+                detail={"symptoms": errors}, code=400
+            )
+
+        if filter:
+            return queryset.filter(filter)
+        else:
+            return queryset
+
 
 class PlacePersonCheckByUserFilterset(
     PlacePersonCheckBaseFiltersetMixin, filters.FilterSet
 ):
     date__range = deepcopy(PlacePersonCheckBaseFiltersetMixin.date__range)
+    symptoms = deepcopy(PlacePersonCheckBaseFiltersetMixin.symptoms)
+    symptoms_base_query = 'symptoms__'
 
 
 class PlacePersonCheckViewSetByUser(
@@ -169,6 +230,8 @@ class PlacePersonCheckByPlaceFilterset(
     PlacePersonCheckBaseFiltersetMixin, filters.FilterSet
 ):
     date__range = deepcopy(PlacePersonCheckBaseFiltersetMixin.date__range)
+    symptoms = deepcopy(PlacePersonCheckBaseFiltersetMixin.symptoms)
+    symptoms_base_query = 'symptoms__'
 
     class Meta:
         model = models.PlacePersonCheck
