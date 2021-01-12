@@ -82,7 +82,9 @@ class InlinePlaceCheckPoints(admin_geo.StackedInline):
     formfield_overrides = {
         models_geo.PointField: {"widget": OSMWidgetAysen}
     }
+
     extra = 0
+    min_num = 1
 
 
 class Place(admin_geo.OSMGeoAdmin):
