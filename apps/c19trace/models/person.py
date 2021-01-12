@@ -30,14 +30,14 @@ class Person(models.Model):
         max_length=48, verbose_name=gettext("First surname")
     )
     last_surname = models.CharField(
-        max_length=48, verbose_name=gettext("Last surname"), null=False
+        max_length=48, verbose_name=gettext("Last surname"), null=True, blank=True
     )
     names = models.CharField(
         max_length=64, verbose_name=gettext("Names")
     )
     gender = models.CharField(
         max_length=24, verbose_name=gettext("Gender"),
-        choices=genders,
+#        choices=genders,
         help_text=choices_to_helptext(genders)
     )
     birth_date = models.DateField(
