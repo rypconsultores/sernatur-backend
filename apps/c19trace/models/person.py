@@ -48,7 +48,7 @@ class Person(models.Model):
     )
     travel_document = models.CharField(
         max_length=16, verbose_name=gettext("Travel document"),
-        choices=travel_documents,
+#        choices=travel_documents,
         help_text=choices_to_helptext(travel_documents)
     )
     document_no = models.CharField(
