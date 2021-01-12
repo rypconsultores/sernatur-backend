@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-11 04:41-0300\n"
+"POT-Creation-Date: 2021-01-12 11:12-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,10 +23,8 @@ msgid "Traceability COVID19"
 msgstr "Trazabilidad COVID19"
 
 #: apps/c19trace/models/choices.py:4
-#, fuzzy
-#| msgid "Friend"
 msgid "Family/Friend"
-msgstr "Amiga/o"
+msgstr "Familia o Amiga/o"
 
 #: apps/c19trace/models/choices.py:5
 msgid "Travel Agency"
