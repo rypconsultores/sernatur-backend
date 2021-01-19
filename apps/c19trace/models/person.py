@@ -82,7 +82,8 @@ class Person(models.Model):
     )
     visit_subject = models.CharField(
         max_length=128, verbose_name=gettext("Visit subject"),
-        choices=travel_subject, null=True, blank=True
+        #Wchoices=travel_subject,
+        null=True, blank=True
     )
     visit_no = models.CharField(
         max_length=12, verbose_name=gettext("Visit number"), null=True, blank=True
