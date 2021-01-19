@@ -105,7 +105,8 @@ class Person(models.Model):
     )
     main_transportation_mean = models.CharField(
         verbose_name=gettext("Main transportation mean"), max_length=64,
-        choices=transportation_means, help_text=(
+        # choices=transportation_means,
+        help_text=(
             gettext('%s\n* Also can be filled with custom entry') % (
                 choices_to_helptext(transportation_means),
             )
