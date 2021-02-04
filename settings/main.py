@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 import dj_database_url
+from datetime import timedelta
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -159,6 +160,12 @@ DATABASES = {
 }
 
 JET_DEFAULT_THEME = 'sernatur'
+
+
+SIMPLE_JWT = {
+    "REFERSH_TOKEN_LIFETIME": timedelta(days=7),
+    'BLACKLIST_AFTER_ROTATION': True
+}
 
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
