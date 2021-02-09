@@ -163,8 +163,10 @@ JET_DEFAULT_THEME = 'sernatur'
 
 
 SIMPLE_JWT = {
-    "REFERSH_TOKEN_LIFETIME": timedelta(days=7),
-    'BLACKLIST_AFTER_ROTATION': True
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
+    "REFRESH_TOKEN_LIFETIME": timedelta(weeks=2),
+    'BLACKLIST_AFTER_ROTATION': True,
+    'ROTATE_REFRESH_TOKENS': True
 }
 
 STATICFILES_FINDERS = (
