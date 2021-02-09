@@ -29,9 +29,17 @@ from ...util.api import api_view
 @api_view(['PUT'], serializers.PlacePersonCheckSwagger)
 @permission_classes([permissions.IsAuthenticated])
 def check_upsert(request, place_id, person_id):
+    if 'id' not in request.data:
+        return Response(
+            {"id": gettext("This field is required")}, status=400
+        )
+
     place_person_check = models.PlacePersonCheck\
         .objects\
-        .filter(place_id=place_id, person=person_id) \
+        .filter(
+            place_id=place_id, person=person_id,
+            id=request.data['id']
+        ) \
         .first()
 
     serializer_kwargs = dict(data=request.data)
